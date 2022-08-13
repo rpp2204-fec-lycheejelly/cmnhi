@@ -1,1 +1,1 @@
-export default Related
+// export default Related

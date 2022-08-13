@@ -14,9 +14,9 @@ class App extends React.Component {
     return (
       <div>
         <Product />
-        <Related />
+        {/* <Related />
         <QandA />
-        <Ratings />
+        <Ratings /> */}
       </div>
     )
   }

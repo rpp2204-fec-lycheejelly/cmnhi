@@ -1,1 +1,1 @@
-export default QandA
+// export default QandA
