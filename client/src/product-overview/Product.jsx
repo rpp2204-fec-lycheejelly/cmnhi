@@ -1,19 +1,25 @@
 import React from 'react';
 import ProductInfo from './ProductInfo.jsx';
-import ImageGallery from './ImageGallery.jsx';
 import StyleSelect from './StyleSelect.jsx';
+import ImageGallery from './ImageGallery.jsx';
 import AddCart from './AddCart.jsx';
 
 class Product extends React.Component {
   constructor(props) {
     super(props);
+
+    this.state = {
+      product: {},
+      style: null,
+      reviews: null
+    }
   }
 
   render() {
     return <div>
       <ProductInfo />
-      <ImageGallery />
       <StyleSelect />
+      <ImageGallery />
       <AddCart />
     </div>
   }
