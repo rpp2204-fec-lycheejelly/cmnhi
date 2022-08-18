@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-// import Product from './product-overview/Product.jsx';
+import Product from './product-overview/Product.jsx';
 // import Related from './related-items/Related.jsx';
 import QandA from './q-a/QandA.jsx';
 // import Ratings from './ratings-reviews/Ratings.jsx';
@@ -13,10 +13,10 @@ class App extends React.Component {
   render () {
     return (
       <div>
-        {/* <Product />
-        <Related /> */}
+        <Product />
+        {/* <Related />*/}
         <QandA />
-        {/* <Ratings /> */}
+        {/*<Ratings /> */}
       </div>
     )
   }
