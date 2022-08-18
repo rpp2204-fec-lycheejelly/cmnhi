@@ -1,1 +1,1 @@
-export default Ratings
+// export default Ratings
