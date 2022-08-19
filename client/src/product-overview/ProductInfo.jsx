@@ -1,16 +1,10 @@
 import React from 'react';
+import Stars from './Stars.jsx';
 
 let ProductInfo = (props) => {
   return <div>
     <h3>Product Information</h3>
-    <div className='stars'>
-      <span> * </span>
-      <span> * </span>
-      <span> * </span>
-      <span> * </span>
-      <span> * </span>
-      <a> Read all [#] reviews </a>
-    </div>
+    <Stars />
     <p>Category</p>
     <h4>Product Title</h4>
     <span>Price</span>
