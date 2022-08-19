@@ -1,3 +1,4 @@
+
 import React from 'react';
 import axios from 'axios';
 
@@ -10,3 +11,6 @@ class Product extends React.Component {
   }
 }
 export default Product
+
+// export default Related
+
