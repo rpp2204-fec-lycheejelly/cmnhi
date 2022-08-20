@@ -19,7 +19,6 @@ class Stars extends React.Component {
     }
 
     let average = scoreTotal / totalResponses;
-
     return Math.round((average * 10)) / 10;
   }
 
