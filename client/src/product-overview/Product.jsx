@@ -18,7 +18,7 @@ class Product extends React.Component {
   }
 
   componentDidMount() {
-    axios.get('/products')
+    axios.get('/products/71697')
       .then(result => {
         console.log(result.data);
         this.setState({
@@ -29,7 +29,7 @@ class Product extends React.Component {
 
   render() {
     return <div>
-      <ProductInfo />
+      <ProductInfo product={this.state.product}/>
       <StyleSelect />
       <ImageGallery />
       <AddCart />
