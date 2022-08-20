@@ -1,16 +1,26 @@
-
 import React from 'react';
 import axios from 'axios';
+import RelatedProducts from './RelatedProducts.jsx';
+import YourOutfit from './YourOutfit.jsx';
 
-class Product extends React.Component {
+class Related extends React.Component {
   constructor(props) {
     super(props);
     this.state = ({
 
     })
   }
-}
-export default Product
 
-// export default Related
+  render() {
+    return (
+      <div>
+       <RelatedProducts />
+       <YourOutfit />
+      </div>
+    )
+  }
+}
+export default Related
+
+
 
