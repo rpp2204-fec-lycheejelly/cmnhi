@@ -10,3 +10,5 @@ describe("Example test", function(){
     expect(plusOne(6)).toBe(7);
   });
 });
+
+// test whether my component is rendering on the screen
