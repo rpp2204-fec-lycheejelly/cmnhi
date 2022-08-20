@@ -1,7 +1,5 @@
 import React from 'react';
-
 import axios from 'axios';
-
 import ProductInfo from './ProductInfo.jsx';
 import StyleSelect from './StyleSelect.jsx';
 import ImageGallery from './ImageGallery.jsx';
@@ -12,7 +10,6 @@ class Product extends React.Component {
   constructor(props) {
     super(props);
 
-
     this.state = {
       product: {},
       style: null,
@@ -20,9 +17,19 @@ class Product extends React.Component {
     }
   }
 
+  componentDidMount() {
+    axios.get('/products/71697')
+      .then(result => {
+        console.log(result.data);
+        this.setState({
+          product: result.data
+        })
+      })
+  }
+
   render() {
     return <div>
-      <ProductInfo />
+      <ProductInfo product={this.state.product}/>
       <StyleSelect />
       <ImageGallery />
       <AddCart />
