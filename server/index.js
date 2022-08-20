@@ -12,7 +12,7 @@ let port = process.env.PORT;
 
 //Product Overview Routes
 
-app.get('/products', (req, res) => {
+app.get('/products/:product_id', (req, res) => {
   getAllProducts(req, res);
 })
 
@@ -28,7 +28,6 @@ app.get('/qa/questions', (req, res) => {
     res.send(err);
   })
 })
-
 
 app.listen(port, function() {
   console.log(`listening on port ${port}`);
