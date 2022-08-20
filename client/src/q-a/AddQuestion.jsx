@@ -7,9 +7,13 @@ class AddQuestion extends React.Component {
 
   render() {
     return (
-      <div>AddQuestion</div>
+      <div>
+        <h4>AddQuestion Component</h4>
+        <button onClick={this.moreAnsQuestions}>Add A QUESTION +</button>
+      </div>
     )
   }
 }
 
 export default AddQuestion;
+

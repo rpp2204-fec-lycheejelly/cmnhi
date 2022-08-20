@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "jest",
+    "qa-test": "jest qa.test.js",
     "client-dev": "npx webpack --watch",
     "server-dev": "npx nodemon --watch server server/index.js",
     "build": "npx webpack",
