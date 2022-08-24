@@ -1,13 +1,13 @@
 import React from 'react';
-// import './qa.css';
 import '../assets/styles.css';
 
 const QandAList = (props) => {
+  var newList = props.qaList.slice(0,2);
   return (
     <div className='QandAList'>
     <h4> QandAList Component </h4>
     <div>
-      {props.qaList.map(qa => {
+      {newList.map(qa => {
       return (
         <div key={qa.question_id}>
         <div >Q: {qa.question_body + 'Helpful?' + 'Yes (' + qa.question_helpfulness + ')'} </div>
@@ -30,4 +30,3 @@ const QandAList = (props) => {
 }
 
 export default QandAList;
-//qa.answers[Object.keys(qa.answers)[0]]['answerer_name']
