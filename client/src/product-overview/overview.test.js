@@ -13,10 +13,10 @@ describe("Simple test suite", function() {
 describe("calculate Average", function() {
   let reviewData1 = {
     1: 5,
-    2: 10,
-    3: 15,
-    4: 20,
-    5: 25
+    2: 8,
+    3: 9,
+    4: 13,
+    5: 26
   }
   let reviewData2 = {
     1: 0,
@@ -26,8 +26,13 @@ describe("calculate Average", function() {
     5: 50,
   }
 
-  it("Should calculate average reviews", function() {
-    expect(calculateAverage(reviewData1)).toBe(3.7);
-    expect(calculateAverage(reviewData2)).toBe(5.0);
+  it("Should return reviews in specific format", function() {
+    expect(calculateAverage(reviewData1).scores).toStrictEqual([1, 1, 1, 0.75, 0]);
+    expect(calculateAverage(reviewData2).scores).toStrictEqual([1, 1, 1, 1, 1]);
+  })
+
+  it("Should calculate total reviews", function() {
+    expect(calculateAverage(reviewData1).totalResponses).toBe(75);
+    expect(calculateAverage(reviewData2).totalResponses).toBe(50);
   })
 })
