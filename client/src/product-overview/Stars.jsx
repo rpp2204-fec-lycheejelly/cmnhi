@@ -1,4 +1,5 @@
 import React from 'react';
+import calculateAverage from './lib/calculateAvg.js';
 
 class Stars extends React.Component {
   constructor(props) {
@@ -9,24 +10,11 @@ class Stars extends React.Component {
     }
   }
 
-  calculateAverage(ratings) {
-    let scoreTotal = 0;
-    let totalResponses = 0;
-
-    for (var key in ratings) {
-      scoreTotal += ratings[key] * key;
-      totalResponses += parseInt(ratings[key]);
-    }
-
-    let average = scoreTotal / totalResponses;
-    return Math.round((average * 10)) / 10;
-  }
-
   render() {
     return (
       <div className="stars">
         {console.log(this.props.reviews)}
-        {console.log(this.calculateAverage(this.props.reviews))};
+        {console.log(calculateAverage(this.props.reviews))}
         <span className="star-rating"> * </span>
         <span className="star-rating"> * </span>
         <span className="star-rating"> * </span>
