@@ -13,23 +13,39 @@ class Product extends React.Component {
     this.state = {
       product: {},
       style: null,
-      reviews: null
+      reviews: {}
     }
   }
 
   componentDidMount() {
-    axios.get('/products/71697')
+    this.getProduct()
+      .then(() => {
+        this.getReviews();
+      })
+  }
+
+  getProduct() {
+    return axios.get('/products/71697')
+    .then(result => {
+      console.log(result.data);
+      this.setState({
+        product: result.data
+      })
+    })
+  }
+
+  getReviews() {
+    return axios.get('/reviews/meta/71697')
       .then(result => {
-        console.log(result.data);
         this.setState({
-          product: result.data
+          reviews: result.data.ratings
         })
       })
   }
 
   render() {
     return <div>
-      <ProductInfo product={this.state.product}/>
+      <ProductInfo product={this.state.product} reviews={this.state.reviews}/>
       <StyleSelect />
       <ImageGallery />
       <AddCart />

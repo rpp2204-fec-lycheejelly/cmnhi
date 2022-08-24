@@ -1,19 +1,25 @@
 
+/* PRODUCT OVERVIEW STYLES */
 
+/* review stars */
 
+.star-outline {
+  height: 36px;
+  width: 31px;
+}
 
+.star-fill {
+  position: relative;
+  display: inline-block;
+  height: 36px;
+  background-color: orange;
+}
 
-
-
-
-
-
-
-
-
-
-
-
+.star-container {
+  height: 36px;
+  width: 31px;
+  display: inline-block;
+}
 
 
 
