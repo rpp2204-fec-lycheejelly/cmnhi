@@ -1,4 +1,6 @@
 import React from 'react';
+// import './qa.css';
+import '../assets/styles.css';
 
 const QandAList = (props) => {
   return (
@@ -11,9 +13,12 @@ const QandAList = (props) => {
         <div >Q: {qa.question_body + 'Helpful?' + 'Yes (' + qa.question_helpfulness + ')'} </div>
         <div >A: {qa.answers[Object.keys(qa.answers)[0]]['body'] }</div>
         <div>
-          by User{Object.keys(qa.answers)[0] + '-' + qa.answers[Object.keys(qa.answers)[0]]['answerer_name']}
-          {qa.answers[Object.keys(qa.answers)[0]]['date']}
-          Helpful? Yes ({qa.answers[Object.keys(qa.answers)[0]]['helpfulness']})
+          <span className='QA-questionInfo'>by User{Object.keys(qa.answers)[0] + '-' + qa.answers[Object.keys(qa.answers)[0]]['answerer_name']}</span>
+          <span className='QA-questionInfo'>{qa.answers[Object.keys(qa.answers)[0]]['date']}</span>
+          <span className='QA-questionInfo'>Helpful?
+                <span className='QA-yes'>Yes</span>
+                ({qa.answers[Object.keys(qa.answers)[0]]['helpfulness']})
+          </span>
         </div>
         <div>**********************************************************</div>
         </div>
