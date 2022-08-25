@@ -12,16 +12,12 @@ class Product extends React.Component {
 
     this.state = {
       product: {},
-      style: null,
-      reviews: {}
+      style: null
     }
   }
 
   componentDidMount() {
-    this.getProduct()
-      .then(() => {
-        this.getReviews();
-      })
+    this.getProduct();
   }
 
   getProduct() {
@@ -34,18 +30,9 @@ class Product extends React.Component {
     })
   }
 
-  getReviews() {
-    return axios.get('/reviews/meta/71697')
-      .then(result => {
-        this.setState({
-          reviews: result.data.ratings
-        })
-      })
-  }
-
   render() {
     return <div>
-      <ProductInfo product={this.state.product} reviews={this.state.reviews}/>
+      <ProductInfo product={this.state.product} reviews={this.state.product.ratings}/>
       <StyleSelect />
       <ImageGallery />
       <AddCart />
