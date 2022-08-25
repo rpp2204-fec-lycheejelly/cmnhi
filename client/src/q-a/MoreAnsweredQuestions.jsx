@@ -14,7 +14,6 @@ class MoreAnsweredQuestions extends React.Component {
   render() {
     return (
       <div>
-       <h4>MoreAnsweredQuestions Component</h4>
        <button onClick={this.moreAnsQuestions}>MORE ANSWERED QUESTIONS</button>
       </div>
     )
