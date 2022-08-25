@@ -25,7 +25,6 @@ app.get('/reviews/meta/:product_id', (req, res) => {
 app.get('/qa/questions', (req, res) => {
   return getQAList()
   .then(result => {
-    // console.log('app.get result', result);
     res.send(result);
   })
   .catch(err => {

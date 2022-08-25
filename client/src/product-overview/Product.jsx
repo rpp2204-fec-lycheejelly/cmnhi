@@ -27,7 +27,7 @@ class Product extends React.Component {
   getProduct() {
     return axios.get('/products/71697')
     .then(result => {
-      console.log(result.data);
+      // console.log(result.data);
       this.setState({
         product: result.data
       })

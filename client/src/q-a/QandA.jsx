@@ -23,9 +23,7 @@ class QandA extends React.Component {
   getQAList() {
     return axios.get('/qa/questions')
     .then((response) => {
-      // console.log('axios GET', response.data.results);
       this.setState({qaList: response.data.results});
-      // console.log('what is the this.state.list', this.state.qaList);
     })
     .catch((error) => {
       console.log('Failed to fetch data', error);

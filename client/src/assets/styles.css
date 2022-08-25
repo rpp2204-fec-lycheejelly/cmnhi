@@ -32,15 +32,14 @@
 
 
 
-
-
-
-
-
-
 /************ Questions and Answers ************/
 
 /*** QandAList ***/
+
+.QA-helpful-text {
+  margin-left: 8px;
+  margin-right: 8px
+}
 
 .QA-questionInfo {
   margin-right: 20px;
@@ -49,3 +48,9 @@
 .QA-yes {
   margin-left: 8px
 }
+
+.QA-img {
+  padding: 5px;
+  width: 150px;
+}
+

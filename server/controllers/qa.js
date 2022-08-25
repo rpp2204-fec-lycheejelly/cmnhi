@@ -10,6 +10,7 @@ let getQAList = () => {
   })
   .catch(error => {
     console.log('error', error);
+    throw error;
   })
 }
 
