@@ -7,6 +7,19 @@
   justify-content: space-evenly;
 }
 
+.product-description {
+  width: 520px;
+}
+
+/* price */
+.sale-price {
+  color: red;
+}
+
+.discounted {
+  text-decoration: line-through;
+}
+
 /* review stars */
 
 .star-outline {

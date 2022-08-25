@@ -25,6 +25,10 @@ app.get('/products/:product_id', (req, res) => {
     .then(reviews => {
       let ratings = reviews.ratings;
       productData = {...productData, ratings: {...ratings}}
+      return overview.getStyles(req, res);
+    })
+    .then(styleData => {
+      productData.styles = styleData;
       res.json(productData);
     })
 })
