@@ -1,5 +1,12 @@
 /* PRODUCT OVERVIEW STYLES */
 
+/* product-overview container */
+
+.product-overview {
+  display: flex;
+  justify-content: space-evenly;
+}
+
 /* review stars */
 
 .star-outline {

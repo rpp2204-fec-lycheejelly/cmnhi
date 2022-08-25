@@ -1,9 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import ProductInfo from './ProductInfo.jsx';
-import StyleSelect from './StyleSelect.jsx';
 import ImageGallery from './ImageGallery.jsx';
-import AddCart from './AddCart.jsx';
 
 
 class Product extends React.Component {
@@ -21,7 +19,7 @@ class Product extends React.Component {
   }
 
   getProduct() {
-    return axios.get('/products/71697')
+    return axios.get('/products/71702')
     .then(result => {
       console.log(result.data);
       this.setState({
@@ -31,11 +29,9 @@ class Product extends React.Component {
   }
 
   render() {
-    return <div>
+    return <div className='product-overview'>
+      <ImageGallery className='image-gallery'/>
       <ProductInfo product={this.state.product} reviews={this.state.product.ratings}/>
-      <StyleSelect />
-      <ImageGallery />
-      <AddCart />
     </div>
   }
 }
