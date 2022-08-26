@@ -1,0 +1,189 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Component Testing Should correctly render productInfo 1`] = `
+<div
+  className="product-overview"
+>
+  <div>
+    <h3>
+      Image Gallery
+    </h3>
+    <div>
+      <img
+        src=""
+      />
+    </div>
+  </div>
+  <div
+    className="product-information"
+  >
+    <div>
+      <div
+        className="stars"
+      >
+        <div
+          className="star-container"
+        >
+          <div
+            className="star-fill"
+            style={
+              Object {
+                "width": "0px",
+              }
+            }
+          >
+            <img
+              alt="star alt"
+              className="star-outline"
+              src=""
+            />
+          </div>
+        </div>
+        <div
+          className="star-container"
+        >
+          <div
+            className="star-fill"
+            style={
+              Object {
+                "width": "0px",
+              }
+            }
+          >
+            <img
+              alt="star alt"
+              className="star-outline"
+              src=""
+            />
+          </div>
+        </div>
+        <div
+          className="star-container"
+        >
+          <div
+            className="star-fill"
+            style={
+              Object {
+                "width": "0px",
+              }
+            }
+          >
+            <img
+              alt="star alt"
+              className="star-outline"
+              src=""
+            />
+          </div>
+        </div>
+        <div
+          className="star-container"
+        >
+          <div
+            className="star-fill"
+            style={
+              Object {
+                "width": "0px",
+              }
+            }
+          >
+            <img
+              alt="star alt"
+              className="star-outline"
+              src=""
+            />
+          </div>
+        </div>
+        <div
+          className="star-container"
+        >
+          <div
+            className="star-fill"
+            style={
+              Object {
+                "width": "0px",
+              }
+            }
+          >
+            <img
+              alt="star alt"
+              className="star-outline"
+              src=""
+            />
+          </div>
+        </div>
+        <a>
+          Read All 
+          0
+           Reviews
+        </a>
+      </div>
+      <p />
+      <h4 />
+      <span
+        className=""
+      >
+         
+      </span>
+      <p
+        className="product-description"
+      />
+    </div>
+    <div>
+      <h3>
+        Style Selector
+      </h3>
+      <p>
+        Selected Style
+      </p>
+      <div>
+        Styles
+      </div>
+      <button>
+        ☆
+      </button>
+    </div>
+    <div>
+      <select>
+        <option>
+          Select Size
+        </option>
+        <option>
+          XS
+        </option>
+        <option>
+          S
+        </option>
+        <option>
+          M
+        </option>
+        <option>
+          L
+        </option>
+        <option>
+          XL
+        </option>
+      </select>
+      <select>
+        <option>
+          1
+        </option>
+        <option>
+          2
+        </option>
+        <option>
+          3
+        </option>
+        <option>
+          4
+        </option>
+        <option>
+          5
+        </option>
+      </select>
+      <button>
+        Add To Cart
+      </button>
+    </div>
+  </div>
+</div>
+`;

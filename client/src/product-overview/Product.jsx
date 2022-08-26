@@ -18,7 +18,7 @@ class Product extends React.Component {
   }
 
   componentDidMount() {
-    this.getProduct();
+    this.getProduct()
   }
 
   getProduct() {
@@ -30,6 +30,9 @@ class Product extends React.Component {
         styles: result.data.styles,
         currentStyle: result.data.styles[0]
       })
+    })
+    .catch(error => {
+      throw error;
     })
   }
 
@@ -43,7 +46,6 @@ class Product extends React.Component {
                 <StyleSelect className='stlye-select' styles={this.state.styles}/>
                 <AddCart clasName='add-cart'/>
               </div>
-
           </div>
   }
 }
