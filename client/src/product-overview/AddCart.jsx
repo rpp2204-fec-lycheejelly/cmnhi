@@ -18,6 +18,7 @@ let AddCart = (props) => {
         <option>5</option>
       </select>
       <button>Add To Cart</button>
+      <button>&#9734;</button>
     </div>
 }
 

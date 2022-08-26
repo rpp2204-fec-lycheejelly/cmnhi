@@ -1,4 +1,5 @@
 import React from 'react';
+import CompareCard from './CompareCard.jsx';
 
 class RelatedProducts extends React.Component {
   constructor(props) {
@@ -9,6 +10,7 @@ class RelatedProducts extends React.Component {
     return (
       <>
         <p>Related Products</p>
+        <CompareCard/>
       </>
     )
   }
