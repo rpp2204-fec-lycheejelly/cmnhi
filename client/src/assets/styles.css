@@ -1,3 +1,4 @@
+
 /* PRODUCT OVERVIEW STYLES */
 
 /* product-overview container */
@@ -39,3 +40,52 @@
   width: 31px;
   display: inline-block;
 }
+
+
+
+
+/************ Questions and Answers ************/
+
+/*** QandA ***/
+
+#QA-column {
+  display: inline-block;
+}
+
+
+
+/*** SearchBar ***/
+.searchInput {
+  width: 200px;
+}
+/*** QandAList ***/
+
+
+.QA-questionInfo {
+  margin-right: 20px;
+}
+
+.QA-yes {
+  text-decoration: underline;
+}
+
+.QA-helpful-text {
+  margin-left: 100px;
+  margin-right: 8px;
+}
+
+.QA-addAnswer {
+  margin-left: 8px;
+  text-decoration: underline;
+}
+
+.QA-4in1 {
+  float: right;
+}
+
+.QA-img {
+  padding: 5px;
+  width: 150px;
+}
+
+
