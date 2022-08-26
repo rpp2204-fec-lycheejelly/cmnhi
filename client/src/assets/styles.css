@@ -1,4 +1,10 @@
 
+#related {
+  /* display: flex;
+  flex-direction: column; */
+  border: 2px solid black;
+}
+
 /* PRODUCT OVERVIEW STYLES */
 
 /* product-overview container */
@@ -87,5 +93,6 @@
   padding: 5px;
   width: 150px;
 }
+
 
 
