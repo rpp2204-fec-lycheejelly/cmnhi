@@ -12,10 +12,9 @@ class ImageGallery extends React.Component {
   }
 
   render() {
-    return <div>
-      <h3>Image Gallery</h3>
+    return <div className='image-gallery'>
       {this.state.view === 'expanded' && <ExpandedView />}
-      <DefaultView />
+      <DefaultView style={this.props.style}/>
     </div>
   }
 }

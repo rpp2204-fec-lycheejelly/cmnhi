@@ -1,9 +1,9 @@
 import React from 'react';
 
-let DefaultView = (props) => {
+let DefaultView = ({style}) => {
   return (
-    <div>
-      <img src=""></img>
+    <div className="image-default-view">
+      <img src={style.photos[0].thumbnail_url}></img>
     </div>
   )
 };
