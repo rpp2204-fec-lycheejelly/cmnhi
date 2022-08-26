@@ -12,7 +12,7 @@ export default (ratings) => {
   let rating = Math.round((average * 10)) / 10;
 
   while(scores.length < 5) {
-    if (rating > 1) {
+    if (rating >= 1) {
       scores.push(1);
     } else if (rating < 1 && rating > 0) {
       let piece = Math.floor(rating / 0.25);

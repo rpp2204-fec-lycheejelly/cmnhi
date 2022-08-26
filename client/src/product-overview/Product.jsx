@@ -18,32 +18,42 @@ class Product extends React.Component {
   }
 
   componentDidMount() {
-    this.getProduct();
+    this.getProduct()
   }
 
   getProduct() {
-    return axios.get('/products/71699')
+    return axios.get('/products/71700')
     .then(result => {
-      // console.log(result.data);
+      console.log('HARRY STYLES',result.data.styles);
       this.setState({
         product: result.data,
         styles: result.data.styles,
         currentStyle: result.data.styles[0]
       })
     })
+    .catch(error => {
+      throw error;
+    })
+  }
+
+  changeStyle(style) {
+    this.setState({
+      currentStyle: style
+    })
   }
 
   render() {
     return <div className='product-overview'>
-            <ImageGallery className='image-gallery'/>
+            <ImageGallery style={this.state.currentStyle}/>
               <div className='product-information'>
                 <ProductInfo product={this.state.product}
-                            reviews={this.state.product.ratings}
-                            style={this.state.currentStyle}/>
-                <StyleSelect className='stlye-select' styles={this.state.styles}/>
+                             reviews={this.state.product.ratings}
+                             style={this.state.currentStyle}/>
+                <StyleSelect styles={this.state.styles}
+                             currentStyle={this.state.currentStyle}
+                             changeStyle={this.changeStyle.bind(this)}/>
                 <AddCart clasName='add-cart'/>
               </div>
-
           </div>
   }
 }

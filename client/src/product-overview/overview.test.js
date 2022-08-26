@@ -1,4 +1,7 @@
+import React from 'react';
+import renderer from 'react-test-renderer';
 import calculateAverage from './lib/calculateAvg.js';
+import Product from './Product.jsx';
 
 describe("Simple test suite", function() {
   let sum = (a, b) => {
@@ -32,7 +35,16 @@ describe("calculate Average", function() {
   })
 
   it("Should calculate total reviews", function() {
-    expect(calculateAverage(reviewData1).totalResponses).toBe(75);
+    expect(calculateAverage(reviewData1).totalResponses).toBe(61);
     expect(calculateAverage(reviewData2).totalResponses).toBe(50);
+  })
+})
+
+describe("Component Testing", function() {
+  it("Should correctly render productInfo", function() {
+    const tree = renderer.create(
+      <Product />
+    ).toJSON();
+    expect(tree).toMatchSnapshot();
   })
 })

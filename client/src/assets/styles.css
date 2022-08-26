@@ -1,3 +1,6 @@
+* {
+  font-family: Arial, Helvetica, sans-serif;
+}
 
 #related {
   /* display: flex;
@@ -11,11 +14,19 @@
 
 .product-overview {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: center;
 }
 
 .product-description {
   width: 520px;
+}
+
+.product-information {
+  display: flex;
+  flex-direction: column;
+  align-content: flex-start;
+  justify-content: space-between;
+  margin-left: 30px;
 }
 
 /* price */
@@ -47,6 +58,70 @@
   display: inline-block;
 }
 
+/* styles */
+
+.style-container {
+  display: flex;
+  flex-wrap: wrap;
+  width: 450px;
+}
+
+.style-thumbnail {
+  display: block;
+  object-fit: cover;
+  object-position: center;
+  height: 85px;
+  width: 85px;
+  border-radius: 50%;
+  margin: 10px;
+}
+
+.style-thumbnail:hover {
+  cursor: pointer;
+}
+
+.thumbnail-container {
+  position: relative;
+}
+
+.selected-check {
+  position: absolute;
+  color: white;
+  background-color: rgb(49, 138, 255);
+  text-align: center;
+  width: 19px;
+  border-radius: 60%;
+  top: 0;
+  right: 0;
+  margin-right: 15px;
+  margin-top: 10px;
+}
+
+.selected-style {
+  box-shadow: 0 0 0 5px rgb(132, 210, 206);
+}
+
+/* image view */
+
+.image-gallery {
+  flex-grow: 1;
+  width: 500px;
+  height: 500px;
+  max-height: 80vh;
+  max-width: 80vh;
+  min-width: 80vh;
+}
+
+.image-default-view {
+  width: 100%;
+  height: 100%;
+}
+
+.image-default-view img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
 
 
 
