@@ -4,15 +4,12 @@ exports[`Component Testing Should correctly render productInfo 1`] = `
 <div
   className="product-overview"
 >
-  <div>
-    <h3>
-      Image Gallery
-    </h3>
-    <div>
-      <img
-        src=""
-      />
-    </div>
+  <div
+    className="image-gallery"
+  >
+    <div
+      className="image-default-view"
+    />
   </div>
   <div
     className="product-information"
@@ -122,25 +119,26 @@ exports[`Component Testing Should correctly render productInfo 1`] = `
       <span
         className=""
       >
+        $
          
       </span>
       <p
         className="product-description"
       />
     </div>
-    <div>
-      <h3>
-        Style Selector
-      </h3>
+    <div
+      className="style-select"
+    >
       <p>
-        Selected Style
+         
+        <b>
+          Style &gt;
+        </b>
+         
       </p>
-      <div>
-        Styles
-      </div>
-      <button>
-        ☆
-      </button>
+      <div
+        className="style-container"
+      />
     </div>
     <div>
       <select>
@@ -182,6 +180,9 @@ exports[`Component Testing Should correctly render productInfo 1`] = `
       </select>
       <button>
         Add To Cart
+      </button>
+      <button>
+        ☆
       </button>
     </div>
   </div>

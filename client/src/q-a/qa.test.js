@@ -15,7 +15,7 @@ import {data} from './mockData.js';
 // Component test
 // ref link: https://www.youtube.com/watch?v=ML5egqL3YFE
 describe("Component test", () => {
-  it("should render QandAList component", () => {
+  it("should render QandAElement", () => {
     render(<QandAElement qa={data[0]}/>);
     const qaElement = screen.getByTestId('631447');
     expect(qaElement).toBeInTheDocument();
