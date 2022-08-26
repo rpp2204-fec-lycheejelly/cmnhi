@@ -1,5 +1,5 @@
 import React from 'react';
-import '../assets/styles.css';
+// import '../assets/styles.css';
 
 function SearchBar({placeholder, data}) {
   return (
