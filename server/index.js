@@ -13,11 +13,24 @@ let port = process.env.PORT;
 //Product Overview Routes
 
 app.get('/products/:product_id', (req, res) => {
-  overview.getProduct(req, res);
-})
+  let productData = {};
 
-app.get('/reviews/meta/:product_id', (req, res) => {
-  overview.getReviewData(req, res);
+  overview.getProduct(req, res)
+    .then(product => {
+      productData = {...product};
+    })
+    .then(() => {
+      return overview.getReviewData(req, res)
+    })
+    .then(reviews => {
+      let ratings = reviews.ratings;
+      productData = {...productData, ratings: {...ratings}}
+      return overview.getStyles(req, res);
+    })
+    .then(styleData => {
+      productData.styles = styleData;
+      res.json(productData);
+    })
 })
 
 
