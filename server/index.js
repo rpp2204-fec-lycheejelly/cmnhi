@@ -3,6 +3,7 @@ const express = require('express');
 const axios = require('axios');
 const overview = require('./controllers/overview.js');
 const {getQAList} = require('./controllers/qa.js');
+const getRelated = require('./controllers/related.js');
 let app = express();
 
 app.use(express.static(__dirname + '/../client/dist'));
@@ -43,6 +44,17 @@ app.get('/qa/questions', (req, res) => {
   .catch(err => {
     res.send(err);
   })
+})
+
+//Related Products Routes
+app.get('/products/:product_id/related', (req, res) => {
+  getRelated(req, res)
+    .then(results => {
+      res.send(results);
+    })
+    .catch(err => {
+      console.log(err);
+    })
 })
 
 app.listen(port, function() {

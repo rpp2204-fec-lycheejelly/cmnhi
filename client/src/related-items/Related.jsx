@@ -13,9 +13,13 @@ class Related extends React.Component {
   }
 
   componentDidMount() {
-    axios.get('/products/71697')
+    axios.get('/products/71697/related')
       .then(results => {
-        console.log(results);
+        this.setState({
+          relatedProducts: results.data
+        }, () => {
+          console.log(this.state);
+        });
       })
   }
 
