@@ -1,16 +1,15 @@
 import React from 'react';
 import Stars from './Stars.jsx';
 
-let ProductInfo = ({product}) => {
+let ProductInfo = ({product, reviews, style}) => {
   return <div>
-    <h3>Product Information</h3>
-    <Stars />
-    <p>Category: {product.category}</p>
-    <h4>{product.name}</h4>
-    <span>{product.default_price}</span>
-    <p>{product.description}</p>
-    <button>Add To Outfit</button>
-  </div>
+          <Stars reviews={reviews}/>
+          <p>{product.category}</p>
+          <h4>{product.name}</h4>
+          <span className={style.sale_price ? 'discounted' : ''}>{style.original_price} </span>
+          {style.sale_price && <span className="sale-price">{style.sale_price}</span>}
+          <p className="product-description">{product.description}</p>
+        </div>
 }
 
 export default ProductInfo;
