@@ -13,7 +13,7 @@ class Product extends React.Component {
     this.state = {
       product: {},
       styles: [],
-      currentStyle: {photos: [{thumbnail_url: "placeholder"}]}
+      currentStyle: {}
     }
   }
 
@@ -22,7 +22,7 @@ class Product extends React.Component {
   }
 
   getProduct() {
-    return axios.get('/products/71701')
+    return axios.get('/products/71700')
     .then(result => {
       console.log('HARRY STYLES',result.data.styles);
       this.setState({
@@ -36,6 +36,12 @@ class Product extends React.Component {
     })
   }
 
+  changeStyle(style) {
+    this.setState({
+      currentStyle: style
+    })
+  }
+
   render() {
     return <div className='product-overview'>
             <ImageGallery style={this.state.currentStyle}/>
@@ -44,7 +50,8 @@ class Product extends React.Component {
                              reviews={this.state.product.ratings}
                              style={this.state.currentStyle}/>
                 <StyleSelect styles={this.state.styles}
-                             currentStyle={this.state.currentStyle}/>
+                             currentStyle={this.state.currentStyle}
+                             changeStyle={this.changeStyle.bind(this)}/>
                 <AddCart clasName='add-cart'/>
               </div>
           </div>
