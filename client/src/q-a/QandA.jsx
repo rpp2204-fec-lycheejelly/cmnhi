@@ -4,7 +4,7 @@ import QandAList from './QandAList.jsx';
 import MoreAnsweredQuestions from './MoreAnsweredQuestions.jsx';
 import AddQuestion from './AddQuestion.jsx';
 import axios from 'axios';
-import '../assets/styles.css';
+// import '../assets/styles.css';
 
 class QandA extends React.Component {
   constructor(props) {

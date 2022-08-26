@@ -1,5 +1,5 @@
 import React from 'react';
-import '../assets/styles.css';
+// import '../assets/styles.css';
 
 
 
@@ -34,7 +34,7 @@ class QandAElement extends React.Component {
 
         <div>
 
-          <div className='QA-Q'>Q: {qa.question_body}
+          <div className='QA-Q' data-testid={qa.question_id}>Q: {qa.question_body}
           <span className='QA-4in1'>
             <span className='QA-helpful-text'>Helpful?</span>
             <span className='QA-yes' onClick={() => this.plusOne()}>{this.state.yes}</span>

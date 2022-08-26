@@ -24,14 +24,13 @@
   "homepage": "https://github.com/rpp2204-fec-lycheejelly/comnhi#readme",
   "dependencies": {
     "@babel/core": "^7.18.10",
-    "@babel/preset-env": "^7.18.10",
-    "@babel/preset-react": "^7.18.6",
     "axios": "^0.27.2",
     "babel-loader": "^8.2.5",
     "css-loader": "^6.7.1",
     "dotenv": "^16.0.1",
     "express": "^4.18.1",
     "file-loader": "^6.2.0",
+    "jest-dom": "^4.0.0",
     "nodemon": "^2.0.19",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
@@ -40,6 +39,17 @@
     "webpack-cli": "^4.10.0"
   },
   "devDependencies": {
-    "jest": "^28.1.3"
+    "@babel/preset-env": "^7.18.10",
+    "@babel/preset-react": "^7.18.6",
+    "@testing-library/jest-dom": "^5.16.5",
+    "@testing-library/react": "^13.3.0",
+    "babel-jest": "^29.0.1",
+    "enzyme": "^3.11.0",
+    "jest": "^28.1.3",
+    "jest-environment-jsdom": "^29.0.1",
+    "react-test-renderer": "^18.2.0"
+  },
+  "jest": {
+    "testEnvironment": "jsdom"
   }
 }
