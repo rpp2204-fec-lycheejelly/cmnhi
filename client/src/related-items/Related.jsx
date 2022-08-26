@@ -7,8 +7,16 @@ class Related extends React.Component {
   constructor(props) {
     super(props);
     this.state = ({
-
+      relatedProducts: [],
+      outfit: []
     })
+  }
+
+  componentDidMount() {
+    axios.get('/products/71697')
+      .then(results => {
+        console.log(results);
+      })
   }
 
   render() {
