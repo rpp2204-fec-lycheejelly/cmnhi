@@ -50,8 +50,8 @@ class QandAElement extends React.Component {
                     <div>{qa.answers[id]['body']}</div>
                     <img className='QA-img' src={qa.answers[id]['photos'][0]} />
                     <div>
-                      <span className='QA-questionInfo'>by User{Object.keys(qa.answers)[0] + '-' + qa.answers[Object.keys(qa.answers)[0]]['answerer_name']}</span>
-                      <span className='QA-questionInfo'>{qa.answers[Object.keys(qa.answers)[0]]['date']}</span>
+                      <span className='QA-questionInfo'>by User{id + '-' + qa.answers[id]['answerer_name']}</span>
+                      <span className='QA-questionInfo'>{qa.answers[id]['date']}</span>
                       <span className='QA-questionInfo'>Helpful?
                       <span className='QA-helpfulness'>Yes</span>
                         ({qa.answers[Object.keys(qa.answers)[0]]['helpfulness']})
