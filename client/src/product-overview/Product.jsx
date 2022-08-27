@@ -13,7 +13,8 @@ class Product extends React.Component {
     this.state = {
       product: {},
       styles: [],
-      currentStyle: {}
+      currentStyle: {},
+      sku: null
     }
   }
 
@@ -22,7 +23,7 @@ class Product extends React.Component {
   }
 
   getProduct() {
-    return axios.get('/products/71700')
+    return axios.get('/products/71697')
     .then(result => {
       console.log('HARRY STYLES',result.data.styles);
       this.setState({
@@ -38,7 +39,14 @@ class Product extends React.Component {
 
   changeStyle(style) {
     this.setState({
-      currentStyle: style
+      currentStyle: style,
+      sku: null
+    })
+  }
+
+  updateSku(e) {
+    this.setState({
+      sku: e.target.value
     })
   }
 
@@ -52,7 +60,9 @@ class Product extends React.Component {
                 <StyleSelect styles={this.state.styles}
                              currentStyle={this.state.currentStyle}
                              changeStyle={this.changeStyle.bind(this)}/>
-                <AddCart clasName='add-cart'/>
+                <AddCart className='add-cart' skus={this.state.currentStyle.skus || {}}
+                                              sku={this.state.sku}
+                                              updateSku={this.updateSku.bind(this)}/>
               </div>
           </div>
   }
