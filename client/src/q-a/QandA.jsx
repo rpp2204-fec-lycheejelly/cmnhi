@@ -20,7 +20,7 @@ class QandA extends React.Component {
   }
 
   getQAList() {
-    return axios.get('/qa/questions')
+    return axios.get('/qa/questions/71711')
     .then((response) => {
       this.setState({qaList: response.data.results});
     })

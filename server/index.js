@@ -36,8 +36,8 @@ app.get('/products/:product_id', (req, res) => {
 
 
 //Question and Answer Routes
-app.get('/qa/questions', (req, res) => {
-  return getQAList()
+app.get('/qa/questions/:product_id', (req, res) => {
+  return getQAList(req, res)
   .then(result => {
     res.send(result);
   })
