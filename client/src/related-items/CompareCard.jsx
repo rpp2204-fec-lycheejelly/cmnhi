@@ -32,12 +32,22 @@ class CompareCard extends React.Component {
           }
           console.log(total);
           console.log(count);
+          let styles = item.styles;
+          let price = 0;
+          let url = '';
+          styles.forEach(style => {
+            if (style['default?'] === true) {
+              price = style['sale_price'] !== null ? style['sale_price'] : style['original_price'];
+              url = style['photos'][0]['thumbnail_url'];
+            }
+          })
           return (
             <div id="items" key={id}>
+              <img src={url || item['styles'][0]['photos'][0]['thumbnail_url']}/>
               <p>{item.category}</p>
               <p><strong>{item.name}</strong></p>
               <p><em>{item.slogan}</em></p>
-              <p>{item.default_price}</p>
+              <p>${price || item['default_price']}</p>
               <p>Rating: {total / count}</p>
             </div>
           )
