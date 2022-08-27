@@ -4,6 +4,7 @@ import ProductInfo from './ProductInfo.jsx';
 import ImageGallery from './ImageGallery.jsx';
 import StyleSelect from './StyleSelect.jsx';
 import AddCart from './AddCart.jsx';
+import ProductDesc from './ProductDesc.jsx';
 
 
 class Product extends React.Component {
@@ -23,9 +24,9 @@ class Product extends React.Component {
   }
 
   getProduct() {
-    return axios.get('/products/71697')
+    return axios.get('/products/71701')
     .then(result => {
-      console.log('HARRY STYLES',result.data.styles);
+      console.log('HARRY STYLES',result.data);
       this.setState({
         product: result.data,
         styles: result.data.styles,
@@ -44,26 +45,45 @@ class Product extends React.Component {
     })
   }
 
-  updateSku(e) {
+  updateSku(sku) {
     this.setState({
-      sku: e.target.value
+      sku
+    })
+  }
+
+  addToBag(count) {
+    axios.post('/cart', {
+      sku_id: this.state.sku,
+      count
+    })
+    .then(result => {
+      console.log('Successful POST to /cart')
+    })
+    .catch(error => {
+      console.log('Error POST to /cart', error)
     })
   }
 
   render() {
-    return <div className='product-overview'>
-            <ImageGallery style={this.state.currentStyle}/>
-              <div className='product-information'>
-                <ProductInfo product={this.state.product}
+    return <div>
+           <div className='product-overview'>
+             <ImageGallery style={this.state.currentStyle}/>
+             <div className='product-information'>
+                 <ProductInfo product={this.state.product}
                              reviews={this.state.product.ratings}
                              style={this.state.currentStyle}/>
-                <StyleSelect styles={this.state.styles}
+                 <StyleSelect styles={this.state.styles}
                              currentStyle={this.state.currentStyle}
                              changeStyle={this.changeStyle.bind(this)}/>
-                <AddCart className='add-cart' skus={this.state.currentStyle.skus || {}}
-                                              sku={this.state.sku}
-                                              updateSku={this.updateSku.bind(this)}/>
-              </div>
+                 <AddCart className='add-cart' skus={this.state.currentStyle.skus || {}}
+                                               sku={this.state.sku}
+                                               updateSku={this.updateSku.bind(this)}
+                                               add={this.addToBag.bind(this)}/>
+            </div>
+          </div>
+          <ProductDesc slogan={this.state.product.slogan}
+                       description={this.state.product.description}
+                       features={this.state.product.features}/>
           </div>
   }
 }
