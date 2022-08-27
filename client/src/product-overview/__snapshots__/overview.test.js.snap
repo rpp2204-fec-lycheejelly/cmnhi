@@ -115,6 +115,7 @@ exports[`Component Testing Should correctly render productInfo 1`] = `
         </a>
       </div>
       <p />
+      <p />
       <h4 />
       <span
         className=""
@@ -141,49 +142,36 @@ exports[`Component Testing Should correctly render productInfo 1`] = `
       />
     </div>
     <div>
-      <select>
-        <option>
+      <select
+        className="selectors"
+        onChange={[Function]}
+      >
+        <option
+          selected={true}
+        >
           Select Size
         </option>
+      </select>
+      <select
+        className="selectors"
+        onChange={[Function]}
+      >
         <option>
-          XS
-        </option>
-        <option>
-          S
-        </option>
-        <option>
-          M
-        </option>
-        <option>
-          L
-        </option>
-        <option>
-          XL
+           - 
         </option>
       </select>
-      <select>
-        <option>
-          1
-        </option>
-        <option>
-          2
-        </option>
-        <option>
-          3
-        </option>
-        <option>
-          4
-        </option>
-        <option>
-          5
-        </option>
-      </select>
-      <button>
-        Add To Cart
-      </button>
-      <button>
-        ☆
-      </button>
+      <div>
+        <button
+          className="add-to-cart"
+        >
+          Add To Cart
+        </button>
+        <button
+          className="add-to-outfit"
+        >
+          ☆
+        </button>
+      </div>
     </div>
   </div>
 </div>

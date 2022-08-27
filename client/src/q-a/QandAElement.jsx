@@ -31,9 +31,7 @@ class QandAElement extends React.Component {
     var qa = this.props.qa;
 
     return (
-
         <div>
-
           <div className='QA-Q' data-testid={qa.question_id}>Q: {qa.question_body}
           <span className='QA-4in1'>
             <span className='QA-helpful-text'>Helpful?</span>
@@ -61,7 +59,23 @@ class QandAElement extends React.Component {
                   </div>
                 )
               })
-              : Object.keys(qa.answers).map(id => {return <div>{qa.answers[id]['body']}</div>})
+              : Object.keys(qa.answers).map(id => {
+                return (
+                  <div>
+                  <div>{qa.answers[id]['body']}</div>
+                  <img className='QA-img' src={qa.answers[id]['photos'][0]} />
+                  <div>
+                    <span className='QA-questionInfo'>by User{id + '-' + qa.answers[id]['answerer_name']}</span>
+                    <span className='QA-questionInfo'>{qa.answers[id]['date']}</span>
+                    <span className='QA-questionInfo'>Helpful?</span>
+                    <span className='QA-helpfulness'>
+                    <span className='QA-yes' onClick={() => this.plusOne()}>{this.state.yes}</span>
+                      ({qa.answers[id]['helpfulness']})
+                    </span>
+                  </div>
+                </div>
+                )
+              })
             }
           </div>
           <div className='QA-loadMoreAns' onClick={() => this.loadMoreAnswers()}>Load More Answers</div>
