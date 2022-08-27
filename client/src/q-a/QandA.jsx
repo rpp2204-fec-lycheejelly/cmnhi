@@ -4,7 +4,6 @@ import QandAList from './QandAList.jsx';
 import MoreAnsweredQuestions from './MoreAnsweredQuestions.jsx';
 import AddQuestion from './AddQuestion.jsx';
 import axios from 'axios';
-// import '../assets/styles.css';
 
 class QandA extends React.Component {
   constructor(props) {
@@ -21,7 +20,7 @@ class QandA extends React.Component {
   }
 
   getQAList() {
-    return axios.get('/qa/questions')
+    return axios.get('/qa/questions/71701')
     .then((response) => {
       this.setState({qaList: response.data.results});
     })
@@ -33,7 +32,7 @@ class QandA extends React.Component {
   render() {
     return (
       <div>
-        <h2>QUESTIONS & ANSWERS</h2>
+        {/* <h2>QUESTIONS & ANSWERS</h2> */}
         <SearchBar placeholder='HAVE A QUESTION? SEARCH FOR ANSWERS...'/>
         <QandAList qaList={this.state.qaList}/>
         <div className='QA-row'>

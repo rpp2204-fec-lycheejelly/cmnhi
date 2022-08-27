@@ -184,8 +184,6 @@ exports[`Component Testing Should correctly render productInfo 1`] = `
     <div
       className="description-container"
     >
-      <h3 />
-      <p />
     </div>
     <div
       className="features"
