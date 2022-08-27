@@ -1,7 +1,4 @@
 import React from 'react';
-// import '../assets/styles.css';
-
-
 
 class QandAElement extends React.Component {
   constructor(props) {
@@ -16,6 +13,7 @@ class QandAElement extends React.Component {
 
   plusOne(e) {
     console.log('will plus 1 for the helpfulness');
+
   }
 
   addAnswer(e) {
@@ -24,6 +22,8 @@ class QandAElement extends React.Component {
 
   loadMoreAnswers(e) {
     console.log('load more answers');
+    // going to load the rest of answers for this question
+
   }
 
   render() {
@@ -52,9 +52,10 @@ class QandAElement extends React.Component {
                     <div>
                       <span className='QA-questionInfo'>by User{id + '-' + qa.answers[id]['answerer_name']}</span>
                       <span className='QA-questionInfo'>{qa.answers[id]['date']}</span>
-                      <span className='QA-questionInfo'>Helpful?
-                      <span className='QA-helpfulness'>Yes</span>
-                        ({qa.answers[Object.keys(qa.answers)[0]]['helpfulness']})
+                      <span className='QA-questionInfo'>Helpful?</span>
+                      <span className='QA-helpfulness'>
+                      <span className='QA-yes' onClick={() => this.plusOne()}>{this.state.yes}</span>
+                        ({qa.answers[id]['helpfulness']})
                       </span>
                     </div>
                   </div>
