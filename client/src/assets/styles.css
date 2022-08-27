@@ -12,6 +12,13 @@
 
 /* product-overview container */
 
+#logo {
+  position: relative;
+  width: 200px;
+  height: 200px;
+  margin: -35px 0 -30px -35px;
+}
+
 .product-overview {
   display: flex;
   justify-content: center;
@@ -89,7 +96,7 @@
   color: white;
   background-color: rgb(49, 138, 255);
   text-align: center;
-  width: 19px;
+  width: 20px;
   border-radius: 60%;
   top: 0;
   right: 0;
@@ -123,7 +130,33 @@
   object-fit: cover;
 }
 
+/* add to cart */
 
+.selectors {
+  margin: 10px;
+  width: 135px;
+  height: 45px;
+  text-align: center;
+}
+
+.add-to-cart {
+  margin-right: 10px;
+  margin-left: 10px;
+  background-color: white;
+  padding: 15px 10px 15px 10px;
+  border: 1px solid rgb(79, 79, 79);
+  width: 135px;
+  border-radius: 4%;
+}
+
+.add-to-cart:hover {
+  cursor: pointer;
+}
+
+.add-to-outfit {
+
+
+}
 
 /************ Questions and Answers ************/
 
