@@ -162,6 +162,11 @@
   width: 200px;
 }
 
+.selector-container {
+  position: relative;
+  padding-top: 8px;
+}
+
 .add-to-cart {
   margin-right: 10px;
   margin-left: 10px;
@@ -176,10 +181,20 @@
   cursor: pointer;
 }
 
+.size-guard {
+  position: absolute;
+  font-size: 0.7em;
+  margin-top: 0px;
+  top: 0;
+  left: 10px;
+  color: red;
+}
+
 .add-to-outfit {
 
 
 }
+
 
 /************ Questions and Answers ************/
 

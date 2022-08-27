@@ -5,7 +5,8 @@ class AddCart extends React.Component {
     super(props);
 
     this.state = {
-      count: 1
+      count: 1,
+      confirmation: false,
     }
   }
 
@@ -15,8 +16,21 @@ class AddCart extends React.Component {
     })
   }
 
+  addToBag(e) {
+    e.preventDefault();
+
+    if (!this.props.sku) {
+      this.setState({
+        confirmation: true
+      })
+    } else {
+      this.props.add(this.state.count);
+    }
+  }
+
   render() {
-    return <div>
+    return <div className='selector-container'>
+            {this.state.confirmation && <p className="size-guard">Please select size.</p>}
             <select className="selectors size-selector" onChange={this.props.updateSku}>
 
               {!this.props.sku && <option selected>Select Size</option>}
@@ -39,7 +53,7 @@ class AddCart extends React.Component {
                                       })}
             </select>
             <div>
-              <button className="add-to-cart">Add To Bag</button>
+              <button className="add-to-cart" onClick={this.addToBag.bind(this)}>Add To Bag</button>
               <button className="add-to-outfit">&#9734;</button>
             </div>
           </div>

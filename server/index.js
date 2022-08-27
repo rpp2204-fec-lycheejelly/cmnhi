@@ -34,6 +34,11 @@ app.get('/products/:product_id', (req, res) => {
     })
 })
 
+app.post('/cart', (req, res) => {
+  console.log(req.body);
+  res.end();
+})
+
 
 //Question and Answer Routes
 app.get('/qa/questions', (req, res) => {
