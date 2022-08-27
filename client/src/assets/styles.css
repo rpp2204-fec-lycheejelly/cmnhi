@@ -12,11 +12,13 @@
   display: flex;
   flex-direction: row;
   justify-content: space-around;
-  border: 2px solid black;
 }
 
 #items {
-  width: auto;
+  width: 22%;
+  height: 260px;
+  border: 1px solid black;
+  text-align: center;
 }
 
 /* PRODUCT OVERVIEW STYLES */

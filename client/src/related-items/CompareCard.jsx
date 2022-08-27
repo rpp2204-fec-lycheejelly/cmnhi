@@ -36,6 +36,7 @@ class CompareCard extends React.Component {
             <div id="items" key={id}>
               <p>{item.category}</p>
               <p><strong>{item.name}</strong></p>
+              <p><em>{item.slogan}</em></p>
               <p>{item.default_price}</p>
               <p>Rating: {total / count}</p>
             </div>
