@@ -130,7 +130,33 @@
   object-fit: cover;
 }
 
+/* add to cart */
 
+.selectors {
+  margin: 10px;
+  width: 135px;
+  height: 45px;
+  text-align: center;
+}
+
+.add-to-cart {
+  margin-right: 10px;
+  margin-left: 10px;
+  background-color: white;
+  padding: 15px 10px 15px 10px;
+  border: 1px solid rgb(79, 79, 79);
+  width: 135px;
+  border-radius: 4%;
+}
+
+.add-to-cart:hover {
+  cursor: pointer;
+}
+
+.add-to-outfit {
+
+
+}
 
 /************ Questions and Answers ************/
 
