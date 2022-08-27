@@ -15,7 +15,7 @@ let Stars = ({reviews}) => {
                     </div>
                   </div>)
         })}
-        <a>Read All {total} Reviews</a>
+        <a className='review-link'>Read All {total} Reviews</a>
       </div>
     )
 }

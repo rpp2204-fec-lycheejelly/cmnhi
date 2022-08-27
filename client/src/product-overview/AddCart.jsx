@@ -17,7 +17,7 @@ class AddCart extends React.Component {
 
   render() {
     return <div>
-            <select className="selectors" onChange={this.props.updateSku}>
+            <select className="selectors size-selector" onChange={this.props.updateSku}>
 
               {!this.props.sku && <option selected>Select Size</option>}
 
@@ -29,7 +29,7 @@ class AddCart extends React.Component {
 
             </select>
 
-            <select className="selectors" onChange={this.updateCount.bind(this)}>
+            <select className="selectors" disabled={!this.props.sku} onChange={this.updateCount.bind(this)}>
               {!this.props.sku && <option> - </option>}
               {this.props.sku && Array(this.props.skus[this.props.sku].quantity)
                                       .fill(1)
@@ -39,7 +39,7 @@ class AddCart extends React.Component {
                                       })}
             </select>
             <div>
-              <button className="add-to-cart">Add To Cart</button>
+              <button className="add-to-cart">Add To Bag</button>
               <button className="add-to-outfit">&#9734;</button>
             </div>
           </div>
