@@ -10,6 +10,15 @@ class AddCart extends React.Component {
     }
   }
 
+  updateSku(e) {
+    this.setState({
+      confirmation: false
+    })
+
+    this.props.updateSku(e.target.value)
+  }
+
+
   updateCount(e) {
     this.setState({
       count: e.target.value
@@ -31,7 +40,7 @@ class AddCart extends React.Component {
   render() {
     return <div className='selector-container'>
             {this.state.confirmation && <p className="size-guard">Please select size.</p>}
-            <select className="selectors size-selector" onChange={this.props.updateSku}>
+            <select className="selectors size-selector" onChange={this.updateSku.bind(this)}>
 
               {!this.props.sku && <option selected>Select Size</option>}
 

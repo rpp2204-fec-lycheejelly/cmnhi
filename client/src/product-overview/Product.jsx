@@ -45,9 +45,9 @@ class Product extends React.Component {
     })
   }
 
-  updateSku(e) {
+  updateSku(sku) {
     this.setState({
-      sku: e.target.value
+      sku
     })
   }
 

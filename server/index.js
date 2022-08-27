@@ -35,8 +35,7 @@ app.get('/products/:product_id', (req, res) => {
 })
 
 app.post('/cart', (req, res) => {
-  console.log(req.body);
-  res.end();
+  overview.addToCart(req, res);
 })
 
 
