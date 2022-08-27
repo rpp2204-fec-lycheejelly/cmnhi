@@ -8,6 +8,7 @@ class Related extends React.Component {
     super(props);
     this.state = ({
       relatedProducts: [],
+      relatedDetails: [],
       outfit: []
     })
   }
@@ -17,8 +18,6 @@ class Related extends React.Component {
       .then(results => {
         this.setState({
           relatedProducts: results.data
-        }, () => {
-          console.log(this.state);
         });
       })
   }
@@ -26,7 +25,7 @@ class Related extends React.Component {
   render() {
     return (
       <div>
-       <RelatedProducts />
+       <RelatedProducts products={this.state.relatedProducts}/>
        <YourOutfit />
       </div>
     )
