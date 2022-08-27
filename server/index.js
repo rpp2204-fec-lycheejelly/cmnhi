@@ -34,6 +34,10 @@ app.get('/products/:product_id', (req, res) => {
     })
 })
 
+app.post('/cart', (req, res) => {
+  overview.addToCart(req, res);
+})
+
 
 //Question and Answer Routes
 app.get('/qa/questions/:product_id', (req, res) => {

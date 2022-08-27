@@ -1,178 +1,193 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Component Testing Should correctly render productInfo 1`] = `
-<div
-  className="product-overview"
->
+<div>
   <div
-    className="image-gallery"
+    className="product-overview"
   >
     <div
-      className="image-default-view"
-    />
+      className="image-gallery"
+    >
+      <div
+        className="image-default-view"
+      />
+    </div>
+    <div
+      className="product-information"
+    >
+      <div>
+        <div
+          className="stars"
+        >
+          <div
+            className="star-container"
+          >
+            <div
+              className="star-fill"
+              style={
+                Object {
+                  "width": "0px",
+                }
+              }
+            >
+              <img
+                alt="star alt"
+                className="star-outline"
+                src=""
+              />
+            </div>
+          </div>
+          <div
+            className="star-container"
+          >
+            <div
+              className="star-fill"
+              style={
+                Object {
+                  "width": "0px",
+                }
+              }
+            >
+              <img
+                alt="star alt"
+                className="star-outline"
+                src=""
+              />
+            </div>
+          </div>
+          <div
+            className="star-container"
+          >
+            <div
+              className="star-fill"
+              style={
+                Object {
+                  "width": "0px",
+                }
+              }
+            >
+              <img
+                alt="star alt"
+                className="star-outline"
+                src=""
+              />
+            </div>
+          </div>
+          <div
+            className="star-container"
+          >
+            <div
+              className="star-fill"
+              style={
+                Object {
+                  "width": "0px",
+                }
+              }
+            >
+              <img
+                alt="star alt"
+                className="star-outline"
+                src=""
+              />
+            </div>
+          </div>
+          <div
+            className="star-container"
+          >
+            <div
+              className="star-fill"
+              style={
+                Object {
+                  "width": "0px",
+                }
+              }
+            >
+              <img
+                alt="star alt"
+                className="star-outline"
+                src=""
+              />
+            </div>
+          </div>
+          <a
+            className="review-link"
+          >
+            Read All 
+            0
+             Reviews
+          </a>
+        </div>
+        <p />
+        <h4 />
+        <span
+          className=""
+        >
+          $
+           
+        </span>
+      </div>
+      <div
+        className="style-select"
+      >
+        <p>
+           
+          <b>
+            Style &gt;
+          </b>
+           
+        </p>
+        <div
+          className="style-container"
+        />
+      </div>
+      <div
+        className="selector-container"
+      >
+        <select
+          className="selectors size-selector"
+          onChange={[Function]}
+        >
+          <option
+            selected={true}
+          >
+            Select Size
+          </option>
+        </select>
+        <select
+          className="selectors"
+          disabled={true}
+          onChange={[Function]}
+        >
+          <option>
+             - 
+          </option>
+        </select>
+        <div>
+          <button
+            className="add-to-cart"
+            onClick={[Function]}
+          >
+            Add To Bag
+          </button>
+          <button
+            className="add-to-outfit"
+          >
+            ☆
+          </button>
+        </div>
+      </div>
+    </div>
   </div>
   <div
-    className="product-information"
+    className="product-description"
   >
-    <div>
-      <div
-        className="stars"
-      >
-        <div
-          className="star-container"
-        >
-          <div
-            className="star-fill"
-            style={
-              Object {
-                "width": "0px",
-              }
-            }
-          >
-            <img
-              alt="star alt"
-              className="star-outline"
-              src=""
-            />
-          </div>
-        </div>
-        <div
-          className="star-container"
-        >
-          <div
-            className="star-fill"
-            style={
-              Object {
-                "width": "0px",
-              }
-            }
-          >
-            <img
-              alt="star alt"
-              className="star-outline"
-              src=""
-            />
-          </div>
-        </div>
-        <div
-          className="star-container"
-        >
-          <div
-            className="star-fill"
-            style={
-              Object {
-                "width": "0px",
-              }
-            }
-          >
-            <img
-              alt="star alt"
-              className="star-outline"
-              src=""
-            />
-          </div>
-        </div>
-        <div
-          className="star-container"
-        >
-          <div
-            className="star-fill"
-            style={
-              Object {
-                "width": "0px",
-              }
-            }
-          >
-            <img
-              alt="star alt"
-              className="star-outline"
-              src=""
-            />
-          </div>
-        </div>
-        <div
-          className="star-container"
-        >
-          <div
-            className="star-fill"
-            style={
-              Object {
-                "width": "0px",
-              }
-            }
-          >
-            <img
-              alt="star alt"
-              className="star-outline"
-              src=""
-            />
-          </div>
-        </div>
-        <a>
-          Read All 
-          0
-           Reviews
-        </a>
-      </div>
-      <p />
-      <p />
-      <h4 />
-      <span
-        className=""
-      >
-        $
-         
-      </span>
-      <p
-        className="product-description"
-      />
+    <div
+      className="description-container"
+    >
     </div>
     <div
-      className="style-select"
-    >
-      <p>
-         
-        <b>
-          Style &gt;
-        </b>
-         
-      </p>
-      <div
-        className="style-container"
-      />
-    </div>
-    <div>
-      <select
-        className="selectors"
-        onChange={[Function]}
-      >
-        <option
-          selected={true}
-        >
-          Select Size
-        </option>
-      </select>
-      <select
-        className="selectors"
-        onChange={[Function]}
-      >
-        <option>
-           - 
-        </option>
-      </select>
-      <div>
-        <button
-          className="add-to-cart"
-        >
-          Add To Cart
-        </button>
-        <button
-          className="add-to-outfit"
-        >
-          ☆
-        </button>
-      </div>
-    </div>
+      className="features"
+    />
   </div>
 </div>
 `;
