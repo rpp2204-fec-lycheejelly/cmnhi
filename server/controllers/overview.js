@@ -35,7 +35,7 @@ module.exports.getStyles = (req, res) => {
 module.exports.addToCart = (req, res) => {
   return axios.post(`${process.env.API_URL}/cart`, req.body, auth_header)
     .then(result => {
-      console.log('Successful POST to cart')
+      console.log('Successful POST to cart', req.body)
       res.end();
     })
     .catch(error => {
