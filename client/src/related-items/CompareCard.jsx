@@ -2,6 +2,7 @@ import React from 'react';
 import '../assets/styles.css';
 import starImage from '../assets/star.png';
 import starButton from '../assets/star-button.png';
+import unclickedStar from '../assets/unclicked-star.png';
 
 class CompareCard extends React.Component {
   constructor(props) {
@@ -46,7 +47,7 @@ class CompareCard extends React.Component {
           return (
             <div id="items" key={id}>
               <img id="thumbnail" src={url || item['styles'][0]['photos'][0]['thumbnail_url']}/>
-              <img class="star-button" src={starButton}/>
+              <img id="star-button" src={unclickedStar}/>
               <p>{item.category}</p>
               <p><strong>{item.name}</strong></p>
               <p><em>{item.slogan}</em></p>

@@ -30,15 +30,21 @@
   margin-top: 0px;
 }
 
-.star-button {
+#star-button {
   position: relative;
   height: 30px;
   width: 30px;
   z-index: 1;
-  top: -240px;
-  left: 85px;
+  top: -50%;
+  left: 33%;
   padding-bottom: 0px;
   margin-bottom: 0px;
+  filter: drop-shadow(2px 2px 2px black);
+  transition: filter .5s;
+}
+
+#star-button:hover {
+  filter: drop-shadow(2px 2px 2px white);
 }
 
 /* PRODUCT OVERVIEW STYLES */
