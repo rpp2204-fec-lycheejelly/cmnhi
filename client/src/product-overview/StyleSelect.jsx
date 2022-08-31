@@ -5,13 +5,15 @@ let StyleSelect = ({styles, currentStyle, changeStyle}) => {
     <p> <b>Style ></b> {currentStyle.name}</p>
     <div className="style-container">
       {styles.map((style, i) => {
+        let isCurrentStyle = style.style_id === currentStyle.style_id;
+
         return <div className="thumbnail-container" key={i}>
-                <img  className="style-thumbnail"
+                <img  className={isCurrentStyle ? "style-thumbnail selected-style" : "style-thumbnail"}
                       onClick={() => {changeStyle(style)}}
                       src={style.photos[0].thumbnail_url}
                       >
                 </img>
-                {style.style_id === currentStyle.style_id &&
+                {isCurrentStyle &&
                 <span className="selected-check">&#10003;</span>}
                </div>
 
