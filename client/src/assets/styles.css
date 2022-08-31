@@ -296,7 +296,14 @@
 
 .QA-img {
   padding: 5px;
-  width: 150px;
+  width: 200px;
+  height: 200px
+}
+
+.QA-loadMoreAns {
+  font-weight: bolder;
+  font-size: 30px;
+  color:blueviolet
 }
 
 

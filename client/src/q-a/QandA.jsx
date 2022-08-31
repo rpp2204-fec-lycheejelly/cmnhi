@@ -1,7 +1,6 @@
 import React from 'react';
 import SearchBar from './SearchBar.jsx';
 import QandAList from './QandAList.jsx';
-import MoreAnsweredQuestions from './MoreAnsweredQuestions.jsx';
 import AddQuestion from './AddQuestion.jsx';
 import axios from 'axios';
 
@@ -32,12 +31,11 @@ class QandA extends React.Component {
   render() {
     return (
       <div>
-        {/* <h2>QUESTIONS & ANSWERS</h2> */}
         <SearchBar placeholder='HAVE A QUESTION? SEARCH FOR ANSWERS...'/>
-        <QandAList qaList={this.state.qaList}/>
+        {/* <QandAList qaList={this.state.qaList}/> */}
         <div className='QA-row'>
           <div id='QA-column'>
-            <MoreAnsweredQuestions />
+          <QandAList qaList={this.state.qaList}/>
           </div>
           <div id='QA-column'>
             <AddQuestion />

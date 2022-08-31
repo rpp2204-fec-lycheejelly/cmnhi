@@ -12,7 +12,6 @@ class AnswersList extends React.Component {
   }
 
   loadMoreAnswers() {
-    // this.setState({loadMoreAns: !this.state.loadMoreAns});
     this.setState(state => ({loadMoreAns: !state.loadMoreAns}))
   }
 
@@ -23,11 +22,11 @@ class AnswersList extends React.Component {
       return (
         <div>
           {answersList.slice(0, 2).map(eachAnswer => {return <EachAnswer eachAnswer={eachAnswer}/>})}
-          <div className='QA-loadMoreAns' onClick={() => this.loadMoreAnswers()}>{this.state.loadMoreAns ? 'Collapse answers' : 'See more answers'}</div>
           {this.state.loadMoreAns ?
           answersList.slice(2).map(eachAnswer => {return <EachAnswer eachAnswer={eachAnswer}/>}) :
           null
           }
+          <div className='QA-loadMoreAns' onClick={() => this.loadMoreAnswers()}>{this.state.loadMoreAns ? 'Collapse answers' : 'See more answers'}</div>
         </div>
       )
     } else {

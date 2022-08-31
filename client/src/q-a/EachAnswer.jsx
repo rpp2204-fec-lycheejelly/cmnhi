@@ -10,7 +10,6 @@ class EachAnswer extends React.Component {
   }
 
   plusOne(e) {
-    console.log('will plus 1 for the helpfulness');
     this.setState((state) => {
       return {helpfulness: state.helpfulness + 1}
     })
