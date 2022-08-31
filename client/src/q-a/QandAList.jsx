@@ -17,6 +17,12 @@ class QandAList extends React.Component {
 
   render() {
     var qaList = this.props.qaList;
+    // if loadMoreQues is true, then make loadQuestionsButton null; if it is false, then make it a button
+    var loadQuestionsButton = null;
+    if (this.state.loadMoreQues === false) {
+      loadQuestionsButton = <button onClick={this.loadMoreQuestions}>More Answered Questions</button>
+    }
+
     if (qaList.length > 2) {
       return (
         <div>
@@ -25,7 +31,7 @@ class QandAList extends React.Component {
           qaList.slice(2).map(qa => {return <QandAElement key={qa.question_id} qa={qa}/>}) :
           null
           }
-          <button className='QA-loadMoreQues' onClick={() => this.loadMoreQuestions()}>{this.state.loadMoreQues ? null : 'More Answered Questions'}</button>
+          {loadQuestionsButton}
         </div>
       )
     } else {
