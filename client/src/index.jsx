@@ -10,15 +10,19 @@ import comnhi from './assets/comnhi.png';
 class App extends React.Component {
   constructor(props) {
     super(props);
+
+    this.state = {
+      product_id: '71697'
+    }
   }
 
   render () {
     return (
       <div>
         <img id="logo" src={comnhi}></img>
-        <Product />
-        <Related />
-        <QandA />
+        <Product product_id={this.state.product_id}/>
+        <Related product_id={this.state.product_id}/>
+        <QandA product_id={this.state.product_id}/>
         {/*<Ratings /> */}
       </div>
     )

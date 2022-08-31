@@ -24,7 +24,7 @@ class Product extends React.Component {
   }
 
   getProduct() {
-    return axios.get('/products/71701')
+    return axios.get(`/products/${this.props.product_id}`)
     .then(result => {
       console.log('HARRY STYLES',result.data);
       this.setState({
@@ -34,7 +34,7 @@ class Product extends React.Component {
       })
     })
     .catch(error => {
-      throw error;
+      throw new Error(error);
     })
   }
 
@@ -70,11 +70,11 @@ class Product extends React.Component {
              <ImageGallery style={this.state.currentStyle}/>
              <div className='product-information'>
                  <ProductInfo product={this.state.product}
-                             reviews={this.state.product.ratings}
-                             style={this.state.currentStyle}/>
+                              reviews={this.state.product.ratings}
+                              style={this.state.currentStyle}/>
                  <StyleSelect styles={this.state.styles}
-                             currentStyle={this.state.currentStyle}
-                             changeStyle={this.changeStyle.bind(this)}/>
+                              currentStyle={this.state.currentStyle}
+                              changeStyle={this.changeStyle.bind(this)}/>
                  <AddCart className='add-cart' skus={this.state.currentStyle.skus || {}}
                                                sku={this.state.sku}
                                                updateSku={this.updateSku.bind(this)}
