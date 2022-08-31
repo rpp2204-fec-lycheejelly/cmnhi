@@ -1,18 +1,18 @@
 import React from 'react';
 import SearchBar from './SearchBar.jsx';
 import QandAList from './QandAList.jsx';
-import MoreAnsweredQuestions from './MoreAnsweredQuestions.jsx';
-import AddQuestion from './AddQuestion.jsx';
+import Modal1 from './Modal1.jsx';
 import axios from 'axios';
 
 class QandA extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      qaList: []
-    }
-
+      qaList: [],
+      openModal: false
+    };
     this.getQAList = this.getQAList.bind(this);
+    this.openModalFunc = this.openModalFunc.bind(this);
   }
 
   componentDidMount() {
@@ -20,6 +20,7 @@ class QandA extends React.Component {
   }
 
   getQAList() {
+    // return axios.get(`/qa/questions/${this.props.product_id}`) // I can't use this one now as this product_id doesn't have QA list from api :(
     return axios.get('/qa/questions/71701')
     .then((response) => {
       this.setState({qaList: response.data.results});
@@ -29,23 +30,30 @@ class QandA extends React.Component {
     })
   }
 
+  openModalFunc() {
+    this.setState({openModal: !this.state.openModal});
+  }
+
+
   render() {
     return (
       <div>
-        {/* <h2>QUESTIONS & ANSWERS</h2> */}
         <SearchBar placeholder='HAVE A QUESTION? SEARCH FOR ANSWERS...'/>
         <QandAList qaList={this.state.qaList}/>
-        <div className='QA-row'>
-          <div id='QA-column'>
-            <MoreAnsweredQuestions />
-          </div>
-          <div id='QA-column'>
-            <AddQuestion />
-          </div>
-        </div>
+        <button className="openModal1" onClick={() => this.openModalFunc()}>Add a question +</button>
+        {this.state.openModal && <Modal1 closeModal={this.openModalFunc} />}
       </div>
     )
   }
 }
 
 export default QandA;
+
+{/* <div className='QA-row'>
+  <div id='QA-column'>
+  <QandAList qaList={this.state.qaList}/>
+  </div>
+  <div id='QA-column'>
+    <AddQuestion />
+  </div>
+</div> */}

@@ -1,15 +1,45 @@
 import React from 'react';
 import QandAElement from './QandAElement.jsx';
 
-const QandAList = (props) => {
-  return (
-    <div className='QandAList'>
-    {props.qaList.map((qa) => {
-      console.log(qa);
-      return <QandAElement key={qa.question_id} qa={qa}/>
-    })}
-  </div>
-  )
+class QandAList extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      loadMoreQues: false
+    }
+    this.loadMoreQuestions = this.loadMoreQuestions.bind(this);
+  }
+
+  loadMoreQuestions() {
+    this.setState(state => ({loadMoreQues: !state.loadMoreQues}));
+  }
+
+
+  render() {
+    var qaList = this.props.qaList;
+    // if loadMoreQues is true, then make loadQuestionsButton null; if it is false, then make it a button
+    var loadQuestionsButton = null;
+    if (this.state.loadMoreQues === false) {
+      loadQuestionsButton = <button onClick={this.loadMoreQuestions}>More Answered Questions</button>
+    }
+
+    if (qaList.length > 2) {
+      return (
+        <div>
+          {qaList.slice(0, 2).map(qa => {return <QandAElement key={qa.question_id} qa={qa}/>})}
+          {this.state.loadMoreQues ?
+          qaList.slice(2).map(qa => {return <QandAElement key={qa.question_id} qa={qa}/>}) :
+          null
+          }
+          {loadQuestionsButton}
+        </div>
+      )
+    } else {
+      <div>
+        {qaList.map(qa => {return <QandAElement key={qa.question_id} qa={qa}/>})}
+      </div>
+    }
+  }
 }
 
 export default QandAList;

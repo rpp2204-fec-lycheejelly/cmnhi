@@ -255,6 +255,10 @@
 }
 
 
+
+
+
+
 /************ Questions and Answers ************/
 
 /*** QandA ***/
@@ -296,8 +300,86 @@
 
 .QA-img {
   padding: 5px;
-  width: 150px;
+  width: 200px;
+  height: 200px
 }
+
+.QA-loadMoreAns {
+  font-weight: bolder;
+  font-size: 30px;
+  color:blueviolet
+}
+
+
+
+
+/*** Modal1 ***/
+
+.QA-modalBackground {
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(200, 200, 200);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.QA-modalContainer {
+  width: 500px;
+  height: 500px;
+  border-radius: 12px;
+  background-color: white;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  display: flex;
+  flex-direction: column;
+  padding: 25px;
+}
+
+/* .QA-titleCloseBtn {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.QA-titleCloseBtn button {
+  background-color: transparent;
+  border: none;
+  font-size: 25px;
+  cursor: pointer;
+}
+
+.QA-modalContainer .QA-modalTitle {
+  display: inline-block;
+  text-align: center;
+  margin-top: 10px;
+}
+
+.QA-modalContainer .QA-modalBody {
+  flex: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.7rem;
+  text-align: center;
+}
+
+.QA-modalContainer .QA-modalFooter {
+  flex: 20%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.QA-modalContainer .footer button {
+  width: 150px;
+  height: 45px;
+  margin: 10px;
+  border: none;
+  background-color: cornflowerblue;
+  color: white;
+  border-radius: 8px;
+  font-size: 20px;
+  cursor: pointer;
+} */
 
 
 
