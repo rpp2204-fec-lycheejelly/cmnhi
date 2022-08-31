@@ -5,7 +5,6 @@ const QandAList = (props) => {
   return (
     <div className='QandAList'>
     {props.qaList.map((qa) => {
-      console.log(qa);
       return <QandAElement key={qa.question_id} qa={qa}/>
     })}
   </div>
