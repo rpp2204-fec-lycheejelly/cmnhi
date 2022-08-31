@@ -40,7 +40,8 @@ class QandAElement extends React.Component {
         </div>
         {/* corresponding answer list */}
         <div>
-          <AnswersList answersList={Object.values(qa.answers)}/>
+          <span>A: </span>
+          <AnswersList answersList={Object.values(qa.answers)} />
         </div>
       </div>
     )
