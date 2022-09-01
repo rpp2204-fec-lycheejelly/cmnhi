@@ -65,7 +65,7 @@ class Product extends React.Component {
   }
 
   render() {
-    return <div>
+    return <>
            <div className='product-overview'>
              <ImageGallery style={this.state.currentStyle}/>
              <div className='product-information'>
@@ -84,7 +84,7 @@ class Product extends React.Component {
           <ProductDesc slogan={this.state.product.slogan}
                        description={this.state.product.description}
                        features={this.state.product.features}/>
-          </div>
+          </>
   }
 }
 
