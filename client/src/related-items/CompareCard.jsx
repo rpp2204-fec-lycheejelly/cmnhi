@@ -1,15 +1,19 @@
 import React from 'react';
 import '../assets/styles.css';
 import starImage from '../assets/star.png';
-import starButton from '../assets/star-button.png';
-import unclickedStar from '../assets/unclicked-star.png';
+import starButton from '../assets/unclicked-star.png';
+import Modal from './Modal.jsx';
+
 
 class CompareCard extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      products: []
+      products: [],
+      showModal: false,
+      clickedProduct: ''
     }
+    this.showModal = this.showModal.bind(this);
   }
 
   componentDidUpdate(prevProps) {
@@ -20,8 +24,21 @@ class CompareCard extends React.Component {
     }
   }
 
+  showModal(e) {
+    if (!this.state.showModal) {
+      this.setState({
+        showModal: true,
+        clickedProduct: e.target.name
+      });
+    } else {
+      this.setState({
+        showModal: false
+      })
+    }
+  }
+
   render () {
-    console.log(this.state.products);
+    console.log(this.props.current);
     if (this.state.products) {
       return (
         <div id="related">
@@ -47,7 +64,8 @@ class CompareCard extends React.Component {
           return (
             <div id="items" key={id}>
               <img id="thumbnail" src={url || item['styles'][0]['photos'][0]['thumbnail_url']}/>
-              <img id="star-button" src={unclickedStar}/>
+              <input type="image" src={starButton} name={item.id} id="star-button" onClick={e => this.showModal(e)}/>
+              <Modal product={this.props.current} compare={this.state.clickedProduct} clicked={this.state.showModal} exit={this.showModal}/>
               <p>{item.category}</p>
               <p><strong>{item.name}</strong></p>
               <p><em>{item.slogan}</em></p>
