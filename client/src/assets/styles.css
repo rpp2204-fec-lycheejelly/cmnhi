@@ -196,6 +196,29 @@
   object-fit: contain;
 }
 
+.left-arrow {
+  position: absolute;
+  font-size: 1.7em;
+  top: 45%;
+  left: 90px;
+}
+
+.left-arrow:hover {
+  cursor: pointer;
+}
+
+.right-arrow {
+  position: absolute;
+  font-size: 1.7em;
+  top: 45%;
+  right: 15px;
+}
+
+.right-arrow:hover {
+  cursor: pointer;
+}
+
+
 .style-carousel {
   position: absolute;
   display: flex;
@@ -230,6 +253,7 @@
   width: 135px;
   height: 45px;
   text-align: left;
+  font-size: 15.5px;
   padding-left: 10px;
 }
 
@@ -250,6 +274,7 @@
   border: 1px solid rgb(79, 79, 79);
   width: 135px;
   border-radius: 4%;
+  font-size: 15.5px;
 }
 
 .add-to-cart:hover {
@@ -260,8 +285,8 @@
   position: absolute;
   font-size: 0.7em;
   margin-top: 0px;
-  top: 0;
-  left: 10px;
+  top: 5px;
+  left: 16px;
   color: red;
 }
 
