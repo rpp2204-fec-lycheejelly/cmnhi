@@ -9,7 +9,8 @@ class Related extends React.Component {
     this.state = ({
       relatedProducts: [],
       relatedDetails: [],
-      outfit: []
+      outfit: [],
+      current: '71697'
     })
   }
 
@@ -25,7 +26,7 @@ class Related extends React.Component {
   render() {
     return (
       <div>
-       <RelatedProducts products={this.state.relatedProducts}/>
+       <RelatedProducts products={this.state.relatedProducts} current={this.state.current}/>
        <YourOutfit />
       </div>
     )
