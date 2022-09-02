@@ -1,6 +1,7 @@
 import React from 'react';
 import DefaultView from './DefaultView.jsx';
 import ExpandedView from './ExpandedView.jsx';
+import Carousel from './Carousel.jsx';
 
 class ImageGallery extends React.Component {
   constructor(props) {
@@ -32,15 +33,9 @@ class ImageGallery extends React.Component {
 
   render() {
     return <div className='image-gallery'>
-             <div className='style-carousel'>
-
-                {this.props.style.photos && this.props.style.photos.map((photo, i) => {
-                  return <img className={this.state.photoIndex === i ? "carousel-selected" : ""}
-                              onClick={() => {this.changeImage(i)}}
-                              src={photo.thumbnail_url}></img>
-                })}
-
-             </div>
+           <Carousel photos={this.props.style.photos || []}
+                     changeImage={this.changeImage.bind(this)}
+                     index={this.state.photoIndex}/>
              {this.state.view === 'expanded' && <ExpandedView />}
              <DefaultView photos={this.props.style.photos || []}
                           index={this.state.photoIndex}

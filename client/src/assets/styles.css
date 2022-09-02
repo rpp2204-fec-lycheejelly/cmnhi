@@ -220,7 +220,7 @@
   height: 100%;
 }
 
-.image-default-view img {
+.main-img {
   width: 100%;
   height: 100%;
   object-fit: contain;
@@ -228,9 +228,10 @@
 
 .left-arrow {
   position: absolute;
-  font-size: 1.7em;
-  top: 45%;
-  left: 90px;
+  height: 25px;
+  width: 25px;
+  top: 50%;
+  left: 85px;
 }
 
 .left-arrow:hover {
@@ -239,9 +240,10 @@
 
 .right-arrow {
   position: absolute;
-  font-size: 1.7em;
-  top: 45%;
-  right: 15px;
+  height: 25px;
+  width: 25px;
+  top: 50%;
+  right: 12px;
 }
 
 .right-arrow:hover {
@@ -260,7 +262,6 @@
 
 .carousel-selected {
   box-shadow: 0 0 0 2px black;
-
 }
 
 .style-carousel img {
