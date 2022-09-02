@@ -38,7 +38,7 @@ class RelatedProducts extends React.Component {
     return (
       <>
         <p>Related Products</p>
-        <CompareCard related={this.state.productsList}/>
+        <CompareCard related={this.state.productsList} current={this.props.current}/>
       </>
     )
   }
