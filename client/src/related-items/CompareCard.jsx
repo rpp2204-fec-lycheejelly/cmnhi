@@ -58,14 +58,14 @@ class CompareCard extends React.Component {
           styles.forEach(style => {
             if (style['default?'] === true) {
               price = style['sale_price'] !== null ? style['sale_price'] : style['original_price'];
-              url = style['photos'][0]['thumbnail_url'];
+              url = style['photos'][0]['url'];
             }
           })
           return (
-            <div id="items" key={id}>
-              <img id="thumbnail" src={url || item['styles'][0]['photos'][0]['thumbnail_url']}/>
-              <input type="image" src={starButton} name={item.id} id="star-button" onClick={e => this.showModal(e)}/>
-              <Modal product={this.props.current} compare={this.state.clickedProduct} clicked={this.state.showModal} exit={this.showModal}/>
+            <div className="items" key={id}>
+              <img className="thumbnail" src={url || item['styles'][0]['photos'][0]['url']}/>
+              <input type="image" src={starButton} name={item.id} className="star-button" onClick={e => this.showModal(e)}/>
+              <Modal product={this.props.current} compare={this.state.showModal === true ? item : {}} clicked={this.state.showModal} exit={this.showModal}/>
               <p>{item.category}</p>
               <p><strong>{item.name}</strong></p>
               <p><em>{item.slogan}</em></p>
