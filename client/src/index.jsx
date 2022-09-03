@@ -12,9 +12,11 @@ class App extends React.Component {
     super(props);
 
     this.state = {
-      product_id: '71701'
+      product_id: window.location.pathname.slice(1) || '71697'
     }
   }
+
+  //How to append product ID onto url?
 
   render () {
     return (
