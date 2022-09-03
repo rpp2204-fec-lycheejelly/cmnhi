@@ -1,4 +1,5 @@
 require('dotenv').config();
+const path = require('path');
 const express = require('express');
 const axios = require('axios');
 const overview = require('./controllers/overview.js');
@@ -64,3 +65,9 @@ app.get('/products/:product_id/related', (req, res) => {
 app.listen(port, function() {
   console.log(`listening on port ${port}`);
 });
+
+//Wildcard
+
+app.get('/*', (req, res) => {
+  res.sendFile(path.join(__dirname + '/../client/dist/index.html'))
+})

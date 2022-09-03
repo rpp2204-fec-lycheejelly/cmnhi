@@ -12,14 +12,16 @@ class App extends React.Component {
     super(props);
 
     this.state = {
-      product_id: '71697'
+      product_id: window.location.pathname.slice(1) || '71697'
     }
   }
+
+  //How to append product ID onto url?
 
   render () {
     return (
       <div>
-        <img id="logo" src={comnhi}></img>
+        <img id="logo" src={comnhi} alt="company-logo"></img>
         <Product product_id={this.state.product_id}/>
         <Related product_id={this.state.product_id}/>
         <QandA product_id={this.state.product_id}/>
