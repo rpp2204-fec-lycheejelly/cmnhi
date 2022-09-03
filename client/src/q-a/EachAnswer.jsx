@@ -21,7 +21,8 @@ class EachAnswer extends React.Component {
       <div>
         <div>{answer['body']}</div>
         <div>
-        {answer['photos'].map(photo => { return <img className='QA-img' src={photo} />})}
+        {answer['photos'].map((photo, index) => {
+          return <img className='QA-img' key={index} src={photo} alt='' />})}
         </div>
         <div>
           <span className='QA-questionInfo'>by User{answer['id'] + '-' + answer['answerer_name']}</span>

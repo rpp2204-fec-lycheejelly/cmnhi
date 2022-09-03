@@ -48,12 +48,3 @@ class QandA extends React.Component {
 }
 
 export default QandA;
-
-{/* <div className='QA-row'>
-  <div id='QA-column'>
-  <QandAList qaList={this.state.qaList}/>
-  </div>
-  <div id='QA-column'>
-    <AddQuestion />
-  </div>
-</div> */}

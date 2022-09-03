@@ -297,8 +297,6 @@
   display: inline-block;
 }
 
-
-
 /*** SearchBar ***/
 .searchInput {
   width: 200px;
@@ -330,8 +328,8 @@
 
 .QA-img {
   padding: 5px;
-  width: 200px;
-  height: 200px
+  width: 100px;
+  height: 100px;
 }
 
 .QA-loadMoreAns {
@@ -343,16 +341,28 @@
 
 
 
-/*** Modal1 ***/
 
-.QA-modalBackground {
+
+/*** Modal1 ***/
+.QA-modal-1 {
+  position:absolute;
+  top:150%;
+  left: 10%;
+  width:10em;
+  height:10em;
+  margin-top: auto;
+  margin-left: auto;
+  z-index:2;
+}
+
+/* .QA-modalBackground {
   width: 100vw;
   height: 100vh;
-  background-color: rgba(200, 200, 200);
+  background-color: rgb(50, 132, 164);
   display: flex;
   justify-content: center;
   align-items: center;
-}
+} */
 
 .QA-modalContainer {
   width: 500px;
@@ -365,7 +375,7 @@
   padding: 25px;
 }
 
-/* .QA-titleCloseBtn {
+.QA-titleCloseBtn {
   display: flex;
   justify-content: flex-end;
 }
@@ -380,19 +390,44 @@
 .QA-modalContainer .QA-modalTitle {
   display: inline-block;
   text-align: center;
-  margin-top: 10px;
+  margin-top: 0px;
 }
 
 .QA-modalContainer .QA-modalBody {
   flex: 50%;
-  display: flex;
+  /* display: flex; */
   justify-content: center;
   align-items: center;
-  font-size: 1.7rem;
+  font-size: 0.8rem;
   text-align: center;
 }
 
-.QA-modalContainer .QA-modalFooter {
+.QA-1000 {
+  margin: 1px;
+  padding: 1px;
+  width: 200px;
+  height: 200px;
+  resize: none;
+}
+
+.QA-60-nickname {
+  margin: 1px;
+  padding: 1px;
+  width: 200px;
+  height: 20px;
+  resize: none;
+}
+
+.QA-60-email {
+  margin: 1px;
+  padding: 1px;
+  width: 250px;
+  height: 20px;
+  resize: none;
+}
+
+
+/* .QA-modalContainer .QA-modalFooter {
   flex: 20%;
   display: flex;
   justify-content: center;

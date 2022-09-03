@@ -21,9 +21,10 @@ class AnswersList extends React.Component {
     if (answersList.length > 2) {
       return (
         <div>
-          {answersList.slice(0, 2).map(eachAnswer => {return <EachAnswer eachAnswer={eachAnswer}/>})}
+          {answersList.slice(0, 2).map(eachAnswer => {
+            return <EachAnswer key={eachAnswer['id']} eachAnswer={eachAnswer}/>})}
           {this.state.loadMoreAns ?
-          answersList.slice(2).map(eachAnswer => {return <EachAnswer eachAnswer={eachAnswer}/>}) :
+          answersList.slice(2).map(eachAnswer => {return <EachAnswer key={eachAnswer['id']} eachAnswer={eachAnswer}/>}) :
           null
           }
           <div className='QA-loadMoreAns' onClick={() => this.loadMoreAnswers()}>{this.state.loadMoreAns ? 'Collapse answers' : 'See more answers'}</div>
@@ -32,7 +33,7 @@ class AnswersList extends React.Component {
     } else {
       return (
         <div>
-          {answersList.map(eachAnswer => {return <EachAnswer eachAnswer={eachAnswer}/>})}
+          {answersList.map(eachAnswer => {return <EachAnswer key={eachAnswer['id']} eachAnswer={eachAnswer}/>})}
         </div>
       )
     }
