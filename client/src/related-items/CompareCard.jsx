@@ -11,7 +11,7 @@ class CompareCard extends React.Component {
     this.state = {
       products: [],
       showModal: false,
-      clickedProduct: ''
+      clickedProduct: {}
     }
     this.showModal = this.showModal.bind(this);
   }
@@ -24,11 +24,11 @@ class CompareCard extends React.Component {
     }
   }
 
-  showModal(e) {
+  showModal(data) {
     if (!this.state.showModal) {
       this.setState({
         showModal: true,
-        clickedProduct: e.target.name
+        clickedProduct: data
       });
     } else {
       this.setState({
@@ -38,21 +38,20 @@ class CompareCard extends React.Component {
   }
 
   render () {
-    console.log(this.props.current);
     if (this.state.products) {
+      console.log(this.state.products);
       return (
         <div id="related">
         {this.state.products.map((item, id) => {
-          let ratings = item.ratings;
+          let ratings = item.data.ratings;
           let total = 0;
           let count = 0;
+          console.log(item.data.features);
           for (var key in ratings) {
             total += ratings[key] * key;
             count += Number(ratings[key]);
           }
-          console.log(total);
-          console.log(count);
-          let styles = item.styles;
+          let styles = item.data.styles;
           let price = 0;
           let url = '';
           styles.forEach(style => {
@@ -63,13 +62,13 @@ class CompareCard extends React.Component {
           })
           return (
             <div className="items" key={id}>
-              <img className="thumbnail" src={url || item['styles'][0]['photos'][0]['url']}/>
-              <input type="image" src={starButton} name={item.id} className="star-button" onClick={e => this.showModal(e)}/>
-              <Modal product={this.props.current} compare={this.state.showModal === true ? item : {}} clicked={this.state.showModal} exit={this.showModal}/>
-              <p>{item.category}</p>
-              <p><strong>{item.name}</strong></p>
-              <p><em>{item.slogan}</em></p>
-              <p>${price || item['default_price']}</p>
+              <img className="thumbnail" alt={"image of " + item.data.name} src={url || item.data['styles'][0]['photos'][0]['url']}/>
+              <input type="image" src={starButton} className="star-button" onClick={() => this.showModal(item.data)} alt="comparison"/>
+              <Modal product={this.props.current} compare={this.state.clickedProduct} clicked={this.state.showModal} exit={this.showModal}/>
+              <p>{item.data.category}</p>
+              <p><strong>{item.data.name}</strong></p>
+              <p><em>{item.data.slogan}</em></p>
+              <p>${price || item.data['default_price']}</p>
               <p>Rating: {total / count}</p>
             </div>
           )

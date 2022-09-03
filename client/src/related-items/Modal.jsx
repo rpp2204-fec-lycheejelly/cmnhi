@@ -16,11 +16,12 @@ export default class Modal extends React.Component {
 
   componentDidUpdate(prevProps) {
     if (this.props.clicked !== prevProps.clicked) {
+      console.log(this.props);
       this.setState({
         show: this.props.clicked,
         product1: this.props.product,
         product2: this.props.compare
-      });
+        });
     }
   }
 
@@ -59,14 +60,14 @@ export default class Modal extends React.Component {
                   <p key={id}><b>&#10003;</b> {feature.value + ' ' + feature.feature}</p>
                 )
               })}
-              {this.state.product2.features.map((feature, id) => {
+              {this.state.product2.features.map((feature2, id) => {
                 return (
-                  <p key={id}>{feature.value + ' ' + feature.feature} <b>&#10003;</b></p>
+                  <p key={id}>{feature2.value + ' ' + feature2.feature} <b>&#10003;</b></p>
                 )
               })}
             </div>
           </div>
-          <input type="image" src={exitButton} name="exitButton" id="exit-button" onClick={e => this.showModal(e)}/>
+          <input type="image" src={exitButton} name="exitButton" id="exit-button" onClick={this.showModal}/>
         </div>
       )
     } else {
