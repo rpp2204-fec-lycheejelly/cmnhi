@@ -1,6 +1,6 @@
 let ProductDesc = ({slogan, description, features}) => {
-  return  <div className='product-description'>
-            <div className='description-container'>
+  return  <div className='description-container'>
+            <div className='product-description'>
               <h3>{slogan}</h3>
               <p>{description}</p>
             </div>

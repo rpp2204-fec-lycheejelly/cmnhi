@@ -11,6 +11,7 @@ let StyleSelect = ({styles, currentStyle, changeStyle}) => {
                 <img  className={isCurrentStyle ? "style-thumbnail selected-style" : "style-thumbnail"}
                       onClick={() => {changeStyle(style)}}
                       src={style.photos[0].thumbnail_url}
+                      alt="style-thumbnail"
                       >
                 </img>
                 {isCurrentStyle &&

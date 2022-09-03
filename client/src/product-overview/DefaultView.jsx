@@ -1,9 +1,13 @@
 import React from 'react';
+import leftArrow from '../assets/arrow-left.png';
+import rightArrow from '../assets/arrow-right.png';
 
-let DefaultView = ({style, index}) => {
+let DefaultView = ({photos, index, onRightArrowClick, onLeftArrowClick}) => {
   return (
     <div className="image-default-view">
-      {!style.photos ? <></> : <img src={style.photos[index].url}></img> }
+      {index !== 0 && <img src={leftArrow} alt="left-arrow" className="left-arrow" onClick={onLeftArrowClick}></img>}
+      {!photos.length ? <></> : <img className="main-img" src={photos[index].url}></img>}
+      {index !== photos.length - 1 && <img src={rightArrow} alt="right-arrow" className="right-arrow" onClick={onRightArrowClick}></img>}
     </div>
   )
 };
