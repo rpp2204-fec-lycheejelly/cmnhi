@@ -161,6 +161,7 @@
 .rating-star {
   height: 25px;
   width: 25px;
+  padding: 1px;
 }
 
 /* styles */
@@ -323,10 +324,19 @@
 }
 
 .add-to-outfit {
-
+  background-color: white;
+  border: 1px solid rgb(79, 79, 79);
+  border-radius: 4%;
+  height: 49px;
+  width: 49px;
+  margin-left: 10px;
+  font-size: 16px;
 
 }
 
+.add-to-outfit:hover {
+  cursor: pointer;
+}
 
 
 
