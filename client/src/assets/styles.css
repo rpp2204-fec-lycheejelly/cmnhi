@@ -140,26 +140,27 @@
 
 /* review stars */
 
-.star-outline {
-  height: 36px;
-  width: 31px;
-}
-
-.star-fill {
-  position: relative;
-  display: inline-block;
-  height: 36px;
-  background-color: orange;
-}
-
-.star-container {
-  height: 36px;
-  width: 31px;
-  display: inline-block;
+.rating-container {
+  display: flex;
 }
 
 .review-link {
-  padding-left: 10px;
+  padding: 8px 0px 0px 10px;
+}
+
+.review-link:hover {
+  cursor: pointer;
+  text-decoration: underline;
+  color: rgb(49, 138, 255);
+}
+
+.stars {
+  display: flex;
+}
+
+.rating-star {
+  height: 25px;
+  width: 25px;
 }
 
 /* styles */
