@@ -21,7 +21,7 @@ class QandA extends React.Component {
 
   getQAList() {
     // return axios.get(`/qa/questions/${this.props.product_id}`) // I can't use this one now as this product_id doesn't have QA list from api :(
-    return axios.get('/qa/questions/71701')
+    return axios.get('/qa/questions/71711')
     .then((response) => {
       this.setState({qaList: response.data.results});
     })

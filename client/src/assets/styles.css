@@ -421,8 +421,8 @@
   position:absolute;
   top:150%;
   left: 10%;
-  width:10em;
-  height:10em;
+  width:20em;
+  height:20em;
   margin-top: auto;
   margin-left: auto;
   z-index:2;
@@ -438,10 +438,10 @@
 } */
 
 .QA-modalContainer {
-  width: 500px;
-  height: 500px;
+  width: 600px;
+  height: 600px;
   border-radius: 12px;
-  background-color: white;
+  background-color: rgb(203, 184, 205);
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   display: flex;
   flex-direction: column;
@@ -478,7 +478,7 @@
 .QA-1000 {
   margin: 1px;
   padding: 1px;
-  width: 200px;
+  width: 500px;
   height: 200px;
   resize: none;
 }
@@ -500,24 +500,24 @@
 }
 
 
-/* .QA-modalContainer .QA-modalFooter {
-  flex: 20%;
+.QA-modalContainer .QA-modalFooter {
+  flex: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.QA-modalContainer .footer button {
+.QA-modalContainer .QA-modalFooter .QA-modal1-submit {
   width: 150px;
-  height: 45px;
+  height: 20px;
   margin: 10px;
   border: none;
   background-color: cornflowerblue;
   color: white;
   border-radius: 8px;
-  font-size: 20px;
+  font-size: 16px;
   cursor: pointer;
-} */
+}
 
 
 
