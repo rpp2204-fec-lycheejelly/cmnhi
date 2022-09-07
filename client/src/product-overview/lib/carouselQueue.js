@@ -1,9 +1,9 @@
-export default (photos) => {
+export default (photos = []) => {
   let result = [...photos].splice(0, 7)
 
   result.addToFront = (index) => {
     result.pop();
-    result.shift();
+    result.unshift(photos);
   }
 
   result.addToBack = (index) => {
