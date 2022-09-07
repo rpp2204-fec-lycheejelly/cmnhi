@@ -19,13 +19,13 @@ class ImageGallery extends React.Component {
     })
   }
 
-  onRightArrowClick() {
+  scrollRight() {
     this.setState({
       photoIndex: this.state.photoIndex + 1
     })
   }
 
-  onLeftArrowClick() {
+  scrollLeft() {
     this.setState({
       photoIndex: this.state.photoIndex - 1
     })
@@ -35,12 +35,14 @@ class ImageGallery extends React.Component {
     return <div className='image-gallery'>
            <Carousel photos={this.props.style.photos || []}
                      changeImage={this.changeImage.bind(this)}
-                     index={this.state.photoIndex}/>
+                     index={this.state.photoIndex}
+                     scrollLeft={this.scrollLeft.bind(this)}
+                     scrollRight={this.scrollRight.bind(this)}/>
              {this.state.view === 'expanded' && <ExpandedView />}
              <DefaultView photos={this.props.style.photos || []}
                           index={this.state.photoIndex}
-                          onRightArrowClick={this.onRightArrowClick.bind(this)}
-                          onLeftArrowClick={this.onLeftArrowClick.bind(this)}/>
+                          scrollRight={this.scrollRight.bind(this)}
+                          scrollLeft={this.scrollLeft.bind(this)}/>
            </div>
   }
 }
