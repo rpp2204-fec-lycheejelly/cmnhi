@@ -3,6 +3,9 @@ import '../assets/styles.css';
 import starImage from '../assets/star.png';
 import starButton from '../assets/unclicked-star.png';
 import Modal from './Modal.jsx';
+import Stars from '../product-overview/Stars.jsx';
+import calculateAverage from '../product-overview/lib/calculateAvg.js';
+
 
 
 class CompareCard extends React.Component {
@@ -69,7 +72,7 @@ class CompareCard extends React.Component {
               <p><strong>{item.data.name}</strong></p>
               <p><em>{item.data.slogan}</em></p>
               <p>${price || item.data['default_price']}</p>
-              <p>Rating: {total / count}</p>
+              <Stars reviews={item.data.ratings}/>
             </div>
           )
         })}
