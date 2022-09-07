@@ -44,7 +44,8 @@ class CompareCard extends React.Component {
     if (this.state.products) {
       console.log(this.state.products);
       return (
-        <div id="related">
+        <div className="related-carousel" id="related">
+        <a class="prev" onclick="plusSlides(-1)">&#x00AB;</a>
         {this.state.products.map((item, id) => {
           let ratings = item.data.ratings;
           let total = 0;
@@ -78,6 +79,8 @@ class CompareCard extends React.Component {
             </div>
           )
         })}
+
+          <a class="next" onclick="plusSlides(1)">&#x00BB;</a>
         </div>
       )
     } else {
