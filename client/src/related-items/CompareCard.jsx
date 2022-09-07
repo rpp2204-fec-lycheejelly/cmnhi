@@ -3,6 +3,9 @@ import '../assets/styles.css';
 import starImage from '../assets/star.png';
 import starButton from '../assets/unclicked-star.png';
 import Modal from './Modal.jsx';
+import Stars from '../product-overview/Stars.jsx';
+import calculateAverage from '../product-overview/lib/calculateAvg.js';
+
 
 
 class CompareCard extends React.Component {
@@ -41,7 +44,8 @@ class CompareCard extends React.Component {
     if (this.state.products) {
       console.log(this.state.products);
       return (
-        <div id="related">
+        <div className="related-carousel" id="related">
+        <a class="prev" onclick="plusSlides(-1)">&#x00AB;</a>
         {this.state.products.map((item, id) => {
           let ratings = item.data.ratings;
           let total = 0;
@@ -69,10 +73,14 @@ class CompareCard extends React.Component {
               <p><strong>{item.data.name}</strong></p>
               <p><em>{item.data.slogan}</em></p>
               <p>${price || item.data['default_price']}</p>
-              <p>Rating: {total / count}</p>
+              <div className="star-cards">
+              <Stars reviews={item.data.ratings}/>
+              </div>
             </div>
           )
         })}
+
+          <a class="next" onclick="plusSlides(1)">&#x00BB;</a>
         </div>
       )
     } else {
