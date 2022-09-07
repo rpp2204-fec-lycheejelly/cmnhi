@@ -101,6 +101,11 @@
   text-align: center;
   padding-left: 0 !important;
 }
+
+.star-cards {
+  margin-left: auto;
+  margin-right: auto;
+}
 /* PRODUCT OVERVIEW STYLES */
 
 /* product-overview container */

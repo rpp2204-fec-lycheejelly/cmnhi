@@ -72,7 +72,9 @@ class CompareCard extends React.Component {
               <p><strong>{item.data.name}</strong></p>
               <p><em>{item.data.slogan}</em></p>
               <p>${price || item.data['default_price']}</p>
+              <div className="star-cards">
               <Stars reviews={item.data.ratings}/>
+              </div>
             </div>
           )
         })}

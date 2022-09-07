@@ -11,7 +11,6 @@ import emptyStar from '../assets/empty-star.png';
 let Stars = ({reviews}) => {
   let avg = calculateAverage(reviews).scores;
   let total = calculateAverage(reviews).totalResponses;
-
     return (
       <div className="stars">
         {avg.map((star, i) => {
