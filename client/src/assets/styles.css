@@ -86,14 +86,12 @@
 }
 
 #productOne, #productTwo {
-  width: 48%;
-}
-
-#productTwo {
-  padding-right: 10px;
+  width: 50%;
   padding-bottom: 0px;
   margin-bottom: 0px;
 }
+
+
 .break {
   height: 0%;
   flex-basis: 100%;
@@ -101,6 +99,12 @@
 
 .features {
   text-align: center;
+  padding-left: 0 !important;
+}
+
+.star-cards {
+  margin-left: auto;
+  margin-right: auto;
 }
 /* PRODUCT OVERVIEW STYLES */
 
