@@ -170,26 +170,27 @@
 
 /* review stars */
 
-.star-outline {
-  height: 36px;
-  width: 31px;
-}
-
-.star-fill {
-  position: relative;
-  display: inline-block;
-  height: 36px;
-  background-color: orange;
-}
-
-.star-container {
-  height: 36px;
-  width: 31px;
-  display: inline-block;
+.rating-container {
+  display: flex;
 }
 
 .review-link {
-  padding-left: 10px;
+  padding: 8px 0px 0px 10px;
+}
+
+.review-link:hover {
+  cursor: pointer;
+  text-decoration: underline;
+  color: rgb(49, 138, 255);
+}
+
+.stars {
+  display: flex;
+}
+
+.rating-star {
+  height: 25px;
+  width: 25px;
 }
 
 /* styles */
@@ -369,8 +370,6 @@
   display: inline-block;
 }
 
-
-
 /*** SearchBar ***/
 .searchInput {
   width: 200px;
@@ -402,8 +401,8 @@
 
 .QA-img {
   padding: 5px;
-  width: 200px;
-  height: 200px
+  width: 100px;
+  height: 100px;
 }
 
 .QA-loadMoreAns {
@@ -415,29 +414,41 @@
 
 
 
-/*** Modal1 ***/
 
-.QA-modalBackground {
+
+/*** Modal1 ***/
+.QA-modal-1 {
+  position:absolute;
+  top:150%;
+  left: 10%;
+  width:20em;
+  height:20em;
+  margin-top: auto;
+  margin-left: auto;
+  z-index:2;
+}
+
+/* .QA-modalBackground {
   width: 100vw;
   height: 100vh;
-  background-color: rgba(200, 200, 200);
+  background-color: rgb(50, 132, 164);
   display: flex;
   justify-content: center;
   align-items: center;
-}
+} */
 
 .QA-modalContainer {
-  width: 500px;
-  height: 500px;
+  width: 600px;
+  height: 600px;
   border-radius: 12px;
-  background-color: white;
+  background-color: rgb(203, 184, 205);
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   display: flex;
   flex-direction: column;
   padding: 25px;
 }
 
-/* .QA-titleCloseBtn {
+.QA-titleCloseBtn {
   display: flex;
   justify-content: flex-end;
 }
@@ -452,36 +463,61 @@
 .QA-modalContainer .QA-modalTitle {
   display: inline-block;
   text-align: center;
-  margin-top: 10px;
+  margin-top: 0px;
 }
 
 .QA-modalContainer .QA-modalBody {
   flex: 50%;
-  display: flex;
+  /* display: flex; */
   justify-content: center;
   align-items: center;
-  font-size: 1.7rem;
+  font-size: 0.8rem;
   text-align: center;
 }
 
+.QA-1000 {
+  margin: 1px;
+  padding: 1px;
+  width: 500px;
+  height: 200px;
+  resize: none;
+}
+
+.QA-60-nickname {
+  margin: 1px;
+  padding: 1px;
+  width: 200px;
+  height: 20px;
+  resize: none;
+}
+
+.QA-60-email {
+  margin: 1px;
+  padding: 1px;
+  width: 250px;
+  height: 20px;
+  resize: none;
+}
+
+
 .QA-modalContainer .QA-modalFooter {
-  flex: 20%;
+  flex: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.QA-modalContainer .footer button {
+.QA-modalContainer .QA-modalFooter .QA-modal1-submit {
   width: 150px;
-  height: 45px;
+  height: 20px;
   margin: 10px;
   border: none;
   background-color: cornflowerblue;
   color: white;
   border-radius: 8px;
-  font-size: 20px;
+  font-size: 16px;
   cursor: pointer;
-} */
+}
 
 
 

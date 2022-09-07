@@ -2,6 +2,7 @@ import React from 'react';
 import DefaultView from './DefaultView.jsx';
 import ExpandedView from './ExpandedView.jsx';
 import Carousel from './Carousel.jsx';
+import carouselQueue from './lib/carouselQueue.js';
 
 class ImageGallery extends React.Component {
   constructor(props) {
@@ -9,8 +10,19 @@ class ImageGallery extends React.Component {
 
     this.state = {
       view: 'default',
-      photoIndex: 0
+      photoIndex: 0,
+      carousel: []
     }
+  }
+
+  componentDidMount() {
+    let photos = carouselQueue(this.props.style.photos)
+
+    console.log('PHOTOS?', photos)
+
+    this.setState({
+      carousel: photos
+    })
   }
 
   changeImage(index) {
@@ -33,7 +45,7 @@ class ImageGallery extends React.Component {
 
   render() {
     return <div className='image-gallery'>
-           <Carousel photos={this.props.style.photos || []}
+           <Carousel photos={this.state.carousel}
                      changeImage={this.changeImage.bind(this)}
                      index={this.state.photoIndex}/>
              {this.state.view === 'expanded' && <ExpandedView />}
