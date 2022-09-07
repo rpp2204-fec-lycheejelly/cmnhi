@@ -51,6 +51,11 @@ app.get('/qa/questions/:product_id', (req, res) => {
   })
 })
 
+app.post('/qa/questions', (req, res) => {
+  var requestBody = req.body;
+  console.log('connection is from the client', requestBody);
+})
+
 //Related Products Routes
 app.get('/products/:product_id/related', (req, res) => {
   getRelated(req, res)

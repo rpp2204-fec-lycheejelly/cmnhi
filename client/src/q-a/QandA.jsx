@@ -24,6 +24,7 @@ class QandA extends React.Component {
     return axios.get('/qa/questions/71711')
     .then((response) => {
       this.setState({qaList: response.data.results});
+      console.log('this.state.qaList', this.state.qaList);
     })
     .catch((error) => {
       console.log('Failed to fetch data', error);
