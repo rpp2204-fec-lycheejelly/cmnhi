@@ -16,22 +16,21 @@ class RelatedProducts extends React.Component {
       let details = [];
       let promises = [];
       for (var i = 0; i < ids.length; i++) {
-        promises.push(
-          axios.get('/products/' + ids[i])
-            .then(response => {
-            // do something with response
-            details.push(response.data);
-          })
-        )
+        var request = axios.get('/products/' + ids[i]);
+        promises.push(request);
       }
-      Promise.all(promises).then(() => {
+
+      axios.all(promises).then(axios.spread((...responses) => {
+        console.log(responses);
         this.setState({
-          productsList: details
-        }, () => {
-          console.log(this.state);
+          productsList: responses
         })
-      });
-    }
+        // use/access the results
+      })).catch(errors => {
+        // react on errors.
+        console.log(errors);
+      })
+      }
   }
 
   render () {

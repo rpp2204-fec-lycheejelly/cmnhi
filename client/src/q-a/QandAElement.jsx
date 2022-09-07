@@ -13,7 +13,6 @@ class QandAElement extends React.Component {
   }
 
   plusOne(e) {
-    console.log('will plus 1 for the helpfulness');
     this.setState((state) => {
       return {helpfulness: state.helpfulness + 1}
     })
@@ -26,7 +25,6 @@ class QandAElement extends React.Component {
 
   render() {
     var qa = this.props.qa; // one question and the corresponding answer list
-    console.log('qa', qa);
     return (
       <div>
         {/* one question */}

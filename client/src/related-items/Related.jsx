@@ -10,17 +10,36 @@ class Related extends React.Component {
       relatedProducts: [],
       relatedDetails: [],
       outfit: [],
-      current: '71697'
+      current: {}
     })
   }
 
   componentDidMount() {
-    axios.get('/products/71697/related')
-      .then(results => {
-        this.setState({
-          relatedProducts: results.data
-        });
+    // axios.get('/products/71697/related')
+    //   .then(results => {
+    //     this.setState({
+    //       relatedProducts: results.data
+    //     });
+    //   })
+    let one = '/products/' + this.props.product_id;
+    let two = '/products/' + this.props.product_id + '/related';
+
+    const requestOne = axios.get(one);
+    const requestTwo = axios.get(two);
+
+
+    axios.all([requestOne, requestTwo]).then(axios.spread((...responses) => {
+      const responseOne = responses[0].data;
+      const responseTwo = responses[1].data;
+      this.setState({
+        relatedProducts: responseTwo,
+        current: responseOne
       })
+      // use/access the results
+    })).catch(errors => {
+      // react on errors.
+      console.log(errors);
+    })
   }
 
   render() {
