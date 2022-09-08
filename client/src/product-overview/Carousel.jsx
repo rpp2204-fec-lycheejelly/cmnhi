@@ -4,6 +4,7 @@ import downArrow from '../assets/arrow-down.png';
 import carouselQueue from './lib/carouselQueue.js';
 
 let Carousel = ({frontIdx, backIdx, index, length, carousel, changeImage, scrollUp, scrollDown}) => {
+  console.log('carousel', carousel)
   return <div>
               {frontIdx !== 0 && <img src={upArrow} alt="up-arrow" className="up-arrow" onClick={scrollUp}></img>}
               <div className='style-carousel'>
@@ -20,7 +21,6 @@ let Carousel = ({frontIdx, backIdx, index, length, carousel, changeImage, scroll
                 : backIdx !== length - 1
                 ? <img src={downArrow} alt="down-arrow" className="down-arrow" onClick={scrollDown}></img>
                 : <></>}
-              {/* {backIdx !== length - 1 && <img src={downArrow} alt="down-arrow" className="down-arrow" onClick={scrollDown}></img>} */}
             </div>
 }
 

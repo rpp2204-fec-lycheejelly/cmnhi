@@ -15,7 +15,10 @@ class Product extends React.Component {
       product: {},
       styles: [],
       currentStyle: {},
-      sku: null
+      sku: null,
+      frontIdx: 0,
+      backIdx: 6,
+      carousel: []
     }
   }
 
@@ -41,7 +44,8 @@ class Product extends React.Component {
   changeStyle(style) {
     this.setState({
       currentStyle: style,
-      sku: null
+      sku: null,
+      frontIdx: 0
     })
   }
 
@@ -64,10 +68,39 @@ class Product extends React.Component {
     })
   }
 
+  incrementIdx(newCarousel) {
+    this.setState({
+      carousel: newCarousel,
+      frontIdx: this.state.frontIdx + 1,
+      backIdx: this.state.backIdx + 1
+    })
+  }
+
+  decrementIdx(newCarousel) {
+    this.setState({
+      carousel: newCarousel,
+      frontIdx: this.state.frontIdx - 1,
+      backIdx: this.state.backIdx - 1
+    })
+  }
+
+  spliceCarousel(carousel) {
+    this.setState({
+      carousel: carousel.splice(0, 7)
+    })
+  }
+
   render() {
     return <>
            <div className='product-overview'>
-             <ImageGallery photos={this.state.currentStyle.photos || []}/>
+             <ImageGallery photos={this.state.currentStyle.photos || []}
+                           frontIdx={this.state.frontIdx}
+                           backIdx={this.state.backIdx}
+                           carousel={this.state.carousel}
+                           incrementIdx={this.incrementIdx.bind(this)}
+                           decrementIdx={this.decrementIdx.bind(this)}
+                           spliceCarousel={this.spliceCarousel.bind(this)}
+                           />
              <div className='product-information'>
                  <ProductInfo product={this.state.product}
                               reviews={this.state.product.ratings}

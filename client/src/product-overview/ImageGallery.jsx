@@ -10,8 +10,6 @@ class ImageGallery extends React.Component {
     this.state = {
       view: 'default',
       photoIndex: 0,
-      frontIdx: 0,
-      backIdx: 6,
       carousel: []
     }
   }
@@ -19,15 +17,11 @@ class ImageGallery extends React.Component {
   componentDidUpdate() {
     let carousel = [...this.props.photos];
 
-    if(!this.state.carousel.length) {
-      this.setState({
-        carousel: carousel.splice(0, 7),
-      })
+    if(!this.props.carousel.length) {
+      this.props.spliceCarousel(carousel)
     } else {
-      if (this.state.carousel[0].url !== this.props.photos[this.state.frontIdx].url) {
-        this.setState({
-          carousel: carousel.splice(0, 7),
-        })
+      if (this.props.carousel[0].url !== this.props.photos[this.props.frontIdx].url) {
+        this.props.spliceCarousel(carousel)
       }
     }
   }
@@ -51,38 +45,28 @@ class ImageGallery extends React.Component {
   }
 
   scrollUp() {
-    let newCarousel = [...this.state.carousel]
-
+    let newCarousel = [...this.props.carousel]
     newCarousel.pop();
     newCarousel.unshift(this.props.photos[this.state.frontIdx - 1])
 
-    this.setState({
-      carousel: newCarousel,
-      frontIdx: this.state.frontIdx - 1,
-      backIdx: this.state.backIdx - 1
-    })
+    this.props.decrementIdx(newCarousel);
   }
 
   scrollDown () {
-    let newCarousel = [...this.state.carousel]
-
+    let newCarousel = [...this.props.carousel]
     newCarousel.shift();
     newCarousel.push(this.props.photos[this.state.backIdx + 1]);
 
-    this.setState({
-      carousel: newCarousel,
-      frontIdx: this.state.frontIdx + 1,
-      backIdx: this.state.backIdx + 1
-    })
+    this.props.incrementIdx(newCarousel);
   }
 
   render() {
     return <div className='image-gallery'>
-           <Carousel carousel={this.state.carousel}
+           <Carousel carousel={this.props.carousel}
                      length = {this.props.photos.length}
                      changeImage={this.changeImage.bind(this)}
-                     frontIdx = {this.state.frontIdx}
-                     backIdx = {this.state.backIdx}
+                     frontIdx = {this.props.frontIdx}
+                     backIdx = {this.props.backIdx}
                      index={this.state.photoIndex}
                      scrollUp={this.scrollUp.bind(this)}
                      scrollDown={this.scrollDown.bind(this)}/>
