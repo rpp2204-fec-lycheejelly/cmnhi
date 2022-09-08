@@ -8,8 +8,7 @@ class ImageGallery extends React.Component {
     super(props);
 
     this.state = {
-      view: 'default',
-      photoIndex: 0
+      view: 'default'
     }
   }
 
@@ -26,21 +25,7 @@ class ImageGallery extends React.Component {
   }
 
   changeImage(index) {
-    this.setState({
-      photoIndex: index
-    })
-  }
-
-  scrollRight() {
-    this.setState({
-      photoIndex: this.state.photoIndex + 1
-    })
-  }
-
-  scrollLeft() {
-    this.setState({
-      photoIndex: this.state.photoIndex - 1
-    })
+    this.props.changeImage(index)
   }
 
   scrollUp() {
@@ -66,14 +51,15 @@ class ImageGallery extends React.Component {
                      changeImage={this.changeImage.bind(this)}
                      frontIdx = {this.props.frontIdx}
                      backIdx = {this.props.backIdx}
-                     index={this.state.photoIndex}
+                     index={this.props.mainIdx}
                      scrollUp={this.scrollUp.bind(this)}
                      scrollDown={this.scrollDown.bind(this)}/>
              {this.state.view === 'expanded' && <ExpandedView />}
-             <DefaultView photos={this.props.photos || []}
-                          index={this.state.photoIndex}
-                          scrollRight={this.scrollRight.bind(this)}
-                          scrollLeft={this.scrollLeft.bind(this)}/>
+             <DefaultView carousel={this.props.carousel || []}
+                          photos={this.props.photos || []}
+                          index={this.props.mainIdx}
+                          scrollRight={this.props.scrollRight}
+                          scrollLeft={this.props.scrollLeft}/>
            </div>
   }
 }

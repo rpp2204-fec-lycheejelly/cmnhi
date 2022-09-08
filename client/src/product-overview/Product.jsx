@@ -17,7 +17,8 @@ class Product extends React.Component {
       currentStyle: {},
       sku: null,
       frontIdx: 0,
-      backIdx: 6,
+      backIdx: 7,
+      mainIdx: 0,
       carousel: []
     }
   }
@@ -45,8 +46,6 @@ class Product extends React.Component {
     this.setState({
       currentStyle: style,
       sku: null,
-      frontIdx: 0,
-      backIdx: 6
     })
   }
 
@@ -69,11 +68,29 @@ class Product extends React.Component {
     })
   }
 
+  changeImage(index) {
+      this.setState({
+        mainIdx: index
+      })
+  }
+
+  scrollRight() {
+    this.setState({
+      mainIdx: this.state.mainIdx + 1
+    })
+  }
+
+  scrollLeft() {
+    this.setState({
+      mainIdx: this.state.mainIdx - 1
+    })
+  }
+
   incrementIdx(newCarousel) {
     this.setState({
       carousel: newCarousel,
       frontIdx: this.state.frontIdx + 1,
-      backIdx: this.state.backIdx + 1
+      backIdx: this.state.backIdx + 1,
     })
   }
 
@@ -81,13 +98,13 @@ class Product extends React.Component {
     this.setState({
       carousel: newCarousel,
       frontIdx: this.state.frontIdx - 1,
-      backIdx: this.state.backIdx - 1
+      backIdx: this.state.backIdx - 1,
     })
   }
 
   spliceCarousel(carousel) {
     this.setState({
-      carousel: carousel.splice(0, 7)
+      carousel: carousel.splice(this.state.frontIdx, 7)
     })
   }
 
@@ -97,9 +114,13 @@ class Product extends React.Component {
              <ImageGallery photos={this.state.currentStyle.photos || []}
                            frontIdx={this.state.frontIdx}
                            backIdx={this.state.backIdx}
+                           mainIdx={this.state.mainIdx}
                            carousel={this.state.carousel}
+                           changeImage={this.changeImage.bind(this)}
                            incrementIdx={this.incrementIdx.bind(this)}
                            decrementIdx={this.decrementIdx.bind(this)}
+                           scrollLeft={this.scrollLeft.bind(this)}
+                           scrollRight={this.scrollRight.bind(this)}
                            spliceCarousel={this.spliceCarousel.bind(this)}
                            />
              <div className='product-information'>
