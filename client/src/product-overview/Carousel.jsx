@@ -15,7 +15,12 @@ let Carousel = ({frontIdx, backIdx, index, length, carousel, changeImage, scroll
                                       key={i}></img>
                         })}
                     </div>
-              {backIdx !== length - 1 && <img src={downArrow} alt="down-arrow" className="down-arrow" onClick={scrollDown}></img>}
+              {length <= 6
+                ? <></>
+                : backIdx !== length - 1
+                ? <img src={downArrow} alt="down-arrow" className="down-arrow" onClick={scrollDown}></img>
+                : <></>}
+              {/* {backIdx !== length - 1 && <img src={downArrow} alt="down-arrow" className="down-arrow" onClick={scrollDown}></img>} */}
             </div>
 }
 

@@ -10,23 +10,23 @@ class ImageGallery extends React.Component {
     this.state = {
       view: 'default',
       photoIndex: 0,
-      carousel: [],
       frontIdx: 0,
       backIdx: 6,
+      carousel: []
     }
   }
 
   componentDidUpdate() {
-    let tempPhotos = [...this.props.photos];
+    let carousel = [...this.props.photos];
 
     if(!this.state.carousel.length) {
       this.setState({
-        carousel: tempPhotos.splice(0, 7)
+        carousel: carousel.splice(0, 7),
       })
     } else {
       if (this.state.carousel[0].url !== this.props.photos[this.state.frontIdx].url) {
         this.setState({
-          carousel: tempPhotos.splice(0, 7)
+          carousel: carousel.splice(0, 7),
         })
       }
     }
@@ -63,7 +63,7 @@ class ImageGallery extends React.Component {
     })
   }
 
-  async scrollDown () {
+  scrollDown () {
     let newCarousel = [...this.state.carousel]
 
     newCarousel.shift();
