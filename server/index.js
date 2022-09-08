@@ -51,8 +51,8 @@ app.get('/qa/questions/:product_id', (req, res) => {
   })
 })
 
-app.post('/qa/questions/:product_id', (req, res) => {
-// app.post('/qa/questions', (req, res) => {
+// app.post('/qa/questions/:product_id', (req, res) => {
+app.post('/qa/questions', (req, res) => {
   var requestBody = req.body;
   console.log('connection is from the client', requestBody);
   return addQuestion(requestBody, res)
