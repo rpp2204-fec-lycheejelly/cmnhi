@@ -1,13 +1,18 @@
-export default (photos = []) => {
-  let result = [...photos].splice(0, 7)
+export default (photos = [], limit) => {
+  let result = [...photos].splice(0, limit)
 
-  result.addToFront = (index) => {
-    result.pop();
-    result.unshift(photos);
+  result.scrollForward = (i) => {
+    //remove first item in result
+    result.shift();
+    //push photos at i + 1
+    result.push(photos[i])
   }
 
-  result.addToBack = (index) => {
-
+  result.scrollBackward = (i) => {
+    //pop last item out of result
+    result.pop();
+    //add to front of array
+    result.unshift(photos[i]);
   }
 
   return result;
