@@ -104,3 +104,5 @@ bundle.js
 
 # TernJS port file
 .tern-port
+
+.vscode

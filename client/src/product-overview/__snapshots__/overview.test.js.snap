@@ -1,0 +1,157 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Component Testing Should correctly render productInfo 1`] = `
+Array [
+  <div
+    className="product-overview"
+  >
+    <div
+      className="image-gallery"
+    >
+      <div
+        className="style-carousel"
+      >
+        <img
+          alt="up-arrow"
+          className="up-arrow"
+          src=""
+        />
+        <img
+          alt="down-arrow"
+          className="down-arrow"
+          src=""
+        />
+      </div>
+      <div
+        className="image-default-view"
+      >
+        <img
+          alt="rightarrow"
+          className="right-arrow"
+          onClick={[Function]}
+          src=""
+        />
+      </div>
+    </div>
+    <div
+      className="product-information"
+    >
+      <div>
+        <div
+          className="rating-container"
+        >
+          <div
+            className="stars"
+          >
+            <img
+              alt="empty-star"
+              className="rating-star"
+              src=""
+            />
+            <img
+              alt="empty-star"
+              className="rating-star"
+              src=""
+            />
+            <img
+              alt="empty-star"
+              className="rating-star"
+              src=""
+            />
+            <img
+              alt="empty-star"
+              className="rating-star"
+              src=""
+            />
+            <img
+              alt="empty-star"
+              className="rating-star"
+              src=""
+            />
+          </div>
+          <a
+            className="review-link"
+          >
+            Read All Reviews
+          </a>
+        </div>
+        <p
+          className="product-category"
+        />
+        <h4
+          className="product-title"
+        />
+        <span
+          className="product-price"
+        >
+          $
+           
+        </span>
+      </div>
+      <div
+        className="style-select"
+      >
+        <p>
+           
+          <b>
+            Style &gt;
+          </b>
+           
+        </p>
+        <div
+          className="style-container"
+        />
+      </div>
+      <div
+        className="selector-container"
+      >
+        <select
+          className="selectors size-selector"
+          onChange={[Function]}
+        >
+          <option
+            selected={true}
+          >
+            Select Size
+          </option>
+        </select>
+        <select
+          className="selectors"
+          disabled={true}
+          onChange={[Function]}
+        >
+          <option>
+             - 
+          </option>
+        </select>
+        <div>
+          <button
+            className="add-to-cart"
+            onClick={[Function]}
+          >
+            Add To Bag
+          </button>
+          <button
+            className="add-to-outfit"
+          >
+            ☆
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>,
+  <div
+    className="description-container"
+  >
+    <div
+      className="product-description"
+    >
+      <h3 />
+      <p />
+    </div>
+    <div
+      className="features"
+    />
+  </div>,
+]
+`;

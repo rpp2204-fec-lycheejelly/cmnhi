@@ -4,7 +4,7 @@ let ProductDesc = ({slogan, description, features}) => {
               <h3>{slogan}</h3>
               <p>{description}</p>
             </div>
-            <div className='features'>
+            <div className='description-features'>
               {features && features.map((item, i) => {
                 return <p key={i}><b>&#10003;</b> {item.value} {item.feature}</p>
               })}

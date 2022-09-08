@@ -197,7 +197,7 @@
   border-right: 1.5px solid black;
 }
 
-.features {
+.description-features {
   padding-left: 45px;
   width: 400px;
 }
@@ -234,6 +234,7 @@
 .rating-star {
   height: 25px;
   width: 25px;
+  padding: 1px;
 }
 
 /* styles */
@@ -324,13 +325,36 @@
   cursor: pointer;
 }
 
+.up-arrow {
+  position: absolute;
+  height: 45px;
+  width: 45px;
+  left: 23px;
+  top: 20px;
+}
+
+.up-arrow:hover {
+  cursor: pointer;
+}
+
+.down-arrow {
+  position: absolute;
+  height: 45px;
+  width: 45px;
+  left: 23px;
+  top: 485px;
+}
+
+.down-arrow:hover {
+  cursor: pointer;
+}
 
 .style-carousel {
   position: absolute;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
-  margin-top: 15px;
+  margin-top: 65px;
   margin-left: 15px;
 }
 
@@ -396,10 +420,19 @@
 }
 
 .add-to-outfit {
-
+  background-color: white;
+  border: 1px solid rgb(79, 79, 79);
+  border-radius: 4%;
+  height: 49px;
+  width: 49px;
+  margin-left: 10px;
+  font-size: 16px;
 
 }
 
+.add-to-outfit:hover {
+  cursor: pointer;
+}
 
 
 
