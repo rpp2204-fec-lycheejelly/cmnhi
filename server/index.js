@@ -58,7 +58,7 @@ app.post('/qa/questions', (req, res) => {
   return addQuestion(requestBody, res)
   .then(result => {
     console.log('app.post result', result);
-    res.send('post question success');
+    res.status(201).send('post question success');
   })
   .catch(error => {
     res.send(error);
