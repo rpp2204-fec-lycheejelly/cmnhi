@@ -45,14 +45,14 @@ class Modal1 extends React.Component {
       //HTTP POST Request:
       axios.post(`/qa/questions/${this.props.product_id}`, {
         // axios.post('/qa/questions', {
-        question_body: this.state.yourQuestion,
-        asker_name: this.state.yourNickName,
+        body: this.state.yourQuestion,
+        name: this.state.yourNickName,
         email: this.state.yourEmail,
         product_id: this.props.product_id
       })
       .then(result => {
         console.log('what is the result from the server', result);
-        //get
+        this.props.getQAList();
       })
       .catch(err => {
         console.log(err);

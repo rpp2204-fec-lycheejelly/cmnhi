@@ -1,6 +1,10 @@
 require('dotenv').config();
 const axios = require('axios');
-const auth_header = { headers: { Authorization: process.env.API_KEY } };
+const auth_header = {
+  headers: { Authorization: process.env.API_KEY,
+             'Content-Type': 'application/json'
+  }
+};
 
 let getQAList = (req, res) => {
   // return axios.get(`${process.env.API_URL}/qa/questions?product_id=${req.params.product_id}`, {headers: {Authorization: process.env.API_KEY}})
@@ -26,7 +30,7 @@ let addQuestion = (req, res) => {
     return;
   })
   .catch(error => {
-    console.log('error of addQuestion');
+    console.log('error of addQuestion', error);
     return error;
   })
 }
