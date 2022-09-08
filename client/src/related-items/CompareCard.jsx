@@ -14,15 +14,22 @@ class CompareCard extends React.Component {
     this.state = {
       products: [],
       showModal: false,
-      clickedProduct: {}
+      clickedProduct: {},
+      leftClick: false,
+      rightClick: true,
+      fourProds: [],
+      first: 0,
+      last: 4
     }
     this.showModal = this.showModal.bind(this);
+    this.plusSlides = this.plusSlides.bind(this);
   }
 
   componentDidUpdate(prevProps) {
     if (this.props.related.length !== prevProps.related.length) {
       this.setState({
-        products: this.props.related
+        products: this.props.related,
+        fourProds: this.props.related.slice(this.state.first, this.state.last)
       })
     }
   }
@@ -40,21 +47,59 @@ class CompareCard extends React.Component {
     }
   }
 
+  plusSlides(n) {
+    console.log('Click');
+    var newFirst = this.state.first + n;
+    var newLast = this.state.last + n;
+    if ((n > 0) && newLast < this.state.products.length) {
+      this.setState({
+        first: newFirst,
+        last: newLast,
+        fourProds: this.props.related.slice(newFirst, newLast),
+        leftClick: true,
+        rightClick: true
+      })
+    } else if (n > 0) {
+      this.setState({
+        first: newFirst,
+        last: newLast,
+        fourProds: this.props.related.slice(newFirst, newLast),
+        leftClick: true,
+        rightClick: false
+      })
+    } else if ((n < 0) && newFirst > 0) {
+      this.setState({
+        first: newFirst,
+        last: newLast,
+        fourProds: this.props.related.slice(newFirst, newLast),
+        leftClick: true,
+        rightClick: true
+      })
+    } else {
+      this.setState({
+        first: newFirst,
+        last: newLast,
+        fourProds: this.props.related.slice(newFirst, newLast),
+        leftClick: false,
+        rightClick: true
+      })
+    }
+  }
+
   render () {
     if (this.state.products) {
-      console.log(this.state.products);
+      console.log("first four", this.state.fourProds);
       return (
+        <div className="related-container">
+        {this.state.leftClick === true ? <a class="prev" onClick={()=> this.plusSlides(-1)}>&#x00AB;</a> : <a class="prev" style={{visibility:'hidden'}}>&#x00AB;</a>}
         <div className="related-carousel" id="related">
-        <a class="prev" onclick="plusSlides(-1)">&#x00AB;</a>
-        {this.state.products.map((item, id) => {
+
+        {
+          this.state.fourProds.map((item, id) => {
           let ratings = item.data.ratings;
           let total = 0;
           let count = 0;
           console.log(item.data.features);
-          for (var key in ratings) {
-            total += ratings[key] * key;
-            count += Number(ratings[key]);
-          }
           let styles = item.data.styles;
           let price = 0;
           let url = '';
@@ -79,8 +124,8 @@ class CompareCard extends React.Component {
             </div>
           )
         })}
-
-          <a class="next" onclick="plusSlides(1)">&#x00BB;</a>
+        </div>
+        {this.state.rightClick === true ? <a class="next" onClick={() => this.plusSlides(1)}>&#x00BB;</a> : <a class="next" style={{visibility:'hidden'}}>&#x00BB;</a>}
         </div>
       )
     } else {
