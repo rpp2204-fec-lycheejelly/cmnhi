@@ -67,7 +67,7 @@ class Product extends React.Component {
   render() {
     return <>
            <div className='product-overview'>
-             <ImageGallery style={this.state.currentStyle}/>
+             <ImageGallery photos={this.state.currentStyle.photos || []}/>
              <div className='product-information'>
                  <ProductInfo product={this.state.product}
                               reviews={this.state.product.ratings}
