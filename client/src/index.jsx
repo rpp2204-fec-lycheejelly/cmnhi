@@ -22,8 +22,8 @@ class App extends React.Component {
     return (
       <div>
         <img id="logo" src={comnhi} alt="company-logo"></img>
-        <Product product_id={this.state.product_id}/>
-        <Related product_id={this.state.product_id}/>
+        {/* <Product product_id={this.state.product_id}/>
+        <Related product_id={this.state.product_id}/> */}
         <QandA product_id={this.state.product_id}/>
         {/*<Ratings /> */}
       </div>

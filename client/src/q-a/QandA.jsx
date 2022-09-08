@@ -20,11 +20,11 @@ class QandA extends React.Component {
   }
 
   getQAList() {
-    // return axios.get(`/qa/questions/${this.props.product_id}`) // I can't use this one now as this product_id doesn't have QA list from api :(
-    return axios.get('/qa/questions/71711')
+    return axios.get(`/qa/questions/${this.props.product_id}`) // I can't use this one now as this product_id doesn't have QA list from api :(
+    // return axios.get('/qa/questions/71711')
     .then((response) => {
       this.setState({qaList: response.data.results});
-      console.log('this.state.qaList', this.state.qaList);
+      // console.log('this.state.qaList', this.state.qaList);
     })
     .catch((error) => {
       console.log('Failed to fetch data', error);
