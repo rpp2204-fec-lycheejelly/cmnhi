@@ -45,7 +45,8 @@ class Product extends React.Component {
     this.setState({
       currentStyle: style,
       sku: null,
-      frontIdx: 0
+      frontIdx: 0,
+      backIdx: 6
     })
   }
 

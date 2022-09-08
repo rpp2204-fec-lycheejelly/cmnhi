@@ -9,8 +9,7 @@ class ImageGallery extends React.Component {
 
     this.state = {
       view: 'default',
-      photoIndex: 0,
-      carousel: []
+      photoIndex: 0
     }
   }
 
@@ -47,7 +46,7 @@ class ImageGallery extends React.Component {
   scrollUp() {
     let newCarousel = [...this.props.carousel]
     newCarousel.pop();
-    newCarousel.unshift(this.props.photos[this.state.frontIdx - 1])
+    newCarousel.unshift(this.props.photos[this.props.frontIdx - 1])
 
     this.props.decrementIdx(newCarousel);
   }
@@ -55,7 +54,7 @@ class ImageGallery extends React.Component {
   scrollDown () {
     let newCarousel = [...this.props.carousel]
     newCarousel.shift();
-    newCarousel.push(this.props.photos[this.state.backIdx + 1]);
+    newCarousel.push(this.props.photos[this.props.backIdx + 1]);
 
     this.props.incrementIdx(newCarousel);
   }
