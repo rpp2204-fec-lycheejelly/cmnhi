@@ -10,7 +10,9 @@ class ImageGallery extends React.Component {
     this.state = {
       view: 'default',
       photoIndex: 0,
-      carousel: []
+      carousel: [],
+      frontIdx: 0,
+      backIdx: 6,
     }
   }
 
@@ -22,12 +24,11 @@ class ImageGallery extends React.Component {
         carousel: tempPhotos.splice(0, 7)
       })
     } else {
-      if (this.state.carousel[0].url !== this.props.photos[0].url) {
+      if (this.state.carousel[0].url !== this.props.photos[this.state.frontIdx].url) {
         this.setState({
           carousel: tempPhotos.splice(0, 7)
         })
       }
-      // console.log('State', this.state.carousel[0].url !== this.props.photos[0].url)
     }
   }
 
@@ -49,11 +50,42 @@ class ImageGallery extends React.Component {
     })
   }
 
+  scrollUp() {
+    let newCarousel = [...this.state.carousel]
+
+    newCarousel.pop();
+    newCarousel.unshift(this.props.photos[this.state.frontIdx - 1])
+
+    this.setState({
+      carousel: newCarousel,
+      frontIdx: this.state.frontIdx - 1,
+      backIdx: this.state.backIdx - 1
+    })
+  }
+
+  async scrollDown () {
+    let newCarousel = [...this.state.carousel]
+
+    newCarousel.shift();
+    newCarousel.push(this.props.photos[this.state.backIdx + 1]);
+
+    this.setState({
+      carousel: newCarousel,
+      frontIdx: this.state.frontIdx + 1,
+      backIdx: this.state.backIdx + 1
+    })
+  }
+
   render() {
     return <div className='image-gallery'>
            <Carousel carousel={this.state.carousel}
+                     length = {this.props.photos.length}
                      changeImage={this.changeImage.bind(this)}
-                     index={this.state.photoIndex}/>
+                     frontIdx = {this.state.frontIdx}
+                     backIdx = {this.state.backIdx}
+                     index={this.state.photoIndex}
+                     scrollUp={this.scrollUp.bind(this)}
+                     scrollDown={this.scrollDown.bind(this)}/>
              {this.state.view === 'expanded' && <ExpandedView />}
              <DefaultView photos={this.props.photos || []}
                           index={this.state.photoIndex}
