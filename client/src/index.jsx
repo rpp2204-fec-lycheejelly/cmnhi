@@ -12,7 +12,8 @@ class App extends React.Component {
     super(props);
 
     this.state = {
-      product_id: window.location.pathname.slice(1) || '71701'
+      // product_id: window.location.pathname.slice(1) || '71701'
+      product_id: '71701'
     }
   }
 
