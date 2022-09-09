@@ -20,13 +20,12 @@ let getQAList = (req, res) => {
 }
 
 let addQuestion = (req, res) => {
-  console.log('addQuestion req', req.body);
+  // console.log('addQuestion req', req.body);
   // console.log('addQuestion req.product_id', req.product_id);
   // return axios.post(`${process.env.API_URL}/qa/questions?product_id=${req.product_id}`, req, auth_header)
   return axios.post(`${process.env.API_URL}/qa/questions`, req.body, auth_header)
   .then(() => {
     console.log('Successfully POST to qa/questions');
-    // return result;
     return;
   })
   .catch(error => {
