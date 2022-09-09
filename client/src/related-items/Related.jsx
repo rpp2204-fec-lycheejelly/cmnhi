@@ -15,12 +15,6 @@ class Related extends React.Component {
   }
 
   componentDidMount() {
-    // axios.get('/products/71697/related')
-    //   .then(results => {
-    //     this.setState({
-    //       relatedProducts: results.data
-    //     });
-    //   })
     let one = '/products/' + this.props.product_id;
     let two = '/products/' + this.props.product_id + '/related';
 

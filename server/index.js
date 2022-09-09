@@ -25,8 +25,13 @@ app.get('/products/:product_id', (req, res) => {
       return overview.getReviewData(req, res)
     })
     .then(reviews => {
-      let ratings = reviews.ratings;
-      productData = {...productData, ratings: {...ratings}}
+      let ratings;
+      if (reviews === undefined) {
+        ratings = {'1': '0'};
+      } else {
+        ratings = reviews.ratings;
+      }
+      productData = {...productData, 'ratings': {...ratings}}
       return overview.getStyles(req, res);
     })
     .then(styleData => {
