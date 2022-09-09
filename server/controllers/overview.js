@@ -13,7 +13,7 @@ module.exports.getProduct = (req, res) => {
 }
 
 module.exports.getReviewData = (req, res) => {
-  return axios.get(`${process.env.API_URL}/reviews/meta?${req.params.product_id}`, auth_header)
+  return axios.get(`${process.env.API_URL}/reviews/meta?product_id=${req.params.product_id}`, auth_header)
     .then(reviews => {
       return reviews.data;
     })

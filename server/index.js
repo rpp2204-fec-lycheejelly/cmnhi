@@ -29,6 +29,7 @@ app.get('/products/:product_id', (req, res) => {
       if (reviews === undefined) {
         ratings = {'1': '0'};
       } else {
+        // console.log('review ratings', )
         ratings = reviews.ratings;
       }
       productData = {...productData, 'ratings': {...ratings}}

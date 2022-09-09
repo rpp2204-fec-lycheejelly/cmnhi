@@ -19,13 +19,14 @@ class Product extends React.Component {
       frontIdx: 0,
       backIdx: 7,
       mainIdx: 0,
-      carousel: []
+      matcher: 0,
+      carousel: [],
+      testState: 0
     }
   }
 
-  componentDidUpdate(prevProps) {
+  componentDidUpdate(prevProps, prevState) {
     if(JSON.stringify(this.props.productData) !== JSON.stringify(prevProps.productData)) {
-      console.log('inside')
       this.setState({
         product: this.props.productData,
         styles: this.props.productData.styles,
@@ -33,22 +34,22 @@ class Product extends React.Component {
       })
     }
 
-  }
+    if(this.state.mainIdx < 0) {
+        console.log('scroll down');
+        let newCarousel = [...this.state.carousel];
+        newCarousel.pop();
+        newCarousel.unshift(this.state.currentStyle.photos[this.state.frontIdx - 1]);
 
-  // getProduct() {
-  //   return axios.get(`/products/${this.props.product_id}`)
-  //   .then(result => {
-  //     // console.log('HARRY STYLES',result.data);
-  //     this.setState({
-  //       product: result.data,
-  //       styles: result.data.styles,
-  //       currentStyle: result.data.styles[0]
-  //     })
-  //   })
-  //   .catch(error => {
-  //     throw new Error(error);
-  //   })
-  // }
+        this.scrollDown(newCarousel, () => {this.setState({mainIdx: this.state.mainIdx + 1})});
+    } else if (this.state.mainIdx > 6) {
+        console.log('scroll up');
+        let newCarousel = [...this.state.carousel];
+        newCarousel.shift();
+        newCarousel.push(this.state.currentStyle.photos[this.state.backIdx]);
+
+        this.scrollUp(newCarousel, () => {this.setState({mainIdx: this.state.mainIdx - 1})})
+    }
+  }
 
   changeStyle(style) {
     this.setState({
@@ -78,36 +79,38 @@ class Product extends React.Component {
 
   changeImage(index) {
       this.setState({
-        mainIdx: index
+        mainIdx: index,
       })
   }
 
   scrollRight() {
     this.setState({
-      mainIdx: this.state.mainIdx + 1
+      mainIdx: this.state.mainIdx + 1,
     })
   }
 
   scrollLeft() {
     this.setState({
-      mainIdx: this.state.mainIdx - 1
+      mainIdx: this.state.mainIdx - 1,
     })
   }
 
-  incrementIdx(newCarousel) {
+  scrollUp(newCarousel, callback) {
     this.setState({
       carousel: newCarousel,
       frontIdx: this.state.frontIdx + 1,
       backIdx: this.state.backIdx + 1,
-    })
+      matcher: this.state.matcher + 1
+    }, callback)
   }
 
-  decrementIdx(newCarousel) {
+  scrollDown(newCarousel, callback) {
     this.setState({
       carousel: newCarousel,
       frontIdx: this.state.frontIdx - 1,
       backIdx: this.state.backIdx - 1,
-    })
+      matcher: this.state.matcher -1,
+    }, callback)
   }
 
   spliceCarousel(carousel) {
@@ -119,14 +122,16 @@ class Product extends React.Component {
   render() {
     return <>
            <div className='product-overview'>
+            {console.log('main', this.state.mainIdx, 'front', this.state.frontIdx, 'back', this.state.backIdx, 'mirror', this.state.mirror, 'match', this.state.matcher)}
              <ImageGallery photos={this.state.currentStyle.photos || []}
                            frontIdx={this.state.frontIdx}
                            backIdx={this.state.backIdx}
                            mainIdx={this.state.mainIdx}
+                           matcher={this.state.matcher}
                            carousel={this.state.carousel}
                            changeImage={this.changeImage.bind(this)}
-                           incrementIdx={this.incrementIdx.bind(this)}
-                           decrementIdx={this.decrementIdx.bind(this)}
+                           scrollDown={this.scrollDown.bind(this)}
+                           scrollUp={this.scrollUp.bind(this)}
                            scrollLeft={this.scrollLeft.bind(this)}
                            scrollRight={this.scrollRight.bind(this)}
                            spliceCarousel={this.spliceCarousel.bind(this)}
