@@ -23,24 +23,31 @@ class Product extends React.Component {
     }
   }
 
-  componentDidMount() {
-    this.getProduct()
+  componentDidUpdate(preprops) {
+    if(this.props.productData !== undefined) {
+      this.setState({
+        product: this.props.productData,
+        styles: this.props.productData.styles,
+        currentStyle: this.props.productData.styles[0]
+      })
+    }
+
   }
 
-  getProduct() {
-    return axios.get(`/products/${this.props.product_id}`)
-    .then(result => {
-      // console.log('HARRY STYLES',result.data);
-      this.setState({
-        product: result.data,
-        styles: result.data.styles,
-        currentStyle: result.data.styles[0]
-      })
-    })
-    .catch(error => {
-      throw new Error(error);
-    })
-  }
+  // getProduct() {
+  //   return axios.get(`/products/${this.props.product_id}`)
+  //   .then(result => {
+  //     // console.log('HARRY STYLES',result.data);
+  //     this.setState({
+  //       product: result.data,
+  //       styles: result.data.styles,
+  //       currentStyle: result.data.styles[0]
+  //     })
+  //   })
+  //   .catch(error => {
+  //     throw new Error(error);
+  //   })
+  // }
 
   changeStyle(style) {
     this.setState({

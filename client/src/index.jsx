@@ -13,18 +13,38 @@ class App extends React.Component {
 
     this.state = {
       // product_id: window.location.pathname.slice(1) || '71701'
-      product_id: '71701'
+      product_id: '71701',
+      productData: {}
     }
   }
 
   //How to append product ID onto url?
 
+  componentDidMount() {
+    this.getProductData.bind(this);
+  }
+
+  getProductData() {
+    return axios.get(`/products/${this.props.product_id}`)
+    .then(result => {
+      // console.log('HARRY STYLES',result.data);
+      this.setState({
+        productData: result.data
+      })
+    })
+    .catch(error => {
+      throw new Error(error);
+    })
+  }
+
   render () {
     return (
       <div>
         <img id="logo" src={comnhi} alt="company-logo"></img>
-        <Product product_id={this.state.product_id}/>
-        <Related product_id={this.state.product_id}/>
+        <Product product_id={this.state.product_id}
+                 productData={this.state.productData}/>
+        <Related product_id={this.state.product_id}
+                 productData={this.state.productData}/>
         <QandA product_id={this.state.product_id}/>
         {/*<Ratings /> */}
       </div>
