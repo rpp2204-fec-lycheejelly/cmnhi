@@ -26,7 +26,7 @@ let addQuestion = (req, res) => {
   return axios.post(`${process.env.API_URL}/qa/questions`, req.body, auth_header)
   .then(() => {
     console.log('Successfully POST to qa/questions');
-    return;
+    // return;
   })
   .catch(error => {
     console.log('error of addQuestion', error);

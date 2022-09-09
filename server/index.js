@@ -62,7 +62,7 @@ app.post('/qa/questions', (req, res) => {
   // console.log('connection is from the client', requestBody);
   return addQuestion(req, res)
   .then(result => {
-    console.log('app.post result', result);
+    // console.log('app.post result', result);
     res.status(201).send('post question success');
   })
   .catch(error => {

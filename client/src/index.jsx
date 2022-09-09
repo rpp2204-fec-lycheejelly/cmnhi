@@ -25,7 +25,7 @@ class App extends React.Component {
   }
 
   getProductData() {
-    return axios.get(`/products/${this.props.product_id}`)
+    return axios.get(`/products/${this.state.product_id}`)
     .then(result => {
       // console.log('HARRY STYLES',result.data);
       this.setState({
