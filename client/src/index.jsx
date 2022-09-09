@@ -1,4 +1,5 @@
 import React from 'react';
+import axios from 'axios';
 import ReactDOM from 'react-dom';
 import Product from './product-overview/Product.jsx';
 import Related from './related-items/Related.jsx';
@@ -19,9 +20,8 @@ class App extends React.Component {
   }
 
   //How to append product ID onto url?
-
   componentDidMount() {
-    this.getProductData.bind(this);
+    this.getProductData();
   }
 
   getProductData() {
