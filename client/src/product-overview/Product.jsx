@@ -23,8 +23,9 @@ class Product extends React.Component {
     }
   }
 
-  componentDidUpdate(preprops) {
-    if(this.props.productData !== undefined) {
+  componentDidUpdate(prevProps) {
+    if(JSON.stringify(this.props.productData) !== JSON.stringify(prevProps.productData)) {
+      console.log('inside')
       this.setState({
         product: this.props.productData,
         styles: this.props.productData.styles,
