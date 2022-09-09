@@ -52,7 +52,7 @@ class Modal1 extends React.Component {
       })
       .then(result => {
         console.log('what is the result from the server', result);
-        // this.props.getQAList();
+        this.props.getQAList();
       })
       .catch(err => {
         console.log(err);
