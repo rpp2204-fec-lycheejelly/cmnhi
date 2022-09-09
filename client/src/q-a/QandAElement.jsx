@@ -1,15 +1,18 @@
 import React from 'react';
 import AnswersList from './AnswersList.jsx';
+import Modal2 from './Modal2.jsx';
 
 
 class QandAElement extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      helpfulness: this.props.qa.question_helpfulness
+      helpfulness: this.props.qa.question_helpfulness,
+      openModal: false
     }
     this.plusOne = this.plusOne.bind(this);
     this.addAnswer = this.addAnswer.bind(this);
+    this.openModalFunc = this.openModalFunc.bind(this);
   }
 
   plusOne(e) {
@@ -20,6 +23,10 @@ class QandAElement extends React.Component {
 
   addAnswer(e) {
     console.log('add answer for this question');
+  }
+
+  openModalFunc() {
+    this.setState({openModal: !this.state.openModal});
   }
 
 
@@ -34,6 +41,7 @@ class QandAElement extends React.Component {
             <span className='QA-yes' onClick={() => this.plusOne()}>yes</span>
             <span className='QA-helpfulness'>({this.state.helpfulness}) |</span>
             <span className='QA-addAnswer' onClick={() => this.addAnswer()}>Add Answer</span>
+            {this.state.openModal && <Modal2 closeModal={this.openModalFunc} />}
           </span>
         </div>
         {/* corresponding answer list */}
