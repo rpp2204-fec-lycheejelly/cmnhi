@@ -48,7 +48,7 @@ class Modal1 extends React.Component {
         body: this.state.yourQuestion,
         name: this.state.yourNickName,
         email: this.state.yourEmail,
-        product_id: this.props.product_id
+        product_id: Number(this.props.product_id)
       })
       .then(result => {
         console.log('what is the result from the server', result);
