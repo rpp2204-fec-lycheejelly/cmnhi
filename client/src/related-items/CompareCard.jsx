@@ -91,9 +91,8 @@ class CompareCard extends React.Component {
       console.log("first four", this.state.fourProds);
       return (
         <div className="related-container">
-        {this.state.leftClick === true ? <a class="prev" onClick={()=> this.plusSlides(-1)}>&#x00AB;</a> : <a class="prev" style={{visibility:'hidden'}}>&#x00AB;</a>}
+        {this.state.leftClick === true ? <a className="prev" onClick={()=> this.plusSlides(-1)}>&#x00AB;</a> : <a className="prev" style={{visibility:'hidden'}}>&#x00AB;</a>}
         <div className="related-carousel" id="related">
-
         {
           this.state.fourProds.map((item, id) => {
           let ratings = item.data.ratings;
@@ -125,7 +124,7 @@ class CompareCard extends React.Component {
           )
         })}
         </div>
-        {this.state.rightClick === true ? <a class="next" onClick={() => this.plusSlides(1)}>&#x00BB;</a> : <a class="next" style={{visibility:'hidden'}}>&#x00BB;</a>}
+        {this.state.rightClick === true ? <a className="next" onClick={() => this.plusSlides(1)}>&#x00BB;</a> : <a className="next" style={{visibility:'hidden'}}>&#x00BB;</a>}
         </div>
       )
     } else {
@@ -135,7 +134,6 @@ class CompareCard extends React.Component {
         </div>
       )
     }
-
   }
 }
 export default CompareCard
