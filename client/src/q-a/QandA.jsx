@@ -16,7 +16,7 @@ class QandA extends React.Component {
   }
 
   componentDidMount() {
-    this.getQAList();
+    // this.getQAList();
   }
 
   getQAList() {
