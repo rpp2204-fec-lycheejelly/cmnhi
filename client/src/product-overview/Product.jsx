@@ -35,7 +35,6 @@ class Product extends React.Component {
     }
 
     if(this.state.mainIdx < 0) {
-        console.log('scroll down');
         let newCarousel = [...this.state.carousel];
         newCarousel.pop();
         newCarousel.unshift(this.state.currentStyle.photos[this.state.frontIdx - 1]);
@@ -49,7 +48,6 @@ class Product extends React.Component {
         })
 
     } else if (this.state.mainIdx > 6) {
-        console.log('scroll up');
         let newCarousel = [...this.state.carousel];
         newCarousel.shift();
         newCarousel.push(this.state.currentStyle.photos[this.state.backIdx]);
@@ -135,7 +133,6 @@ class Product extends React.Component {
   render() {
     return <>
            <div className='product-overview'>
-            {console.log('main', this.state.mainIdx, 'front', this.state.frontIdx, 'back', this.state.backIdx, 'mirror', this.state.mirror, 'match', this.state.matcher)}
              <ImageGallery photos={this.state.currentStyle.photos || []}
                            frontIdx={this.state.frontIdx}
                            backIdx={this.state.backIdx}

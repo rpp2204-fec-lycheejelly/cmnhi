@@ -7,10 +7,6 @@ let DefaultView = ({carousel, photos, index, matcher, scrollRight, scrollLeft, c
     index += matcher
   }
 
-  // console.log(matcher > 0)
-  // console.log('MATCHER', matcher)
-  // console.log('INDEX', index)
-
   return (
     <div className="image-default-view">
       {index !== 0 && <img src={leftArrow} alt="leftarrow" className="left-arrow" onClick={scrollLeft}></img>}
