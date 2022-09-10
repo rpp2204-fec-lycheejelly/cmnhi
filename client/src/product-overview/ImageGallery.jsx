@@ -12,7 +12,7 @@ class ImageGallery extends React.Component {
     }
   }
 
-  componentDidUpdate() {
+  componentDidUpdate(prevProps) {
     let carousel = [...this.props.photos];
 
     if(!this.props.carousel.length) {
@@ -28,20 +28,26 @@ class ImageGallery extends React.Component {
     this.props.changeImage(index)
   }
 
-  scrollUp() {
+  changeView() {
+    this.setState({
+      view: 'expanded'
+    })
+  }
+
+  scrollDown() {
     let newCarousel = [...this.props.carousel]
     newCarousel.pop();
     newCarousel.unshift(this.props.photos[this.props.frontIdx - 1])
 
-    this.props.decrementIdx(newCarousel);
+    this.props.scrollDown(newCarousel);
   }
 
-  scrollDown () {
+  scrollUp() {
     let newCarousel = [...this.props.carousel]
     newCarousel.shift();
-    newCarousel.push(this.props.photos[this.props.backIdx + 1]);
+    newCarousel.push(this.props.photos[this.props.backIdx]);
 
-    this.props.incrementIdx(newCarousel);
+    this.props.scrollUp(newCarousel);
   }
 
   render() {
@@ -52,14 +58,18 @@ class ImageGallery extends React.Component {
                      frontIdx = {this.props.frontIdx}
                      backIdx = {this.props.backIdx}
                      index={this.props.mainIdx}
-                     scrollUp={this.scrollUp.bind(this)}
-                     scrollDown={this.scrollDown.bind(this)}/>
+                     scrollDown={this.scrollDown.bind(this)}
+                     scrollUp={this.scrollUp.bind(this)}/>
              {this.state.view === 'expanded' && <ExpandedView />}
+
+             {this.state.view === 'default' &&
              <DefaultView carousel={this.props.carousel || []}
                           photos={this.props.photos || []}
                           index={this.props.mainIdx}
+                          matcher={this.props.matcher}
                           scrollRight={this.props.scrollRight}
-                          scrollLeft={this.props.scrollLeft}/>
+                          scrollLeft={this.props.scrollLeft}
+                          changeView={this.changeView.bind(this)}/>}
            </div>
   }
 }

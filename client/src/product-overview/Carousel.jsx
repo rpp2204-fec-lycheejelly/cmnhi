@@ -5,7 +5,7 @@ import carouselQueue from './lib/carouselQueue.js';
 
 let Carousel = ({frontIdx, backIdx, index, length, carousel, changeImage, scrollUp, scrollDown}) => {
   return <div>
-              {frontIdx !== 0 && <img src={upArrow} alt="up-arrow" className="up-arrow" onClick={scrollUp}></img>}
+              {frontIdx !== 0 && <img src={upArrow} alt="up-arrow" className="up-arrow" onClick={scrollDown}></img>}
               <div className='style-carousel'>
                         {carousel.map((photo, i) => {
                           return <img className={index === i ? "carousel-selected" : ""}
@@ -17,8 +17,8 @@ let Carousel = ({frontIdx, backIdx, index, length, carousel, changeImage, scroll
                     </div>
               {length <= 6
                 ? <></>
-                : backIdx !== length - 1
-                ? <img src={downArrow} alt="down-arrow" className="down-arrow" onClick={scrollDown}></img>
+                : backIdx !== length
+                ? <img src={downArrow} alt="down-arrow" className="down-arrow" onClick={scrollUp}></img>
                 : <></>}
             </div>
 }
