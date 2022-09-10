@@ -6,7 +6,9 @@ const initialState = {
   yourQuestion: '',
   yourNickName: '',
   yourEmail: '',
-  errorMsg: ''
+  errorMsg: '',
+  image: '',
+  loading: false
 }
 
 class Modal2 extends React.Component {
@@ -16,6 +18,7 @@ class Modal2 extends React.Component {
 
     this.submitInfo = this.submitInfo.bind(this);
     this.handleChange = this.handleChange.bind(this);
+    this.uploadImage = this.uploadImage.bind(this);
   }
 
 
@@ -38,6 +41,7 @@ class Modal2 extends React.Component {
     return true;
   }
 
+
   submitInfo = (e) => {
     e.preventDefault();
     const isValid = this.validate();
@@ -45,7 +49,23 @@ class Modal2 extends React.Component {
     if (isValid) {
       this.setState(initialState);
     }
+  }
 
+
+  uploadImage = (files) => {
+    // console.log(files);
+    const formData = new FormData();
+    formData.append("file", files[0]);
+    formData.append('upload_preset', 'f6koofaj');
+    this.setState({loading: true});
+
+    axios.post("https://api.cloudinary.com/v1_1/dc3r923zh/image/upload", formData)
+    .then(res => {
+      console.log(res);
+    })
+    .catch(err => {
+      console.log('err of uploading img', err);
+    })
   }
 
   render() {
@@ -81,7 +101,9 @@ class Modal2 extends React.Component {
                 </div>
 
 {/* UPLOAD PHOTO: */}
-                <button>Upload your Photo</button>
+                <div>
+                  <input type='file' name='file' placeholder='Upload an image' onChange={(e) => {this.uploadImage(e.target.files[0])}}/>
+                </div>
 {/* UPLOAD PHOTO: */}
 
 
