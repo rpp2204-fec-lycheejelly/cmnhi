@@ -282,14 +282,21 @@
 }
 
 /* image view */
-
 .image-gallery {
   position: relative;
+  height: 100%;
   width: 80%;
   max-width: 1000px;
-  height: 100%;
   background-color: lightgray;
 }
+
+.expanded-view {
+  position: relative;
+  width: 100%;
+  background-color: lightgray;
+  margin-right: 15px;
+}
+
 
 .image-default-view {
   height: 100%;

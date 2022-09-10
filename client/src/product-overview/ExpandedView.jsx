@@ -1,7 +1,9 @@
 import React from 'react';
 
-let ExpandedView = (props) => {
-  return <div>ExpandedView</div>
+let ExpandedView = ({carousel, photos, index, matcher, scrollRight, scrollLeft, changeView}) => {
+  return <div className='image-expanded-view'>
+          ExpandedView
+         </div>
 };
 
 export default ExpandedView

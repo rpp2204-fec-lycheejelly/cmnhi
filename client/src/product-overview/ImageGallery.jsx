@@ -7,9 +7,6 @@ class ImageGallery extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = {
-      view: 'default'
-    }
   }
 
   componentDidUpdate(prevProps) {
@@ -26,12 +23,6 @@ class ImageGallery extends React.Component {
 
   changeImage(index) {
     this.props.changeImage(index)
-  }
-
-  changeView() {
-    this.setState({
-      view: 'expanded'
-    })
   }
 
   scrollDown() {
@@ -51,7 +42,7 @@ class ImageGallery extends React.Component {
   }
 
   render() {
-    return <div className='image-gallery'>
+    return <div className={this.props.view === 'expanded' ? 'expanded-view' : 'image-gallery'}>
            <Carousel carousel={this.props.carousel}
                      length = {this.props.photos.length}
                      changeImage={this.changeImage.bind(this)}
@@ -60,16 +51,23 @@ class ImageGallery extends React.Component {
                      index={this.props.mainIdx}
                      scrollDown={this.scrollDown.bind(this)}
                      scrollUp={this.scrollUp.bind(this)}/>
-             {this.state.view === 'expanded' && <ExpandedView />}
+             {this.props.view === 'expanded' &&
+               <ExpandedView carousel={this.props.carousel || []}
+                             photos={this.props.photos || []}
+                             index={this.props.mainIdx}
+                             matcher={this.props.matcher}
+                             scrollRight={this.props.scrollRight}
+                             scrollLeft={this.props.scrollLeft}
+                             changeView={this.props.changeView}/>}
 
-             {this.state.view === 'default' &&
-             <DefaultView carousel={this.props.carousel || []}
-                          photos={this.props.photos || []}
-                          index={this.props.mainIdx}
-                          matcher={this.props.matcher}
-                          scrollRight={this.props.scrollRight}
-                          scrollLeft={this.props.scrollLeft}
-                          changeView={this.changeView.bind(this)}/>}
+             {this.props.view === 'default' &&
+              <DefaultView carousel={this.props.carousel || []}
+                            photos={this.props.photos || []}
+                            index={this.props.mainIdx}
+                            matcher={this.props.matcher}
+                            scrollRight={this.props.scrollRight}
+                            scrollLeft={this.props.scrollLeft}
+                            changeView={this.props.changeView}/>}
            </div>
   }
 }
