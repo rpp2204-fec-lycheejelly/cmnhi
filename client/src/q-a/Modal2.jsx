@@ -55,7 +55,7 @@ class Modal2 extends React.Component {
   uploadImage = (files) => {
     // console.log(files);
     const formData = new FormData();
-    formData.append("file", files[0]);
+    formData.append("files", files);
     formData.append('upload_preset', 'f6koofaj');
     this.setState({loading: true});
 
