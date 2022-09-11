@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import {Image} from 'cloudinary-react'
 
 
 const initialState = {
@@ -8,7 +9,8 @@ const initialState = {
   yourEmail: '',
   errorMsg: '',
   image: '',
-  loading: false
+  loading: false,
+  imageSelected: ''
 }
 
 class Modal2 extends React.Component {
@@ -19,6 +21,7 @@ class Modal2 extends React.Component {
     this.submitInfo = this.submitInfo.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.uploadImage = this.uploadImage.bind(this);
+    this.validate = this.validate.bind(this);
   }
 
 
@@ -29,7 +32,7 @@ class Modal2 extends React.Component {
   validate = () => {
     let errorMsg = '';
     // will handle the post of photos later as I have to do some research:
-    if (!this.state.yourEmail.includes('@') || !this.state.yourEmail || !this.state.yourQuestion || !this.state.yourNickName) {
+    if (!this.state.yourEmail.includes('@') || !this.state.yourEmail || !this.state.yourQuestion || !this.state.yourNickName || !this.imageSelected) {
       errorMsg = 'You must enter the following:';
     }
 
@@ -42,30 +45,31 @@ class Modal2 extends React.Component {
   }
 
 
+  uploadImage = () => {
+    // console.log(files);
+    const formData = new FormData();
+    formData.append("file", this.state.imageSelected);
+    formData.append('upload_preset', 'f6koofaj');
+    this.setState({loading: true});
+
+    axios.post("https://api.cloudinary.com/v1_1/dc3r923zh/image/upload", formData)
+    .then(res => {
+      console.log('res of uploading img', res);
+    })
+    .catch(err => {
+      console.log('err of uploading img', err);
+    })
+  }
+
+
   submitInfo = (e) => {
     e.preventDefault();
     const isValid = this.validate();
     // console.log('isValid', isValid);
     if (isValid) {
       this.setState(initialState);
+      console.log('valid');
     }
-  }
-
-
-  uploadImage = (files) => {
-    // console.log(files);
-    const formData = new FormData();
-    formData.append("files", files);
-    formData.append('upload_preset', 'f6koofaj');
-    this.setState({loading: true});
-
-    axios.post("https://api.cloudinary.com/v1_1/dc3r923zh/image/upload", formData)
-    .then(res => {
-      console.log(res);
-    })
-    .catch(err => {
-      console.log('err of uploading img', err);
-    })
   }
 
   render() {
@@ -102,7 +106,9 @@ class Modal2 extends React.Component {
 
 {/* UPLOAD PHOTO: */}
                 <div>
-                  <input type='file' name='file' placeholder='Upload an image' onChange={(e) => {this.uploadImage(e.target.files[0])}}/>
+                  <input type='file' name='file' placeholder='Upload an image' onChange={(event) => {this.setState({imageSelected: event.target.files[0]})}}/>
+                  <button onClick={this.uploadImage}> Upload Image </button>
+                  <Image cloudName='dc3r923zh' publicId='https://res.cloudinary.com/dc3r923zh/image/upload/v1662935331/f6koofaj/whtwoz4cn8t3ncif2cks.png'/>
                 </div>
 {/* UPLOAD PHOTO: */}
 
@@ -120,3 +126,9 @@ class Modal2 extends React.Component {
 }
 
 export default Modal2;
+
+
+// References for uploading images:
+// 1. https://www.youtube.com/watch?v=hlYczGvLlDY
+// 2. https://www.youtube.com/watch?v=pL8_KfoYyNk
+// 3. https://www.youtube.com/watch?v=Y-VgaRwWS3o
