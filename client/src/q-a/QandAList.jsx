@@ -26,9 +26,9 @@ class QandAList extends React.Component {
     if (qaList.length > 2) {
       return (
         <div>
-          {qaList.slice(0, 2).map(qa => {return <QandAElement key={qa.question_id} qa={qa}/>})}
+          {qaList.slice(0, 2).map(qa => {return <QandAElement key={qa.question_id} qa={qa} getQAList={this.props.getQAList}/>})}
           {this.state.loadMoreQues ?
-          qaList.slice(2).map(qa => {return <QandAElement key={qa.question_id} qa={qa}/>}) :
+          qaList.slice(2).map(qa => {return <QandAElement key={qa.question_id} qa={qa} getQAList={this.props.getQAList}/>}) :
           null
           }
           {loadQuestionsButton}
@@ -36,7 +36,7 @@ class QandAList extends React.Component {
       )
     } else {
       <div>
-        {qaList.map(qa => {return <QandAElement key={qa.question_id} qa={qa}/>})}
+        {qaList.map(qa => {return <QandAElement key={qa.question_id} qa={qa} getQAList={this.props.getQAList}/>})}
       </div>
     }
   }

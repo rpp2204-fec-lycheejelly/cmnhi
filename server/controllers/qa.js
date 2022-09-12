@@ -20,7 +20,7 @@ let getQAList = (req, res) => {
 }
 
 let addQuestion = (req, res) => {
-  // console.log('addQuestion req', req);
+  // console.log('addQuestion req.body', req.body);
   // console.log('addQuestion req.product_id', req.product_id);
   // return axios.post(`${process.env.API_URL}/qa/questions?product_id=${req.product_id}`, req, auth_header)
   return axios.post(`${process.env.API_URL}/qa/questions`, req.body, auth_header)
@@ -36,7 +36,18 @@ let addQuestion = (req, res) => {
 
 
 let addAnswer = (req, res) => {
-  // console.log('addAnswer req', req);
+  // console.log('addQuestion req.body', req.body);
+  // console.log('addQuestion req', req);
+  // console.log('addQuestion req.params', req.params);
+  // console.log('addQuestion req.params.question_id', req.params.question_id);
+  return axios.post(`${process.env.API_URL}/qa/questions/${req.body.question_id}/answers`, req.body, auth_header)
+  .then(() => {
+    console.log('Successfully POST to qa/questions/question_id/answers');
+  })
+  .catch(error => {
+    console.log('error of addAnswer', error);
+  })
+
 }
 
 

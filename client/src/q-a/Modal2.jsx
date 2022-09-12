@@ -88,15 +88,16 @@ class Modal2 extends React.Component {
     const isValid = this.validate();
     console.log('isValid', isValid);
     if (isValid) {
-      axios.post('/qa/questions/:question_id/answers', {
+      axios.post(`/qa/questions/:question_id/answers`, {
         question_id: this.props.questionId,
-        body: this.props.questionBody,
+        body: this.state.yourAnswer,
         name: this.state.yourNickName,
         email: this.state.yourEmail,
         photos: this.state.images
       })
       .then(result => {
         console.log('Modal2-result from the server:', result);
+        this.props.getQAList();
       })
       .catch(err => {
         console.log('Modal2-err:', err);

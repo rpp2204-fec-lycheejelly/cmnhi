@@ -38,7 +38,7 @@ class QandAElement extends React.Component {
             <span className='QA-helpfulness'>({this.state.helpfulness}) |</span>
             <span className='QA-addAnswer' onClick={() => this.openModalFunc()}>Add Answer</span>
           </span>
-            {this.state.openModal && <Modal2 closeModal={this.openModalFunc} questionBody={qa.question_body} questionId={qa.question_id}/>}
+            {this.state.openModal && <Modal2 closeModal={this.openModalFunc} questionBody={qa.question_body} questionId={qa.question_id} getQAList={this.props.getQAList}/>}
         </div>
         {/* corresponding answer list */}
         <div>

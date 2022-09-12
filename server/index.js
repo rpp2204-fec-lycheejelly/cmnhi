@@ -72,16 +72,17 @@ app.post('/qa/questions', (req, res) => {
 })
 
 
-app.post('/qa/questions/:question_id/answers', (req, res) => {
-  var requestBody = req.body;
-  console.log('connection is from the client', requestBody);
-  // return addAnswer(req, res)
-  // .then(result => {
-  //   res.status(201).send('post answer success');
-  // })
-  // .catch(error => {
-  //   res.send(error);
-  // })
+app.post(`/qa/questions/:question_id/answers`, (req, res) => {
+  // var requestBody = req.body;
+  // console.log('connection is from the client', requestBody); // works
+
+  return addAnswer(req, res)
+  .then(result => {
+    res.status(201).send('post answer success');
+  })
+  .catch(error => {
+    res.send(error);
+  })
 })
 
 //Related Products Routes
