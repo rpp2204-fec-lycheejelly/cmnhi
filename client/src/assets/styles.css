@@ -407,6 +407,17 @@
   opacity: 0.7;
 }
 
+/* zoom modal */
+
+.zoom-modal {
+  position: absolute;
+}
+
+.zoom-modal img {
+  height: 190px;
+  width: 300px;
+}
+
 
 /* add to cart */
 

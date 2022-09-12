@@ -3,14 +3,19 @@ import leftArrow from '../assets/arrow-left.png';
 import rightArrow from '../assets/arrow-right.png';
 import fullScreen from '../assets/full-screen.png';
 
-let ExpandedView = ({carousel, photos, index, matcher, scrollRight, scrollLeft, changeView, activateZoom, zoom, onEnter, onLeave}) => {
+let ExpandedView = ({carousel, photos, index, matcher, scrollRight, scrollLeft, changeView, activateZoom, zoom, onEnter, onLeave, onMouseMove}) => {
   if (matcher > 0) {
     index += matcher
   }
 
   return <div className='image-expanded-view'>
-            <img src={fullScreen} className="full-screen-btn" alt="full-screen-btn" onClick={changeView}></img>
-            {index !== 0 && <img src={leftArrow} alt="leftarrow" className="left-arrow" onClick={scrollLeft}></img>}
+            {!zoom && <img src={fullScreen} className="full-screen-btn" alt="full-screen-btn" onClick={changeView}></img>}
+
+            {zoom
+             ? <></>
+             : index !== 0
+             ? <img src={leftArrow} alt="leftarrow" className="left-arrow" onClick={scrollLeft}></img>
+             : <></>}
 
             {!carousel.length
               ? <></>
@@ -18,9 +23,14 @@ let ExpandedView = ({carousel, photos, index, matcher, scrollRight, scrollLeft, 
                      src={photos[index].url}
                      onClick={activateZoom}
                      onMouseEnter={zoom ? onEnter : () => {}}
-                     onMouseLeave={zoom ? onLeave : () => {}}></img>}
+                     onMouseLeave={zoom ? onLeave : () => {}}
+                     onMouseMove={zoom ? onMouseMove : () => {}}></img>}
 
-            {index !== photos.length - 1 && <img src={rightArrow} alt="rightarrow" className="right-arrow" onClick={scrollRight}></img>}
+            {zoom
+             ? <></>
+             : index !== photos.length - 1
+             ? <img src={rightArrow} alt="rightarrow" className="right-arrow" onClick={scrollRight}></img>
+             : <></>}
          </div>
 };
 

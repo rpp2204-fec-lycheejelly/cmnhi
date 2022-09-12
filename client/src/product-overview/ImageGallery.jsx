@@ -10,7 +10,9 @@ class ImageGallery extends React.Component {
 
     this.state = {
       zoom: false,
-      zoomModal: false
+      zoomModal: false,
+      x: 0,
+      y: 0,
     }
   }
 
@@ -39,14 +41,16 @@ class ImageGallery extends React.Component {
     } else {
       this.setState({
         zoom: false,
-        zoomModal: false
+        zoomModal: false,
       })
     }
   }
 
-  onEnter () {
+  onEnter (e) {
       this.setState({
-        zoomModal: true
+        zoomModal: true,
+        x: e.pageX,
+        y: e.pageY
       })
   }
 
@@ -54,7 +58,14 @@ class ImageGallery extends React.Component {
     this.setState({
       zoomModal: false
     })
-}
+  }
+
+  onMouseMove (e) {
+    this.setState({
+      x: e.pageX,
+      y: e.pageY
+    })
+  }
 
   scrollDown() {
     let newCarousel = [...this.props.carousel]
@@ -75,15 +86,18 @@ class ImageGallery extends React.Component {
 
   render() {
     return <div className={this.props.view === 'expanded' ? 'expanded-view' : 'image-gallery'}>
-            {this.state.zoomModal && <ZoomModal />}
-            <Carousel carousel={this.props.carousel}
-                      length = {this.props.photos.length}
-                      changeImage={this.changeImage.bind(this)}
-                      frontIdx = {this.props.frontIdx}
-                      backIdx = {this.props.backIdx}
-                      index={this.props.mainIdx}
-                      scrollDown={this.scrollDown.bind(this)}
-                      scrollUp={this.scrollUp.bind(this)}/>
+            {this.state.zoomModal && <ZoomModal xCord={this.state.x}
+                                                yCord={this.state.y}
+                                                photos={this.props.photos || []}
+                                                index={this.props.mainIdx}/>}
+            {!this.state.zoomModal && <Carousel carousel={this.props.carousel}
+                                                length = {this.props.photos.length}
+                                                changeImage={this.changeImage.bind(this)}
+                                                frontIdx = {this.props.frontIdx}
+                                                backIdx = {this.props.backIdx}
+                                                index={this.props.mainIdx}
+                                                scrollDown={this.scrollDown.bind(this)}
+                                                scrollUp={this.scrollUp.bind(this)}/>}
               {this.props.view === 'expanded' &&
                 <ExpandedView carousel={this.props.carousel || []}
                               photos={this.props.photos || []}
@@ -95,7 +109,8 @@ class ImageGallery extends React.Component {
                               changeView={this.props.changeView}
                               activateZoom={this.activateZoom.bind(this)}
                               onEnter={this.onEnter.bind(this)}
-                              onLeave={this.onLeave.bind(this)}/>}
+                              onLeave={this.onLeave.bind(this)}
+                              onMouseMove={this.onMouseMove.bind(this)}/>}
 
               {this.props.view === 'default' &&
                 <DefaultView carousel={this.props.carousel || []}
