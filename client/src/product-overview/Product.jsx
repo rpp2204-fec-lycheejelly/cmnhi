@@ -21,7 +21,7 @@ class Product extends React.Component {
       mainIdx: 0,
       matcher: 0,
       carousel: [],
-      testState: 0
+      view: 'default'
     }
   }
 
@@ -94,6 +94,19 @@ class Product extends React.Component {
       })
   }
 
+  changeView() {
+    if (this.state.view === 'default') {
+      this.setState({
+        view: 'expanded'
+      })
+    } else {
+      this.setState({
+        view: 'default'
+      })
+    }
+
+  }
+
   scrollRight() {
     this.setState({
       mainIdx: this.state.mainIdx + 1,
@@ -134,11 +147,13 @@ class Product extends React.Component {
     return <>
            <div className='product-overview'>
              <ImageGallery photos={this.state.currentStyle.photos || []}
+                           view={this.state.view}
                            frontIdx={this.state.frontIdx}
                            backIdx={this.state.backIdx}
                            mainIdx={this.state.mainIdx}
                            matcher={this.state.matcher}
                            carousel={this.state.carousel}
+                           changeView={this.changeView.bind(this)}
                            changeImage={this.changeImage.bind(this)}
                            scrollDown={this.scrollDown.bind(this)}
                            scrollUp={this.scrollUp.bind(this)}
@@ -146,18 +161,20 @@ class Product extends React.Component {
                            scrollRight={this.scrollRight.bind(this)}
                            spliceCarousel={this.spliceCarousel.bind(this)}
                            />
-             <div className='product-information'>
-                 <ProductInfo product={this.state.product}
-                              reviews={this.state.product.ratings}
-                              style={this.state.currentStyle}/>
-                 <StyleSelect styles={this.state.styles}
-                              currentStyle={this.state.currentStyle}
-                              changeStyle={this.changeStyle.bind(this)}/>
-                 <AddCart className='add-cart' skus={this.state.currentStyle.skus || {}}
-                                               sku={this.state.sku}
-                                               updateSku={this.updateSku.bind(this)}
-                                               add={this.addToBag.bind(this)}/>
-            </div>
+            {this.state.view === 'default' &&
+              <div className='product-information'>
+                  <ProductInfo product={this.state.product}
+                                reviews={this.state.product.ratings}
+                                style={this.state.currentStyle}/>
+                  <StyleSelect styles={this.state.styles}
+                                currentStyle={this.state.currentStyle}
+                                changeStyle={this.changeStyle.bind(this)}/>
+                  <AddCart className='add-cart' skus={this.state.currentStyle.skus || {}}
+                                                sku={this.state.sku}
+                                                updateSku={this.updateSku.bind(this)}
+                                                add={this.addToBag.bind(this)}/>
+              </div>
+            }
           </div>
           <ProductDesc slogan={this.state.product.slogan}
                        description={this.state.product.description}
