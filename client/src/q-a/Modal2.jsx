@@ -8,7 +8,8 @@ const initialState = {
   yourNickName: '',
   yourEmail: '',
   errorMsg: '',
-  image: '',
+  // image: '',
+  images: [],
   loading: false,
   imageSelected: ''
 }
@@ -44,22 +45,43 @@ class Modal2 extends React.Component {
     return true;
   }
 
-
-  uploadImage = () => {
-    // console.log(files);
-    const formData = new FormData();
-    formData.append("file", this.state.imageSelected);
-    formData.append('upload_preset', 'f6koofaj');
+  uploadImage = (e) => {
+    const files = e.target.files;
+    const data = new FormData();
+    data.append('file', files[0]);
+    data.append('upload_preset', 'f6koofaj');
     this.setState({loading: true});
 
-    axios.post("https://api.cloudinary.com/v1_1/dc3r923zh/image/upload", formData)
+    axios.post("https://api.cloudinary.com/v1_1/dc3r923zh/image/upload", data)
     .then(res => {
-      console.log('res of uploading img', res);
+      console.log('res of uploading img', res); // this works
+      // console.log('secure_url', res.data.secure_url); // this works
+      // this.setState({image: res.data.secure_url, loading: false});
+      this.setState({images: this.state.images.concat(res.data.secure_url)});
+      console.log('images', this.state.images);
     })
     .catch(err => {
       console.log('err of uploading img', err);
     })
+
   }
+
+
+  // uploadImage = () => {
+  //   // console.log(files);
+  //   const formData = new FormData();
+  //   formData.append("file", this.state.imageSelected);
+  //   formData.append('upload_preset', 'f6koofaj');
+  //   this.setState({loading: true});
+
+  //   axios.post("https://api.cloudinary.com/v1_1/dc3r923zh/image/upload", formData)
+  //   .then(res => {
+  //     console.log('res of uploading img', res);
+  //   })
+  //   .catch(err => {
+  //     console.log('err of uploading img', err);
+  //   })
+  // }
 
 
   submitInfo = (e) => {
@@ -106,9 +128,12 @@ class Modal2 extends React.Component {
 
 {/* UPLOAD PHOTO: */}
                 <div>
-                  <input type='file' name='file' placeholder='Upload an image' onChange={(event) => {this.setState({imageSelected: event.target.files[0]})}}/>
-                  <button onClick={this.uploadImage}> Upload Image </button>
-                  <Image cloudName='dc3r923zh' publicId='https://res.cloudinary.com/dc3r923zh/image/upload/v1662935331/f6koofaj/whtwoz4cn8t3ncif2cks.png'/>
+                <input type='file' name='file' placeholder='Upload an image' onChange={this.uploadImage} disabled={this.state.images.length >= 5}/><br />
+                {this.state.loading && this.state.images.map(imageUrl => <img key={imageUrl} src={imageUrl} style={{width: '30px'}}/>)}
+                {/* {this.state.loading && this.state.images.length <= 5 ? this.state.images.map(imageUrl => <img key={imageUrl} src={imageUrl} style={{width: '30px'}}/>) : undefined} */}
+                  {/* <input type='file' name='file' placeholder='Upload an image' onChange={(event) => {this.setState({imageSelected: event.target.files[0]})}}/> */}
+                  {/* <button onClick={this.uploadImage}> Upload Image </button>
+                  <Image cloudName='dc3r923zh' publicId='https://res.cloudinary.com/dc3r923zh/image/upload/v1662935331/f6koofaj/whtwoz4cn8t3ncif2cks.png'/> */}
                 </div>
 {/* UPLOAD PHOTO: */}
 
