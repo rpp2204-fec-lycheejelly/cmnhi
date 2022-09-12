@@ -13,17 +13,19 @@ class QandA extends React.Component {
     };
     this.getQAList = this.getQAList.bind(this);
     this.openModalFunc = this.openModalFunc.bind(this);
+    this.searchQuestions = this.searchQuestions.bind(this);
   }
 
   componentDidMount() {
     this.getQAList();
   }
 
+
+
   getQAList() {
     return axios.get(`/qa/questions/${this.props.product_id}`)
     .then((response) => {
       this.setState({qaList: response.data.results});
-      // console.log('this.state.qaList', this.state.qaList);
     })
     .catch((error) => {
       console.log('Failed to fetch data', error);
@@ -35,10 +37,19 @@ class QandA extends React.Component {
   }
 
 
+  searchQuestions(term) {
+    console.log('term', term);
+    var filtered = this.state.qaList.filter(question => question.question_body.includes(term));
+    console.log('filtered', filtered);
+    this.setState({qaList: filtered}, () => console.log('current state', this.state.qaList));
+  }
+
+
+
   render() {
     return (
       <div>
-        <SearchBar placeholder='HAVE A QUESTION? SEARCH FOR ANSWERS...'/>
+        <SearchBar searchQuestions={this.searchQuestions}/>
         <QandAList qaList={this.state.qaList} getQAList={this.getQAList}/>
         <button className="openModal1" onClick={() => this.openModalFunc()}>Add a question +</button>
         {this.state.openModal && <Modal1 closeModal={this.openModalFunc} product_id={this.props.product_id} getQAList={this.getQAList}/>}

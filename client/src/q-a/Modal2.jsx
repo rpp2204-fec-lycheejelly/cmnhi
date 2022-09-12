@@ -53,11 +53,11 @@ class Modal2 extends React.Component {
 
     axios.post("https://api.cloudinary.com/v1_1/dc3r923zh/image/upload", data)
     .then(res => {
-      console.log('res of uploading img', res); // this works
-      // console.log('secure_url', res.data.secure_url); // this works
+      // console.log('res of uploading img', res);
+      // console.log('secure_url', res.data.secure_url);
       // this.setState({image: res.data.secure_url, loading: false});
       this.setState({images: this.state.images.concat(res.data.secure_url)});
-      console.log('images', this.state.images);
+      // console.log('images', this.state.images);
     })
     .catch(err => {
       console.log('err of uploading img', err);
