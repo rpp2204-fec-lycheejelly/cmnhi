@@ -95,9 +95,16 @@ class Product extends React.Component {
   }
 
   changeView() {
-    this.setState({
-      view: 'expanded'
-    })
+    if (this.state.view === 'default') {
+      this.setState({
+        view: 'expanded'
+      })
+    } else {
+      this.setState({
+        view: 'default'
+      })
+    }
+
   }
 
   scrollRight() {
