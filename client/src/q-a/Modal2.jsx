@@ -1,17 +1,15 @@
 import React from 'react';
 import axios from 'axios';
-import {Image} from 'cloudinary-react'
+// import {Image} from 'cloudinary-react'
 
 
 const initialState = {
-  yourQuestion: '',
+  yourAnswer: '',
   yourNickName: '',
   yourEmail: '',
   errorMsg: '',
-  // image: '',
   images: [],
   loading: false,
-  imageSelected: ''
 }
 
 class Modal2 extends React.Component {
@@ -33,7 +31,7 @@ class Modal2 extends React.Component {
   validate = () => {
     let errorMsg = '';
     // will handle the post of photos later as I have to do some research:
-    if (!this.state.yourEmail.includes('@') || !this.state.yourEmail || !this.state.yourQuestion || !this.state.yourNickName || !this.imageSelected) {
+    if (!this.state.yourEmail.includes('@') || !this.state.yourEmail || !this.state.yourAnswer || !this.state.yourNickName || this.state.images.length === 0) {
       errorMsg = 'You must enter the following:';
     }
 
@@ -44,6 +42,7 @@ class Modal2 extends React.Component {
 
     return true;
   }
+
 
   uploadImage = (e) => {
     const files = e.target.files;
@@ -87,11 +86,24 @@ class Modal2 extends React.Component {
   submitInfo = (e) => {
     e.preventDefault();
     const isValid = this.validate();
-    // console.log('isValid', isValid);
+    console.log('isValid', isValid);
     if (isValid) {
+      axios.post('/qa/questions/:question_id/answers', {
+        question_id: this.props.questionId,
+        body: this.props.questionBody,
+        name: this.state.yourNickName,
+        email: this.state.yourEmail,
+        photos: this.state.images
+      })
+      .then(result => {
+        console.log('Modal2-result from the server:', result);
+      })
+      .catch(err => {
+        console.log('Modal2-err:', err);
+      })
       this.setState(initialState);
-      console.log('valid');
     }
+
   }
 
   render() {
@@ -111,7 +123,7 @@ class Modal2 extends React.Component {
                 <div style={{fontSize: 20, color: 'red'}}>{this.state.errorMsg}</div>
                 <div>
                   <span>Your Answer:</span><br />
-                  <span><textarea className='QA-1000' maxLength='1000' name='yourQuestion' type='text' value={this.state.yourQuestion} onChange={this.handleChange}></textarea></span><br />
+                  <span><textarea className='QA-1000' maxLength='1000' name='yourAnswer' type='text' value={this.state.yourAnswer} onChange={this.handleChange}></textarea></span><br />
                 </div>
                 <div style={{fontSize: 20, color: 'red'}}>{this.state.errorMsg}</div>
                 <div>

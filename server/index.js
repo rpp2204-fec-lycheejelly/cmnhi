@@ -3,7 +3,7 @@ const path = require('path');
 const express = require('express');
 const axios = require('axios');
 const overview = require('./controllers/overview.js');
-const {getQAList, addQuestion} = require('./controllers/qa.js');
+const {getQAList, addQuestion, addAnswer} = require('./controllers/qa.js');
 const getRelated = require('./controllers/related.js');
 let app = express();
 
@@ -69,6 +69,19 @@ app.post('/qa/questions', (req, res) => {
   .catch(error => {
     res.send(error);
   })
+})
+
+
+app.post('/qa/questions/:question_id/answers', (req, res) => {
+  var requestBody = req.body;
+  console.log('connection is from the client', requestBody);
+  // return addAnswer(req, res)
+  // .then(result => {
+  //   res.status(201).send('post answer success');
+  // })
+  // .catch(error => {
+  //   res.send(error);
+  // })
 })
 
 //Related Products Routes
