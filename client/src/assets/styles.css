@@ -408,14 +408,16 @@
 }
 
 /* zoom modal */
-
 .zoom-modal {
   position: absolute;
+  border: 2px solid white;
+  overflow: hidden;
+  height: 190px;
+  width: 300px;
 }
 
 .zoom-modal img {
-  height: 190px;
-  width: 300px;
+  transform: scale(2.5);
 }
 
 
