@@ -61,14 +61,22 @@ let putQuestionHelpful = (req, res) => {
 }
 
 
+let putAnswerHelpful = (req, res) => {
+  return axios.put(`${process.env.API_URL}/qa/answers/${req.body.answer_id}/helpful`, req.body, auth_header)
+  .then(() => {
+    console.log('Successfully PUT to qa/answers/answer_id/helpful');
+  })
+  .catch(err => {
+    console.log('error of putAnswerHelpful', err);
+  })
+}
 
 
-// module.exports.getQAList = getQAList;
-// module.exports.addQuestion = addQuestion;
-// module.exports.addAnswer = addAnswer;
+
 module.exports = {
   getQAList,
   addQuestion,
   addAnswer,
   putQuestionHelpful,
+  putAnswerHelpful
 }

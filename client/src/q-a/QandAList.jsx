@@ -27,7 +27,7 @@ class QandAList extends React.Component {
       loadQuestionsButton = <button onClick={this.loadMoreQuestions}>More Answered Questions</button>
     }
 
-    console.log('qaList after filtering', qaList)
+    // console.log('qaList after filtering', qaList)
 
     if (qaList.length > 2) {
       return (
