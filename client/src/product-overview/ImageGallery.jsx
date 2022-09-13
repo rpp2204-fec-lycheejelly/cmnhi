@@ -32,11 +32,13 @@ class ImageGallery extends React.Component {
     this.props.changeImage(index)
   }
 
-  activateZoom() {
+  activateZoom(e) {
     if (!this.state.zoom) {
       this.setState({
         zoom: true,
-        zoomModal: true
+        zoomModal: true,
+        x: e.pageX,
+        y: e.pageY
       })
     } else {
       this.setState({
@@ -47,6 +49,7 @@ class ImageGallery extends React.Component {
   }
 
   onEnter (e) {
+    console.log('event', e)
       this.setState({
         zoomModal: true,
         x: e.pageX,
@@ -88,9 +91,10 @@ class ImageGallery extends React.Component {
     return <div className={this.props.view === 'expanded' ? 'expanded-view' : 'image-gallery'}>
             {this.state.zoomModal && <ZoomModal xCord={this.state.x}
                                                 yCord={this.state.y}
+                                                matcher={this.props.matcher}
                                                 photos={this.props.photos || []}
                                                 index={this.props.mainIdx}/>}
-            {!this.state.zoomModal && <Carousel carousel={this.props.carousel}
+            {!this.state.zoom && <Carousel carousel={this.props.carousel}
                                                 length = {this.props.photos.length}
                                                 changeImage={this.changeImage.bind(this)}
                                                 frontIdx = {this.props.frontIdx}
