@@ -414,6 +414,7 @@
 }
 
 .zoom-modal img {
+  border: 2px solid white;
   height: 190px;
   width: 300px;
 }
