@@ -9,7 +9,8 @@ class QandA extends React.Component {
     super(props);
     this.state = {
       qaList: [],
-      openModal: false
+      openModal: false,
+      searchTerm: ''
     };
     this.getQAList = this.getQAList.bind(this);
     this.openModalFunc = this.openModalFunc.bind(this);
@@ -19,7 +20,6 @@ class QandA extends React.Component {
   componentDidMount() {
     this.getQAList();
   }
-
 
 
   getQAList() {
@@ -32,6 +32,7 @@ class QandA extends React.Component {
     })
   }
 
+
   openModalFunc() {
     this.setState({openModal: !this.state.openModal});
   }
@@ -39,18 +40,19 @@ class QandA extends React.Component {
 
   searchQuestions(term) {
     console.log('term', term);
-    var filtered = this.state.qaList.filter(question => question.question_body.includes(term));
-    console.log('filtered', filtered);
-    this.setState({qaList: filtered}, () => console.log('current state', this.state.qaList));
+    this.setState({searchTerm: term});
+    // this.state.qaList.map(qa => console.log(qa.question_body));
+    // var filtered = this.state.qaList.filter(question => question.question_body.includes(this.state.searchTerm));
+    // console.log('filtered', filtered);
+    // this.setState({qaList: filtered}, () => console.log('current state', this.state.qaList));
   }
-
 
 
   render() {
     return (
       <div>
-        <SearchBar searchQuestions={this.searchQuestions}/>
-        <QandAList qaList={this.state.qaList} getQAList={this.getQAList}/>
+        <SearchBar searchQuestions={this.searchQuestions} />
+        <QandAList qaList={this.state.qaList} getQAList={this.getQAList} searchTerm={this.state.searchTerm}/>
         <button className="openModal1" onClick={() => this.openModalFunc()}>Add a question +</button>
         {this.state.openModal && <Modal1 closeModal={this.openModalFunc} product_id={this.props.product_id} getQAList={this.getQAList}/>}
       </div>

@@ -3,7 +3,6 @@ import React from 'react';
 class SearchBar extends React.Component {
   constructor(props) {
     super(props);
-
   }
 
 
@@ -14,9 +13,11 @@ class SearchBar extends React.Component {
           <form>
             <p className='QA-searchBarTitle'>QUESTIONS & ANSWERS</p>
             <input
+              type='text'
               className='QA-searchField'
               placeholder='HAVE A QUESTION? SEARCH FOR ANSWERS...🔍'
               onChange={e => this.props.searchQuestions(e.target.value)}
+              // onChange={e => this.setState({term: e.target.value})}
             />
           </form>
         </div>
@@ -24,16 +25,5 @@ class SearchBar extends React.Component {
     )
   }
 }
-
-// function SearchBar({placeholder, data}) {
-//   return (
-//     <div className='search'>
-//       <div className='searchInput'>
-//         <input type='text' placeholder={placeholder}/>
-//         <span className='searchIcon'></span>
-//       </div>
-//     </div>
-//   )
-// }
 
 export default SearchBar;

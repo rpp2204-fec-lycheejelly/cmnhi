@@ -16,29 +16,42 @@ class QandAList extends React.Component {
 
 
   render() {
-    var qaList = this.props.qaList;
+    // var qaList = this.props.qaList;
+    var searchTerm = this.props.searchTerm;
+
+    var qaList = this.props.qaList.filter(qa => qa.question_body.toLowerCase().includes(searchTerm.toLowerCase()));
+
     // if loadMoreQues is true, then make loadQuestionsButton null; if it is false, then make it a button
     var loadQuestionsButton = null;
     if (this.state.loadMoreQues === false) {
       loadQuestionsButton = <button onClick={this.loadMoreQuestions}>More Answered Questions</button>
     }
 
-    if (qaList.length > 2) {
-      return (
-        <div>
-          {qaList.slice(0, 2).map(qa => {return <QandAElement key={qa.question_id} qa={qa} getQAList={this.props.getQAList}/>})}
-          {this.state.loadMoreQues ?
-          qaList.slice(2).map(qa => {return <QandAElement key={qa.question_id} qa={qa} getQAList={this.props.getQAList}/>}) :
-          null
-          }
-          {loadQuestionsButton}
-        </div>
-      )
-    } else {
+    console.log('qaList after filtering', qaList)
+
+    // if (qaList.length > 2) {
+    //   return (
+    //     <div>
+    //       {qaList.slice(0, 2).map(qa => {return <QandAElement key={qa.question_id} qa={qa} getQAList={this.props.getQAList}/>})}
+    //       {this.state.loadMoreQues ?
+    //       qaList.slice(2).map(qa => {return <QandAElement key={qa.question_id} qa={qa} getQAList={this.props.getQAList}/>}) :
+    //       null
+    //       }
+    //       {loadQuestionsButton}
+    //     </div>
+    //   )
+    // } else {
+    //   <div>
+    //     {qaList.map(qa => {return <QandAElement key={qa.question_id} qa={qa} getQAList={this.props.getQAList}/>})}
+    //   </div>
+    // }
+
+    return (
       <div>
         {qaList.map(qa => {return <QandAElement key={qa.question_id} qa={qa} getQAList={this.props.getQAList}/>})}
       </div>
-    }
+    )
+
   }
 }
 
