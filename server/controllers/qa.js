@@ -50,9 +50,25 @@ let addAnswer = (req, res) => {
 
 }
 
+let putQuestionHelpful = (req, res) => {
+  return axios.put(`${process.env.API_URL}/qa/questions/${req.body.question_id}/helpful`, req.body, auth_header)
+  .then(() => {
+    console.log('Successfully PUT to qa/questions/question_id/helpful');
+  })
+  .catch(error => {
+    console.log('error of putQuestionHelpful', error);
+  })
+}
 
 
 
-module.exports.getQAList = getQAList;
-module.exports.addQuestion = addQuestion;
-module.exports.addAnswer = addAnswer;
+
+// module.exports.getQAList = getQAList;
+// module.exports.addQuestion = addQuestion;
+// module.exports.addAnswer = addAnswer;
+module.exports = {
+  getQAList,
+  addQuestion,
+  addAnswer,
+  putQuestionHelpful,
+}

@@ -3,7 +3,7 @@ const path = require('path');
 const express = require('express');
 const axios = require('axios');
 const overview = require('./controllers/overview.js');
-const {getQAList, addQuestion, addAnswer} = require('./controllers/qa.js');
+const {getQAList, addQuestion, addAnswer, putQuestionHelpful} = require('./controllers/qa.js');
 const getRelated = require('./controllers/related.js');
 let app = express();
 
@@ -79,6 +79,17 @@ app.post(`/qa/questions/:question_id/answers`, (req, res) => {
   return addAnswer(req, res)
   .then(result => {
     res.status(201).send('post answer success');
+  })
+  .catch(error => {
+    res.send(error);
+  })
+})
+
+app.put(`/qa/questions/:question_id/helpful`, (req, res) => {
+  console.log('req.body', req.body, 'req.body.question_id', req.body.question_id);
+  return putQuestionHelpful(req, res)
+  .then(result => {
+    res.status(204).send('put helpfulness success');
   })
   .catch(error => {
     res.send(error);

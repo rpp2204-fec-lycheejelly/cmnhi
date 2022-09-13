@@ -491,6 +491,17 @@
   color:blueviolet
 }
 
+.QA-question {
+  /* width: 32em; */
+  display:flex;
+  /* flex-wrap: wrap; */
+  flex-grow: 1;
+  word-break: break-all;
+  /* margin-top: 2.3em;
+  margin-bottom: -5em; */
+  font-size: 1.6em;
+}
+
 
 
 

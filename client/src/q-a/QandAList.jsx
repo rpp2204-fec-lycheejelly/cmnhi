@@ -29,28 +29,22 @@ class QandAList extends React.Component {
 
     console.log('qaList after filtering', qaList)
 
-    // if (qaList.length > 2) {
-    //   return (
-    //     <div>
-    //       {qaList.slice(0, 2).map(qa => {return <QandAElement key={qa.question_id} qa={qa} getQAList={this.props.getQAList}/>})}
-    //       {this.state.loadMoreQues ?
-    //       qaList.slice(2).map(qa => {return <QandAElement key={qa.question_id} qa={qa} getQAList={this.props.getQAList}/>}) :
-    //       null
-    //       }
-    //       {loadQuestionsButton}
-    //     </div>
-    //   )
-    // } else {
-    //   <div>
-    //     {qaList.map(qa => {return <QandAElement key={qa.question_id} qa={qa} getQAList={this.props.getQAList}/>})}
-    //   </div>
-    // }
-
-    return (
+    if (qaList.length > 2) {
+      return (
+        <div>
+          {qaList.slice(0, 2).map(qa => {return <QandAElement key={qa.question_id} qa={qa} questionId={qa.question_id} getQAList={this.props.getQAList}/>})}
+          {this.state.loadMoreQues ?
+          qaList.slice(2).map(qa => {return <QandAElement key={qa.question_id} qa={qa} questionId={qa.question_id} getQAList={this.props.getQAList}/>}) :
+          null
+          }
+          {loadQuestionsButton}
+        </div>
+      )
+    } else {
       <div>
-        {qaList.map(qa => {return <QandAElement key={qa.question_id} qa={qa} getQAList={this.props.getQAList}/>})}
+        {qaList.map(qa => {return <QandAElement key={qa.question_id} qa={qa} questionId={qa.question_id} getQAList={this.props.getQAList}/>})}
       </div>
-    )
+    }
 
   }
 }
