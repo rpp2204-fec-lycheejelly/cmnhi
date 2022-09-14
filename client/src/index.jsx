@@ -14,9 +14,9 @@ class App extends React.Component {
 
     this.state = {
       // product_id: window.location.pathname.slice(1) || '71701'
-      product_id: '71701',
+      product_id: '71702',
       productData: {},
-      outfits: []
+      outfits: JSON.parse(localStorage.getItem("outfits"))
     }
     this.addToOutfit = this.addToOutfit.bind(this);
   }
@@ -39,15 +39,23 @@ class App extends React.Component {
     })
   }
 
-  addToOutfit(newOutfit) {
+  addToOutfit() {
     var repeat = false;
-    this.state.outfits.forEach(outfit => {
-      if (JSON.stringify(outfit) === JSON.stringify(newOutfit)) {
-        repeat = true;
+    if (!this.state.outfits) {
+      this.setState({outfits: [this.state.productData]}, () => {
+        localStorage.setItem("outfits", JSON.stringify(this.state.outfits));
+      })
+    } else {
+      this.state.outfits.forEach(outfit => {
+        if (JSON.stringify(outfit) === JSON.stringify(this.state.productData)) {
+          repeat = true;
+        }
+      });
+      if (!repeat) {
+        this.setState({outfits: [...this.state.outfits, this.state.productData] }, () => {
+          localStorage.setItem("outfits", JSON.stringify(this.state.outfits));
+        });
       }
-    })
-    if (!repeat) {
-      this.setState({outfits: [...this.state.outfits, newOutfit] });
     }
   }
 
@@ -57,10 +65,12 @@ class App extends React.Component {
         <img id="logo" src={comnhi} alt="company-logo"></img>
         <Product product_id={this.state.product_id}
                  productData={this.state.productData}
-                 outfits={this.state.outfits} />
+                 outfits={this.state.outfits}
+                 addOutfit={this.addToOutfit}/>
         <Related product_id={this.state.product_id}
                  productData={this.state.productData}
-                 outfits={this.state.outfits}/>
+                 outfits={this.state.outfits}
+                 addOutfit={this.addToOutfit}/>
         <QandA product_id={this.state.product_id}/>
         {/*<Ratings /> */}
       </div>

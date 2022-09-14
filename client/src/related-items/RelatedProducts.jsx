@@ -40,7 +40,7 @@ class RelatedProducts extends React.Component {
         <p>Related Products</p>
         <CompareCard related={this.state.productsList} current={this.props.current}/>
         <p>Your Outfit</p>
-        <YourOutfit />
+        <YourOutfit outfits={this.props.outfits} addOutfit={this.props.addOutfit} current={this.props.current}/>
       </>
     )
   }
