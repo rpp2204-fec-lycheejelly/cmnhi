@@ -6,10 +6,13 @@ class EachAnswer extends React.Component {
     super(props);
     this.state = {
       helpfulness: this.props.eachAnswer.helpfulness,
-      voted: false
+      voted: false,
+      reported: false
     }
     this.plusOne = this.plusOne.bind(this);
     this.answerHelpfulness = this.answerHelpfulness.bind(this);
+    this.answerReport = this.answerReport.bind(this);
+    this.report = this.report.bind(this);
   }
 
   plusOne() {
@@ -37,6 +40,32 @@ class EachAnswer extends React.Component {
     }
   }
 
+  report() {
+    this.setState({
+      reported: true
+    });
+  }
+
+  answerReport() {
+    // if (!this.state.reportedArray.includes(this.state.reportedID)) {
+    //   this.setState({
+    //     reported: true
+    //   });
+    // }
+    if (!this.state.reported) {
+      return axios.put(`/qa/answers/:answer_id/report`, {
+        answer_id: this.props.answerId
+      })
+      .then(res => {
+        console.log('response for reporting answer', res);
+        this.report();
+      })
+      .catch(err => {
+        console.log('error for answerReport', err);
+      })
+    }
+  }
+
   render() {
     // console.log('answerId', this.props.answerId);
     var answer = this.props.eachAnswer;
@@ -53,7 +82,8 @@ class EachAnswer extends React.Component {
           <span className='QA-questionInfo'>Helpful?</span>
           {/* <span className='QA-yes' onClick={() => this.plusOne()}>yes</span> */}
           <span className='QA-yes' onClick={() => this.answerHelpfulness()}>yes</span>
-          <span className='QA-helpfulness'>({this.state.helpfulness})</span>
+          <span className='QA-helpfulness'>({this.state.helpfulness}) |</span>
+          <span className='QA-A-report' onClick={this.answerReport}>{this.state.reported ? 'Reported' : 'Report'}</span>
         </div>
       </div>
     )

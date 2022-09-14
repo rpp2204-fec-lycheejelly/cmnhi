@@ -10,11 +10,17 @@ class QandAElement extends React.Component {
     this.state = {
       helpfulness: this.props.qa.question_helpfulness,
       openModal: false,
-      voted: false
+      voted: false,
+      reportStatus: 'Report'
     }
     this.plusOne = this.plusOne.bind(this);
     this.openModalFunc = this.openModalFunc.bind(this);
     this.questionHelpfulness = this.questionHelpfulness.bind(this);
+    this.reportedFunc = this.reportedFunc.bind(this);
+  }
+
+  reportedFunc() {
+    this.setState({reportStatus: 'Reported'});
   }
 
   plusOne() {
@@ -60,6 +66,7 @@ class QandAElement extends React.Component {
             {/* <span className='QA-yes' onClick={() => this.plusOne()}>yes</span> */}
             <span className='QA-yes' onClick={() => this.questionHelpfulness()}>yes</span>
             <span className='QA-helpfulness'>({this.state.helpfulness}) |</span>
+            <span className='QA-report' onClick={() => this.reportedFunc()}> {this.state.reportStatus} |</span>
             <span className='QA-addAnswer' onClick={() => this.openModalFunc()}>Add Answer</span>
           </span>
             {this.state.openModal && <Modal2 closeModal={this.openModalFunc} questionBody={qa.question_body} questionId={qa.question_id} getQAList={this.props.getQAList}/>}

@@ -3,7 +3,7 @@ const path = require('path');
 const express = require('express');
 const axios = require('axios');
 const overview = require('./controllers/overview.js');
-const {getQAList, addQuestion, addAnswer, putQuestionHelpful, putAnswerHelpful} = require('./controllers/qa.js');
+const {getQAList, addQuestion, addAnswer, putQuestionHelpful, putAnswerHelpful, putAnswerReported} = require('./controllers/qa.js');
 const getRelated = require('./controllers/related.js');
 let app = express();
 
@@ -106,6 +106,21 @@ app.put(`/qa/answers/:answer_id/helpful`, (req, res) => {
     res.send(error);
   })
 })
+
+
+app.put(`/qa/answers/:answer_id/report`, (req, res) => {
+  console.log('req.body.answer_id', req.body.answer_id);
+  return putAnswerReported(req, res)
+  .then(result => {
+    res.status(204).send('report answer success');
+  })
+  .catch(err => {
+    res.send(err);
+  })
+
+})
+
+
 
 //Related Products Routes
 app.get('/products/:product_id/related', (req, res) => {
