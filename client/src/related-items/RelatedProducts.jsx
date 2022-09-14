@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import CompareCard from './CompareCard.jsx';
+import YourOutfit from './YourOutfit.jsx';
 
 class RelatedProducts extends React.Component {
   constructor(props) {
@@ -38,6 +39,8 @@ class RelatedProducts extends React.Component {
       <>
         <p>Related Products</p>
         <CompareCard related={this.state.productsList} current={this.props.current}/>
+        <p>Your Outfit</p>
+        <YourOutfit outfits={this.props.outfits} addOutfit={this.props.addOutfit} current={this.props.current}/>
       </>
     )
   }
