@@ -2,7 +2,57 @@ import React from 'react';
 import QandAElement from './QandAElement.jsx';
 
 
+class QandAList extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      loadMoreQues: true,
+      count: 2
+    }
+    this.loadMoreQuestions = this.loadMoreQuestions.bind(this);
+  }
 
+  loadMoreQuestions() {
+    if (this.state.count >= this.props.qaList.length) {
+      this.setState({loadMoreQues: false});
+    } else {
+      this.setState({count: this.state.count + 2});
+      this.props.getQAList();
+    }
+  }
+
+
+  render() {
+    var qaList = this.props.qaList;
+    var loadQuestionsButton = null;
+
+    if (this.state.loadMoreQues) {
+      loadQuestionsButton = <button onClick={this.loadMoreQuestions}>More Answered Questions</button>
+    }
+
+    if (qaList.length > 2) {
+      return (
+        <div>
+          {qaList.slice(0, this.state.count).map(qa => {return <QandAElement key={qa.question_id} qa={qa} questionId={qa.question_id} getQAList={this.props.getQAList}/>})}
+          {loadQuestionsButton}
+        </div>
+      )
+    } else {
+      <div>
+        {qaList.map(qa => {return <QandAElement key={qa.question_id} qa={qa} questionId={qa.question_id} getQAList={this.props.getQAList}/>})}
+      </div>
+    }
+
+  }
+}
+
+export default QandAList;
+
+
+
+
+
+// PREVIOUS CODE:
 // class QandAList extends React.Component {
 //   constructor(props) {
 //     super(props);
@@ -61,49 +111,3 @@ import QandAElement from './QandAElement.jsx';
 
 
 
-class QandAList extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      loadMoreQues: true,
-      count: 2
-    }
-    this.loadMoreQuestions = this.loadMoreQuestions.bind(this);
-  }
-
-  loadMoreQuestions() {
-    if (this.state.count >= this.props.qaList.length) {
-      this.setState({loadMoreQues: false});
-    } else {
-      this.setState({count: this.state.count + 2});
-      this.props.getQAList();
-    }
-  }
-
-
-  render() {
-    var qaList = this.props.qaList;
-    var loadQuestionsButton = null;
-
-    if (this.state.loadMoreQues) {
-      loadQuestionsButton = <button onClick={this.loadMoreQuestions}>More Answered Questions</button>
-    }
-
-    if (qaList.length > 2) {
-      return (
-        <div>
-          {qaList.slice(0, this.state.count).map(qa => {return <QandAElement key={qa.question_id} qa={qa} questionId={qa.question_id} getQAList={this.props.getQAList}/>})}
-          {loadQuestionsButton}
-        </div>
-      )
-    } else {
-      <div>
-        {qaList.map(qa => {return <QandAElement key={qa.question_id} qa={qa} questionId={qa.question_id} getQAList={this.props.getQAList}/>})}
-      </div>
-    }
-
-
-  }
-}
-
-export default QandAList;
