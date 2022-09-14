@@ -15,9 +15,8 @@ class SearchBar extends React.Component {
             <input
               type='text'
               className='QA-searchField'
-              placeholder='HAVE A QUESTION? SEARCH FOR ANSWERS...🔍'
+              placeholder='HAVE A QUESTION? SEARCH FOR ANSWERS...                                                                                                                               🔍'
               onChange={e => this.props.searchQuestions(e.target.value)}
-              // onChange={e => this.setState({term: e.target.value})}
             />
           </form>
         </div>

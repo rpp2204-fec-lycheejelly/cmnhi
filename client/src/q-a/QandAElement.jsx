@@ -80,7 +80,6 @@ class QandAElement extends React.Component {
           <span className='QA-question'>Q: {qa.question_body}</span>
           <span className='QA-4in1'>
             <span className='QA-helpful-text'>Helpful?</span>
-            {/* <span className='QA-yes' onClick={() => this.plusOne()}>yes</span> */}
             <span className='QA-yes' onClick={() => this.questionHelpfulness()}>yes</span>
             <span className='QA-helpfulness'>({this.state.helpfulness}) |</span>
             <span className='QA-report' onClick={this.questionReport}> {this.state.reported ? 'Reported' : 'Report'} |</span>
@@ -93,6 +92,7 @@ class QandAElement extends React.Component {
           <span>A: </span>
           <AnswersList answersList={Object.values(qa.answers)}/>
         </div>
+        <span>------------------------------------------------------------------------------------------------------------------------------------------------------------</span>
       </div>
     )
   }

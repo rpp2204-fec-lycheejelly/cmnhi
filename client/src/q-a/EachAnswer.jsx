@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import Moment from 'moment';
 
 class EachAnswer extends React.Component {
   constructor(props) {
@@ -70,13 +71,14 @@ class EachAnswer extends React.Component {
           return <img className='QA-img' key={index} src={photo} alt='' />})}
         </div>
         <div>
-          <span className='QA-questionInfo'>by User{answer['id'] + '-' + answer['answerer_name']}</span>
-          <span className='QA-questionInfo'>{answer['date']}</span>
-          <span className='QA-questionInfo'>Helpful?</span>
-          {/* <span className='QA-yes' onClick={() => this.plusOne()}>yes</span> */}
-          <span className='QA-yes' onClick={() => this.answerHelpfulness()}>yes</span>
-          <span className='QA-helpfulness'>({this.state.helpfulness}) |</span>
-          <span className='QA-A-report' onClick={this.answerReport}>{this.state.reported ? 'Reported' : 'Report'}</span>
+          <span>
+            <span className='QA-questionInfo'>by {answer['answerer_name'].toLowerCase() === 'seller' ? <b>Seller</b> : answer['answerer_name']} |</span>
+            <span className='QA-questionInfo'>{Moment(answer['date']).format('MMM DD, YYYY')} |</span>
+            <span className='QA-questionInfo'>Helpful?</span>
+            <span className='QA-yes' onClick={() => this.answerHelpfulness()}>yes</span>
+            <span className='QA-helpfulness'>({this.state.helpfulness}) |</span>
+            <span className='QA-A-report' onClick={this.answerReport}>{this.state.reported ? 'Reported' : 'Report'}</span>
+          </span>
         </div>
       </div>
     )

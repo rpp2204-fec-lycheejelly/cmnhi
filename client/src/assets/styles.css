@@ -458,7 +458,11 @@
 
 
 .QA-questionInfo {
-  margin-right: 20px;
+  margin-right: 8px;
+}
+
+.QA-helpfulness {
+  margin-right: 8px;
 }
 
 .QA-yes {
