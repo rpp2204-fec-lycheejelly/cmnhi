@@ -3,7 +3,9 @@ const path = require('path');
 const express = require('express');
 const axios = require('axios');
 const overview = require('./controllers/overview.js');
-const {getQAList, addQuestion} = require('./controllers/qa.js');
+const {getQAList, addQuestion, addAnswer,
+       putQuestionHelpful, putAnswerHelpful,
+       putAnswerReported, putQuestionReported}= require('./controllers/qa.js');
 const getRelated = require('./controllers/related.js');
 let app = express();
 
@@ -70,6 +72,68 @@ app.post('/qa/questions', (req, res) => {
     res.send(error);
   })
 })
+
+
+app.post(`/qa/questions/:question_id/answers`, (req, res) => {
+  // var requestBody = req.body;
+  // console.log('connection is from the client', requestBody); // works
+
+  return addAnswer(req, res)
+  .then(result => {
+    res.status(201).send('post answer success');
+  })
+  .catch(error => {
+    res.send(error);
+  })
+})
+
+app.put(`/qa/questions/:question_id/helpful`, (req, res) => {
+  console.log('req.body', req.body, 'req.body.question_id', req.body.question_id);
+  return putQuestionHelpful(req, res)
+  .then(result => {
+    res.status(204).send('put question helpfulness success');
+  })
+  .catch(error => {
+    res.send(error);
+  })
+})
+
+app.put(`/qa/questions/:question_id/report`, (req, res) => {
+  console.log('req.body', req.body, 'req.body.question_id', req.body.question_id);
+  return putQuestionReported(req, res)
+  .then(result => {
+    res.status(204).send('report question success');
+  })
+  .catch(error => {
+    res.send(error);
+  })
+})
+
+app.put(`/qa/answers/:answer_id/helpful`, (req, res) => {
+  console.log('req.body.answer_id', req.body.answer_id);
+  return putAnswerHelpful(req, res)
+  .then(result => {
+    res.status(204).send('put answer helpfulness success');
+  })
+  .catch(error => {
+    res.send(error);
+  })
+})
+
+
+app.put(`/qa/answers/:answer_id/report`, (req, res) => {
+  console.log('req.body.answer_id', req.body.answer_id);
+  return putAnswerReported(req, res)
+  .then(result => {
+    res.status(204).send('report answer success');
+  })
+  .catch(err => {
+    res.send(err);
+  })
+
+})
+
+
 
 //Related Products Routes
 app.get('/products/:product_id/related', (req, res) => {
