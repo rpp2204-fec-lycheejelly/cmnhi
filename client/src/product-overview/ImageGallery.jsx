@@ -10,7 +10,6 @@ class ImageGallery extends React.Component {
 
     this.state = {
       zoom: false,
-      zoomModal: false,
       x: 0,
       y: 0,
     }
@@ -33,43 +32,23 @@ class ImageGallery extends React.Component {
   }
 
   activateZoom(e) {
-    let bound = e.target.getBoundingClientRect()
     if (!this.state.zoom) {
       this.setState({
         zoom: true,
-        zoomModal: true,
-        x: e.pageX - bound.left,
-        y: e.pageY - bound.top - 29
+        x: e.pageX,
+        y: e.pageY
       })
     } else {
       this.setState({
         zoom: false,
-        zoomModal: false,
       })
     }
   }
 
-  onEnter (e) {
-    let bound = e.target.getBoundingClientRect()
-    console.log('bound', e)
-      this.setState({
-        zoomModal: true,
-        x: e.pageX - bound.left,
-        y: e.pageY - bound.top - 29
-      })
-  }
-
-  onLeave () {
-    this.setState({
-      zoomModal: false
-    })
-  }
-
   onMouseMove (e) {
-    let bound = e.target.getBoundingClientRect()
     this.setState({
-      x: e.pageX - bound.left,
-      y: e.pageY - bound.top - 29
+      x: e.pageX,
+      y: e.pageY
     })
   }
 
@@ -92,11 +71,11 @@ class ImageGallery extends React.Component {
 
   render() {
     return <div className={this.props.view === 'expanded' ? 'expanded-view' : 'image-gallery'}>
-            {this.state.zoomModal && <ZoomModal xCord={this.state.x}
+            {/* {this.state.zoomModal && <ZoomModal xCord={this.state.x}
                                                 yCord={this.state.y}
                                                 matcher={this.props.matcher}
                                                 photos={this.props.photos || []}
-                                                index={this.props.mainIdx}/>}
+                                                index={this.props.mainIdx}/>} */}
             {!this.state.zoom && <Carousel carousel={this.props.carousel}
                                                 length = {this.props.photos.length}
                                                 changeImage={this.changeImage.bind(this)}
@@ -111,12 +90,12 @@ class ImageGallery extends React.Component {
                               index={this.props.mainIdx}
                               matcher={this.props.matcher}
                               zoom={this.state.zoom}
+                              x={this.state.x}
+                              y={this.state.y}
                               scrollRight={this.props.scrollRight}
                               scrollLeft={this.props.scrollLeft}
                               changeView={this.props.changeView}
                               activateZoom={this.activateZoom.bind(this)}
-                              onEnter={this.onEnter.bind(this)}
-                              onLeave={this.onLeave.bind(this)}
                               onMouseMove={this.onMouseMove.bind(this)}/>}
 
               {this.props.view === 'default' &&

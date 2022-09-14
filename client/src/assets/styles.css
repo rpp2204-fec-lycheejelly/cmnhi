@@ -300,6 +300,7 @@
 
 .image-expanded-view {
   height: 100%;
+  overflow: hidden;
 }
 
 .image-default-view {
@@ -312,10 +313,18 @@
   object-fit: contain;
 }
 
+
 .main-img.expanded {
   width: 100%;
   height: 100%;
   object-fit: contain;
+}
+
+.main-img.expanded.zoom {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  transform: scale(2.5);
 }
 
 .main-img.expanded:hover {

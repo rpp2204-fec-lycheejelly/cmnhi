@@ -14,7 +14,7 @@ class App extends React.Component {
 
     this.state = {
       // product_id: window.location.pathname.slice(1) || '71701'
-      product_id: '71702',
+      product_id: '71701',
       productData: {},
       outfits: JSON.parse(localStorage.getItem("outfits"))
     }
