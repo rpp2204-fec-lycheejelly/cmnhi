@@ -63,7 +63,7 @@ class AddCart extends React.Component {
             </select>
             <div>
               <button className="add-to-cart" onClick={this.addToBag.bind(this)}>Add To Bag</button>
-              <button className="add-to-outfit">&#9734;</button>
+              <button className="add-to-outfit" onClick={this.props.addOutfit}>&#9734;</button>
             </div>
           </div>
   }

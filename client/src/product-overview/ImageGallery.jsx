@@ -2,13 +2,16 @@ import React from 'react';
 import DefaultView from './DefaultView.jsx';
 import ExpandedView from './ExpandedView.jsx';
 import Carousel from './Carousel.jsx';
+import ZoomModal from './ZoomModal.jsx';
 
 class ImageGallery extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      view: 'default'
+      zoom: false,
+      x: 0,
+      y: 0,
     }
   }
 
@@ -28,9 +31,24 @@ class ImageGallery extends React.Component {
     this.props.changeImage(index)
   }
 
-  changeView() {
+  activateZoom(e) {
+    if (!this.state.zoom) {
+      this.setState({
+        zoom: true,
+        x: e.pageX,
+        y: e.pageY
+      })
+    } else {
+      this.setState({
+        zoom: false,
+      })
+    }
+  }
+
+  onMouseMove (e) {
     this.setState({
-      view: 'expanded'
+      x: e.pageX,
+      y: e.pageY
     })
   }
 
@@ -50,26 +68,44 @@ class ImageGallery extends React.Component {
     this.props.scrollUp(newCarousel);
   }
 
-  render() {
-    return <div className='image-gallery'>
-           <Carousel carousel={this.props.carousel}
-                     length = {this.props.photos.length}
-                     changeImage={this.changeImage.bind(this)}
-                     frontIdx = {this.props.frontIdx}
-                     backIdx = {this.props.backIdx}
-                     index={this.props.mainIdx}
-                     scrollDown={this.scrollDown.bind(this)}
-                     scrollUp={this.scrollUp.bind(this)}/>
-             {this.state.view === 'expanded' && <ExpandedView />}
 
-             {this.state.view === 'default' &&
-             <DefaultView carousel={this.props.carousel || []}
-                          photos={this.props.photos || []}
-                          index={this.props.mainIdx}
-                          matcher={this.props.matcher}
-                          scrollRight={this.props.scrollRight}
-                          scrollLeft={this.props.scrollLeft}
-                          changeView={this.changeView.bind(this)}/>}
+  render() {
+    return <div className={this.props.view === 'expanded' ? 'expanded-view' : 'image-gallery'}>
+            {/* {this.state.zoomModal && <ZoomModal xCord={this.state.x}
+                                                yCord={this.state.y}
+                                                matcher={this.props.matcher}
+                                                photos={this.props.photos || []}
+                                                index={this.props.mainIdx}/>} */}
+            {!this.state.zoom && <Carousel carousel={this.props.carousel}
+                                                length = {this.props.photos.length}
+                                                changeImage={this.changeImage.bind(this)}
+                                                frontIdx = {this.props.frontIdx}
+                                                backIdx = {this.props.backIdx}
+                                                index={this.props.mainIdx}
+                                                scrollDown={this.scrollDown.bind(this)}
+                                                scrollUp={this.scrollUp.bind(this)}/>}
+              {this.props.view === 'expanded' &&
+                <ExpandedView carousel={this.props.carousel || []}
+                              photos={this.props.photos || []}
+                              index={this.props.mainIdx}
+                              matcher={this.props.matcher}
+                              zoom={this.state.zoom}
+                              x={this.state.x}
+                              y={this.state.y}
+                              scrollRight={this.props.scrollRight}
+                              scrollLeft={this.props.scrollLeft}
+                              changeView={this.props.changeView}
+                              activateZoom={this.activateZoom.bind(this)}
+                              onMouseMove={this.onMouseMove.bind(this)}/>}
+
+              {this.props.view === 'default' &&
+                <DefaultView carousel={this.props.carousel || []}
+                              photos={this.props.photos || []}
+                              index={this.props.mainIdx}
+                              matcher={this.props.matcher}
+                              scrollRight={this.props.scrollRight}
+                              scrollLeft={this.props.scrollLeft}
+                              changeView={this.props.changeView}/>}
            </div>
   }
 }
