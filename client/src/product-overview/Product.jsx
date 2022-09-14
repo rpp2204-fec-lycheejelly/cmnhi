@@ -104,8 +104,9 @@ class Product extends React.Component {
         view: 'default'
       })
     }
-
   }
+
+
 
   scrollRight() {
     this.setState({
@@ -171,6 +172,7 @@ class Product extends React.Component {
                                 changeStyle={this.changeStyle.bind(this)}/>
                   <AddCart className='add-cart' skus={this.state.currentStyle.skus || {}}
                                                 sku={this.state.sku}
+                                                addOutfit={this.props.addOutfit}
                                                 updateSku={this.updateSku.bind(this)}
                                                 add={this.addToBag.bind(this)}/>
               </div>

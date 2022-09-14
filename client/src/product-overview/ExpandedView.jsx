@@ -3,12 +3,12 @@ import leftArrow from '../assets/arrow-left.png';
 import rightArrow from '../assets/arrow-right.png';
 import fullScreen from '../assets/full-screen.png';
 
-let ExpandedView = ({carousel, photos, index, matcher, scrollRight, scrollLeft, changeView, activateZoom, zoom, onEnter, onLeave, onMouseMove}) => {
+let ExpandedView = ({carousel, photos, index, matcher, x, y, scrollRight, scrollLeft, changeView, activateZoom, zoom, onMouseMove}) => {
   if (matcher > 0) {
     index += matcher
   }
 
-  return <div className='image-expanded-view'>
+  return <div className='image-expanded-view' onMouseMove={onMouseMove}>
             {!zoom && <img src={fullScreen} className="full-screen-btn" alt="full-screen-btn" onClick={changeView}></img>}
 
             {zoom
@@ -22,9 +22,8 @@ let ExpandedView = ({carousel, photos, index, matcher, scrollRight, scrollLeft, 
               : <img className="main-img expanded"
                      src={photos[index].url}
                      onClick={activateZoom}
-                     onMouseEnter={zoom ? onEnter : () => {}}
-                     onMouseLeave={zoom ? onLeave : () => {}}
-                     onMouseMove={zoom ? onMouseMove : () => {}}></img>}
+                     style={zoom ? {transform: `scale(2.5)`, transformOrigin: `${x}px ${y}px`} : {}}>
+                    </img>}
 
             {zoom
              ? <></>
