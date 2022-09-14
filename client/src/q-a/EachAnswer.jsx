@@ -41,9 +41,7 @@ class EachAnswer extends React.Component {
   }
 
   report() {
-    this.setState({
-      reported: true
-    });
+    this.setState({reported: true});
   }
 
   answerReport() {

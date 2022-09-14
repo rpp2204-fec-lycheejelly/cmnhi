@@ -3,7 +3,9 @@ const path = require('path');
 const express = require('express');
 const axios = require('axios');
 const overview = require('./controllers/overview.js');
-const {getQAList, addQuestion, addAnswer, putQuestionHelpful, putAnswerHelpful, putAnswerReported} = require('./controllers/qa.js');
+const {getQAList, addQuestion, addAnswer,
+       putQuestionHelpful, putAnswerHelpful,
+       putAnswerReported, putQuestionReported}= require('./controllers/qa.js');
 const getRelated = require('./controllers/related.js');
 let app = express();
 
@@ -90,6 +92,17 @@ app.put(`/qa/questions/:question_id/helpful`, (req, res) => {
   return putQuestionHelpful(req, res)
   .then(result => {
     res.status(204).send('put question helpfulness success');
+  })
+  .catch(error => {
+    res.send(error);
+  })
+})
+
+app.put(`/qa/questions/:question_id/report`, (req, res) => {
+  console.log('req.body', req.body, 'req.body.question_id', req.body.question_id);
+  return putQuestionReported(req, res)
+  .then(result => {
+    res.status(204).send('report question success');
   })
   .catch(error => {
     res.send(error);

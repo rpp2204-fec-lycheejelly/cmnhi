@@ -11,17 +11,15 @@ class QandAElement extends React.Component {
       helpfulness: this.props.qa.question_helpfulness,
       openModal: false,
       voted: false,
-      reportStatus: 'Report'
+      reported: false
     }
     this.plusOne = this.plusOne.bind(this);
     this.openModalFunc = this.openModalFunc.bind(this);
     this.questionHelpfulness = this.questionHelpfulness.bind(this);
-    this.reportedFunc = this.reportedFunc.bind(this);
+    this.questionReport = this.questionReport.bind(this);
+    this.report = this.report.bind(this);
   }
 
-  reportedFunc() {
-    this.setState({reportStatus: 'Reported'});
-  }
 
   plusOne() {
     // this.setState((state) => {
@@ -49,6 +47,25 @@ class QandAElement extends React.Component {
   }
 
 
+  report() {
+    this.setState({reported: true});
+  }
+
+  questionReport() {
+    if (!this.state.reported) {
+      return axios.put(`/qa/questions/:question_id/report`, {
+        question_id: this.props.questionId
+      })
+      .then(res => {
+        this.report();
+      })
+      .catch(err => {
+        console.log('error for questionReport', err);
+      })
+    }
+  }
+
+
   openModalFunc() {
     this.setState({openModal: !this.state.openModal});
   }
@@ -66,7 +83,7 @@ class QandAElement extends React.Component {
             {/* <span className='QA-yes' onClick={() => this.plusOne()}>yes</span> */}
             <span className='QA-yes' onClick={() => this.questionHelpfulness()}>yes</span>
             <span className='QA-helpfulness'>({this.state.helpfulness}) |</span>
-            <span className='QA-report' onClick={() => this.reportedFunc()}> {this.state.reportStatus} |</span>
+            <span className='QA-report' onClick={this.questionReport}> {this.state.reported ? 'Reported' : 'Report'} |</span>
             <span className='QA-addAnswer' onClick={() => this.openModalFunc()}>Add Answer</span>
           </span>
             {this.state.openModal && <Modal2 closeModal={this.openModalFunc} questionBody={qa.question_body} questionId={qa.question_id} getQAList={this.props.getQAList}/>}
