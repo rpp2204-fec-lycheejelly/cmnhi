@@ -45,11 +45,6 @@ class EachAnswer extends React.Component {
   }
 
   answerReport() {
-    // if (!this.state.reportedArray.includes(this.state.reportedID)) {
-    //   this.setState({
-    //     reported: true
-    //   });
-    // }
     if (!this.state.reported) {
       return axios.put(`/qa/answers/:answer_id/report`, {
         answer_id: this.props.answerId
