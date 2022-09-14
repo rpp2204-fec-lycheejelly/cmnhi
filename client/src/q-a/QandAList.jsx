@@ -23,9 +23,16 @@ class QandAList extends React.Component {
 
 
   render() {
-    var qaList = this.props.qaList.filter(qa => qa.question_body.toLowerCase().includes(this.props.searchTerm.toLowerCase()));
-    // var qaList = this.props.qaList;
+
     var loadQuestionsButton = null;
+
+    var qaList = this.props.qaList.filter(val => {
+      if (this.props.searchTerm === '') {
+        return val;
+      } else if (this.props.searchTerm.length >= 3 && val.question_body.toLowerCase().includes(this.props.searchTerm.toLowerCase())) {
+        return val;
+      }
+    })
 
     if (this.state.loadMoreQues) {
       loadQuestionsButton = <button onClick={this.loadMoreQuestions}>More Answered Questions</button>
