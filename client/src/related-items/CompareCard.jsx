@@ -90,15 +90,10 @@ class CompareCard extends React.Component {
     if (this.state.products) {
       console.log("first four", this.state.fourProds);
       return (
-        // <div className="related-container">
         <div className="related-carousel" id="related">
           {this.state.leftClick === true ? <a className="prev" onClick={()=> this.plusSlides(-1)}>&#x00AB;</a> : <a className="prev" style={{visibility:'hidden'}}>&#x00AB;</a>}
         {
           this.state.fourProds.map((item, id) => {
-          let ratings = item.data.ratings;
-          let total = 0;
-          let count = 0;
-          console.log(item.data.features);
           let styles = item.data.styles;
           let price = 0;
           let url = '';
