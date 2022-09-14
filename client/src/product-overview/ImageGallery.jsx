@@ -39,7 +39,7 @@ class ImageGallery extends React.Component {
         zoom: true,
         zoomModal: true,
         x: e.pageX - bound.left,
-        y: e.pageY - bound.top
+        y: e.pageY - bound.top - 29
       })
     } else {
       this.setState({
@@ -50,13 +50,12 @@ class ImageGallery extends React.Component {
   }
 
   onEnter (e) {
-    console.log(e)
-
     let bound = e.target.getBoundingClientRect()
+    console.log('bound', e)
       this.setState({
         zoomModal: true,
         x: e.pageX - bound.left,
-        y: e.pageY - bound.top
+        y: e.pageY - bound.top - 29
       })
   }
 
@@ -70,7 +69,7 @@ class ImageGallery extends React.Component {
     let bound = e.target.getBoundingClientRect()
     this.setState({
       x: e.pageX - bound.left,
-      y: e.pageY - bound.top
+      y: e.pageY - bound.top - 29
     })
   }
 

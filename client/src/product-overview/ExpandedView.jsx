@@ -8,6 +8,11 @@ let ExpandedView = ({carousel, photos, index, matcher, scrollRight, scrollLeft, 
     index += matcher
   }
 
+  const onImgLoad = ({target: img}) => {
+    const {offsetHeight, offsetWidth} = img;
+    console.log('height', offsetHeight, 'width', offsetWidth);
+  }
+
   return <div className='image-expanded-view'>
             {!zoom && <img src={fullScreen} className="full-screen-btn" alt="full-screen-btn" onClick={changeView}></img>}
 
@@ -22,6 +27,7 @@ let ExpandedView = ({carousel, photos, index, matcher, scrollRight, scrollLeft, 
               : <img className="main-img expanded"
                      src={photos[index].url}
                      onClick={activateZoom}
+                     onLoad={onImgLoad}
                      onMouseEnter={zoom ? onEnter : () => {}}
                      onMouseLeave={zoom ? onLeave : () => {}}
                      onMouseMove={zoom ? onMouseMove : () => {}}></img>}
