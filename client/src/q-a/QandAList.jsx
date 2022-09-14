@@ -25,7 +25,8 @@ class QandAList extends React.Component {
   render() {
 
     var loadQuestionsButton = null;
-
+    // console.log('this.props.qaList', this.props.qaList);
+    // console.log('this.props.searchTerm', this.props.searchTerm);
     var qaList = this.props.qaList.filter(val => {
       if (this.props.searchTerm === '') {
         return val;
@@ -33,7 +34,7 @@ class QandAList extends React.Component {
         return val;
       }
     })
-
+    // console.log('FILTERED', qaList);
     if (this.state.loadMoreQues) {
       loadQuestionsButton = <button onClick={this.loadMoreQuestions}>More Answered Questions</button>
     }
@@ -46,9 +47,11 @@ class QandAList extends React.Component {
         </div>
       )
     } else {
-      <div>
-        {qaList.map(qa => {return <QandAElement key={qa.question_id} qa={qa} questionId={qa.question_id} getQAList={this.props.getQAList}/>})}
-      </div>
+      return (
+        <div>
+          {qaList.map(qa => {return <QandAElement key={qa.question_id} qa={qa} questionId={qa.question_id} getQAList={this.props.getQAList}/>})}
+        </div>
+      )
     }
 
   }
