@@ -18,6 +18,7 @@ class App extends React.Component {
       productData: {},
       outfits: []
     }
+    this.addToOutfit = this.addToOutfit.bind(this);
   }
 
   //How to append product ID onto url?
@@ -38,14 +39,28 @@ class App extends React.Component {
     })
   }
 
+  addToOutfit(newOutfit) {
+    var repeat = false;
+    this.state.outfits.forEach(outfit => {
+      if (JSON.stringify(outfit) === JSON.stringify(newOutfit)) {
+        repeat = true;
+      }
+    })
+    if (!repeat) {
+      this.setState({outfits: [...this.state.outfits, newOutfit] });
+    }
+  }
+
   render () {
     return (
       <div>
         <img id="logo" src={comnhi} alt="company-logo"></img>
         <Product product_id={this.state.product_id}
-                 productData={this.state.productData}/>
+                 productData={this.state.productData}
+                 outfits={this.state.outfits} />
         <Related product_id={this.state.product_id}
-                 productData={this.state.productData}/>
+                 productData={this.state.productData}
+                 outfits={this.state.outfits}/>
         <QandA product_id={this.state.product_id}/>
         {/*<Ratings /> */}
       </div>

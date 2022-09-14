@@ -40,13 +40,7 @@ class YourOutfit extends React.Component {
         {this.state.rightClick === true ? <a className="next" onClick={() => this.plusSlides(1)}>&#x00BB;</a> : <a className="next" style={{visibility:'hidden'}}>&#x00BB;</a>}
         </div>
       )
-    } else {
-      return (
-        <div>
-
-        </div>
-      )
     }
-  }
 }
+
 export default YourOutfit

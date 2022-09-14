@@ -40,7 +40,7 @@ class Related extends React.Component {
     return (
       <div>
        <RelatedProducts products={this.state.relatedProducts} current={this.state.current}/>
-       <YourOutfit />
+       <YourOutfit outfits={this.props.oufits}/>
       </div>
     )
   }
