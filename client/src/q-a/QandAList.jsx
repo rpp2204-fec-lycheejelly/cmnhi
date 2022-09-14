@@ -7,7 +7,7 @@ class QandAList extends React.Component {
     super(props);
     this.state = {
       loadMoreQues: true,
-      count: 2,
+      count: 2
     }
     this.loadMoreQuestions = this.loadMoreQuestions.bind(this);
   }
@@ -23,23 +23,24 @@ class QandAList extends React.Component {
 
 
   render() {
-    var list = this.props.qaList;
+    var qaList = this.props.qaList.filter(qa => qa.question_body.toLowerCase().includes(this.props.searchTerm.toLowerCase()));
+    // var qaList = this.props.qaList;
     var loadQuestionsButton = null;
 
     if (this.state.loadMoreQues) {
       loadQuestionsButton = <button onClick={this.loadMoreQuestions}>More Answered Questions</button>
     }
 
-    if (list.length > 2) {
+    if (qaList.length > 2) {
       return (
         <div>
-          {list.slice(0, this.state.count).map(qa => {return <QandAElement key={qa.question_id} qa={qa} questionId={qa.question_id} getQAList={this.props.getQAList}/>})}
+          {qaList.slice(0, this.state.count).map(qa => {return <QandAElement key={qa.question_id} qa={qa} questionId={qa.question_id} getQAList={this.props.getQAList}/>})}
           {loadQuestionsButton}
         </div>
       )
     } else {
       <div>
-        {list.map(qa => {return <QandAElement key={qa.question_id} qa={qa} questionId={qa.question_id} getQAList={this.props.getQAList}/>})}
+        {qaList.map(qa => {return <QandAElement key={qa.question_id} qa={qa} questionId={qa.question_id} getQAList={this.props.getQAList}/>})}
       </div>
     }
 
