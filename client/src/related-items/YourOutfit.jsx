@@ -23,15 +23,18 @@ class YourOutfit extends React.Component {
 
   updateButton(prevProps) {
     var exists = false;
-    prevProps.outfits.forEach(outfit => {
-      if (JSON.stringify(outfit) === JSON.stringify(this.props.current)) {
-        exists = true;
+    //add an if statement for null
+    if (!prevProps) {
+      prevProps.outfits.forEach(outfit => {
+        if (JSON.stringify(outfit) === JSON.stringify(this.props.current)) {
+          exists = true;
+        }
+      });
+      if (exists === false) {
+        this.setState({
+          plusButton: true
+        })
       }
-    });
-    if (exists === false) {
-      this.setState({
-        plusButton: true
-      })
     }
   }
 
