@@ -119,7 +119,7 @@ class Modal1 extends React.Component {
             </div>
             <div className='QA-modalTitle'>
               <h3>Add Your Question</h3>
-              <h5>About the product name(edit later)</h5>
+              <h5>About the {this.props.productData.name}</h5>
             </div>
             <div className='QA-modalBody'>
               <label>

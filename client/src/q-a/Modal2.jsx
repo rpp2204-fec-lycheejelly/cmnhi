@@ -167,7 +167,7 @@ class Modal2 extends React.Component {
             </div>
             <div className='QA-modalTitle'>
               <h3>Submit your Answer</h3>
-              <h5>Product Name(will edit later): {this.props.questionBody}</h5>
+              <h5>{this.props.productData.name} : {this.props.questionBody}</h5>
             </div>
             <div className='QA-modalBody'>
               <label>
@@ -193,7 +193,7 @@ class Modal2 extends React.Component {
                 <div style={{fontSize: 20, color: 'red'}}>{this.state.errorMsgPhoto}</div>
                 <div>
                 <input type='file' name='file' placeholder='Upload an image' onChange={this.uploadImage} disabled={this.state.images.length >= 5}/><br />
-                {this.state.loading && this.state.images.map(imageUrl => <img key={imageUrl} src={imageUrl} style={{width: '30px'}}/>)}
+                {this.state.loading && this.state.images.map(imageUrl => <img className='QA-Modal2-thumbnail' key={imageUrl} src={imageUrl} style={{width: '30px'}}/>)}
                 {/* {this.state.loading && this.state.images.length <= 5 ? this.state.images.map(imageUrl => <img key={imageUrl} src={imageUrl} style={{width: '30px'}}/>) : undefined} */}
                   {/* <input type='file' name='file' placeholder='Upload an image' onChange={(event) => {this.setState({imageSelected: event.target.files[0]})}}/> */}
                   {/* <button onClick={this.uploadImage}> Upload Image </button>
