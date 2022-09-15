@@ -48,8 +48,8 @@ class QandA extends React.Component {
     return (
       <div>
         <SearchBar searchQuestions={this.searchQuestions} />
-        <QandAList qaList={this.state.qaList} getQAList={this.getQAList} searchTerm={this.state.searchTerm}/>
-        <button className="openModal1" onClick={() => this.openModalFunc()}>Add a question +</button>
+        <QandAList qaList={this.state.qaList} getQAList={this.getQAList} searchTerm={this.state.searchTerm} openModalFunc={this.openModalFunc}/>
+        {/* <button className="openModal1" onClick={() => this.openModalFunc()}>Add a question +</button> */}
         {this.state.openModal && <Modal1 closeModal={this.openModalFunc} product_id={this.props.product_id} getQAList={this.getQAList}/>}
       </div>
     )

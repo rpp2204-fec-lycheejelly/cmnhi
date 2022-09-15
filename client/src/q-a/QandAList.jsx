@@ -44,6 +44,7 @@ class QandAList extends React.Component {
         <div>
           {qaList.slice(0, this.state.count).map(qa => {return <QandAElement key={qa.question_id} qa={qa} questionId={qa.question_id} getQAList={this.props.getQAList}/>})}
           {loadQuestionsButton}
+          <button className="openModal1" onClick={() => this.props.openModalFunc()}>Add a question +</button>
         </div>
       )
     } else {

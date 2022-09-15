@@ -5,7 +5,10 @@ const initialState = {
   yourQuestion: '',
   yourNickName: '',
   yourEmail: '',
-  errorMsg: ''
+  // errorMsg: '',
+  errorMsgEmail: '',
+  errorMsgNickName: '',
+  errorMsgQuestion: ''
 }
 
 class Modal1 extends React.Component {
@@ -21,19 +24,60 @@ class Modal1 extends React.Component {
     this.setState({[e.target.name]: e.target.value});
   }
 
+
   validate = () => {
-    let errorMsg = '';
-    if (!this.state.yourEmail.includes('@') || !this.state.yourEmail || !this.state.yourQuestion || !this.state.yourNickName) {
-      errorMsg = 'You must enter the following:';
+    let errorMsgEmail = '';
+    let errorMsgNickName = '';
+    let errorMsgQuestion = '';
+    // https://www.youtube.com/watch?v=QxjAOSUQjP0
+    // (name) @ (domain) . (extension) (.again)
+    let validateEmail = /^([a-z\d\.-]+)@([a-z\d-]+)\.([a-z]{2,8})(\.[a-z]{2,8})?$/;
+
+
+    if (!this.state.yourQuestion) {
+      errorMsgQuestion = 'You must enter your question:';
     }
 
-    if (errorMsg) {
-      this.setState({errorMsg});
+    if (!validateEmail.test(this.state.yourEmail)) {
+      errorMsgEmail = 'You must enter the invalid email:';
+    }
+
+
+    if (!this.state.yourNickName) {
+      errorMsgNickName = 'You must enter your nickname:';
+    }
+
+
+    if (errorMsgEmail || errorMsgNickName || errorMsgQuestion) {
+      if (errorMsgEmail) {
+        this.setState({errorMsgEmail});
+      }
+      if (errorMsgQuestion) {
+        this.setState({errorMsgQuestion});
+      }
+      if (errorMsgNickName) {
+        this.setState({errorMsgNickName});
+      }
       return false;
     }
 
     return true;
   }
+
+
+  // validate = () => {
+  //   let errorMsg = '';
+  //   if (!this.state.yourEmail.includes('@') || !this.state.yourEmail || !this.state.yourQuestion || !this.state.yourNickName) {
+  //     errorMsg = 'You must enter the following:';
+  //   }
+
+  //   if (errorMsg) {
+  //     this.setState({errorMsg});
+  //     return false;
+  //   }
+
+  //   return true;
+  // }
 
   submitInfo = (e) => {
     e.preventDefault();
@@ -79,18 +123,18 @@ class Modal1 extends React.Component {
             </div>
             <div className='QA-modalBody'>
               <label>
-                <div style={{fontSize: 20, color: 'red'}}>{this.state.errorMsg}</div>
+                <div style={{fontSize: 20, color: 'red'}}>{this.state.errorMsgQuestion}</div>
                 <div>
                   <span>Your Question:</span><br />
                   <span><textarea className='QA-1000' maxLength='1000' name='yourQuestion' type='text' value={this.state.yourQuestion} onChange={this.handleChange}></textarea></span><br />
                 </div>
-                <div style={{fontSize: 20, color: 'red'}}>{this.state.errorMsg}</div>
+                <div style={{fontSize: 20, color: 'red'}}>{this.state.errorMsgNickName}</div>
                 <div>
                   <span>Your Nickname:</span><br />
                   <span><textarea className='QA-60-nickname' maxLength='60' name='yourNickName' type='text' placeholder='Example: jackson11!' value={this.state.yourNickName} onChange={this.handleChange}/></span><br />
                   <span>For privacy reasons, do not use your full name or email address</span><br />
                 </div>
-                <div style={{fontSize: 20, color: 'red'}}>{this.state.errorMsg}</div>
+                <div style={{fontSize: 20, color: 'red'}}>{this.state.errorMsgEmail}</div>
                 <div>
                   <span>Your Email:</span><br />
                   <span><textarea className='QA-60-email' maxLength='60' name='yourEmail' type='text' placeholder='Why did you like the product or not?' value={this.state.yourEmail} onChange={this.handleChange}/></span><br />
