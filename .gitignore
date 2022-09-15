@@ -106,3 +106,7 @@ bundle.js
 .tern-port
 
 .vscode
+
+*.cer
+
+*.sh
