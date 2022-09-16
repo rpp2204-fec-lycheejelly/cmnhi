@@ -1,9 +1,7 @@
 require('dotenv').config();
 const axios = require('axios');
 const auth_header = {
-  headers: { Authorization: process.env.API_KEY,
-             'Content-Type': 'application/json'
-  }
+  headers: { Authorization: process.env.API_KEY}
 };
 
 let getQAList = (req, res) => {

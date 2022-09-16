@@ -6,6 +6,7 @@ import Related from './related-items/Related.jsx';
 import QandA from './q-a/QandA.jsx';
 import styles from './assets/styles.css';
 import comnhi from './assets/comnhi.png';
+import WithInteractions from './WithInteractions.jsx';
 // import Ratings from './ratings-reviews/Ratings.jsx';
 
 class App extends React.Component {
@@ -30,7 +31,7 @@ class App extends React.Component {
   getProductData() {
     return axios.get(`/products/${this.state.product_id}`)
     .then(result => {
-      console.log('HARRY STYLES',result.data);
+      console.log('PRODUCT DATA',result.data);
       this.setState({
         productData: result.data
       })
@@ -79,21 +80,24 @@ class App extends React.Component {
   }
 
   render () {
+    const ProductWithInteractions = WithInteractions(Product);
+    const RelatedWithInteractions = WithInteractions(Related);
+    const QandAWithInteractions = WithInteractions(QandA);
+
     return (
       <div>
         <img id="logo" src={comnhi} alt="company-logo"></img>
-        <Product product_id={this.state.product_id}
-                 productData={this.state.productData}
-                 outfits={this.state.outfits}
-                 addOutfit={this.addToOutfit}/>
-        <Related product_id={this.state.product_id}
-                 productData={this.state.productData}
-                 outfits={this.state.outfits}
-                 addOutfit={this.addToOutfit}
-                 deleteOutfit={this.deleteOutfit}
-                 productClick={this.updateProductID}/>
-        <QandA   product_id={this.state.product_id}
-                 productData={this.state.productData}/>
+        <ProductWithInteractions product_id={this.state.product_id}
+                                 productData={this.state.productData}
+                                 outfits={this.state.outfits}
+                                 addOutfit={this.addToOutfit}/>
+        <RelatedWithInteractions product_id={this.state.product_id}
+                                 productData={this.state.productData}
+                                 outfits={this.state.outfits}
+                                 addOutfit={this.addToOutfit}
+                                 deleteOutfit={this.deleteOutfit}
+                                 productClick={this.updateProductID}/>
+        <QandAWithInteractions product_id={this.state.product_id}/>
         {/*<Ratings /> */}
       </div>
     )

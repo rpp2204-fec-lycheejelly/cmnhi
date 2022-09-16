@@ -41,7 +41,7 @@ class Related extends React.Component {
 
   render() {
     return (
-      <div>
+      <div onClick={(e) => {this.props.postInteraction(e, 'Related Products')}}>
        <RelatedProducts
          products={this.state.relatedProducts}
          current={this.state.current}
