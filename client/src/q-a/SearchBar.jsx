@@ -18,12 +18,13 @@ class SearchBar extends React.Component {
       <div>
         <div className='QA-searchBar'>
           <form>
-            <input
-              type='text'
-              className='QA-searchField'
-              placeholder='HAVE A QUESTION? SEARCH FOR ANSWERS...                                                                                                                                                                                                                                                                                               🔍'
-              onChange={(e) => this.search(e)}
-            />
+              <p className='QA-title'>QUESTIONS & ANSWERS</p><br />
+              <input
+                type='text'
+                className='QA-searchField'
+                placeholder='HAVE A QUESTION? SEARCH FOR ANSWERS...                                                                                                                                                                                                                                                                                               🔍'
+                onChange={(e) => this.search(e)}
+              />
           </form>
         </div>
       </div>

@@ -17,9 +17,6 @@ class EachAnswer extends React.Component {
   }
 
   plusOne() {
-    // this.setState((state) => {
-    //   return {helpfulness: state.helpfulness + 1}
-    // })
     this.setState({
       helpfulness: this.state.helpfulness + 1,
       voted: true
@@ -61,7 +58,6 @@ class EachAnswer extends React.Component {
   }
 
   render() {
-    // console.log('answerId', this.props.answerId);
     var answer = this.props.eachAnswer;
     return (
       <div className='QA-eachAnswer'>

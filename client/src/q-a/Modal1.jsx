@@ -5,7 +5,6 @@ const initialState = {
   yourQuestion: '',
   yourNickName: '',
   yourEmail: '',
-  // errorMsg: '',
   errorMsgEmail: '',
   errorMsgNickName: '',
   errorMsgQuestion: ''
@@ -65,26 +64,10 @@ class Modal1 extends React.Component {
   }
 
 
-  // validate = () => {
-  //   let errorMsg = '';
-  //   if (!this.state.yourEmail.includes('@') || !this.state.yourEmail || !this.state.yourQuestion || !this.state.yourNickName) {
-  //     errorMsg = 'You must enter the following:';
-  //   }
-
-  //   if (errorMsg) {
-  //     this.setState({errorMsg});
-  //     return false;
-  //   }
-
-  //   return true;
-  // }
-
   submitInfo = (e) => {
     e.preventDefault();
     const isValid = this.validate();
-    // console.log('isValid', isValid);
     if (isValid) {
-
       axios.post('/qa/questions', {
         body: this.state.yourQuestion,
         name: this.state.yourNickName,
@@ -105,8 +88,6 @@ class Modal1 extends React.Component {
   }
 
   render() {
-    // console.log('What is this.state: ', this.state);
-    // console.log('this.state.yourQuestion', this.state.yourQuestion);
     return (
       <form onSubmit={this.submitInfo}>
         <div className='QA-modal-1' style={{zIndex: '1000'}}>

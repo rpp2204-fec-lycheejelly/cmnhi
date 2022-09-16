@@ -64,13 +64,9 @@ app.get('/qa/questions/:product_id', (req, res) => {
   })
 })
 
-// app.post('/qa/questions/:product_id', (req, res) => {
 app.post('/qa/questions', (req, res) => {
-  // var requestBody = req.body;
-  // console.log('connection is from the client', requestBody);
   return addQuestion(req, res)
   .then(result => {
-    // console.log('app.post result', result);
     res.status(201).send('post question success');
   })
   .catch(error => {
@@ -80,8 +76,6 @@ app.post('/qa/questions', (req, res) => {
 
 
 app.post(`/qa/questions/:question_id/answers`, (req, res) => {
-  // var requestBody = req.body;
-  // console.log('connection is from the client', requestBody); // works
 
   return addAnswer(req, res)
   .then(result => {

@@ -130,9 +130,6 @@ class QandAElement extends React.Component {
 
 
   plusOne() {
-    // this.setState((state) => {
-    //   return {helpfulness: state.helpfulness + 1}
-    // })
     this.setState({
       helpfulness: this.state.helpfulness + 1,
       voted: true

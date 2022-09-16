@@ -528,16 +528,6 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
 /************ Q & A STYLES************/
 
 /*** QandA ***/
@@ -620,8 +610,8 @@
 
 .QA-loadMoreAns {
   font-weight: bolder;
-  font-size: 30px;
-  color:blueviolet
+  font-size: 15px;
+  color:rgb(0, 0, 0)
 }
 
 .QA-question {
@@ -737,9 +727,13 @@
 
 .QA-title {
   font-family: sans-serif;
-  width: 100%;
-  margin-left: 0px;
-  font-size: 18px;
+  /* width: 100%; */
+  /* margin-left: 0px; */
+  font-size: 22px;
+  display: flex;
+  margin-bottom: 0.2em;
+  font-weight: bold;
+
 }
 
 .QA-searchField {
@@ -758,7 +752,6 @@
 }
 
 #QA-QandAList-overflowTest {
-  /* background: #ffffff; */
   color: rgb(0, 0, 0);
   padding: 15px;
   width: 87em;
@@ -770,10 +763,9 @@
 #QA-answerList-overflowTest {
   color: rgb(0, 0, 0);
   padding: 10px;
-  width: 60em;
-  height: 230px;
+  width: 36em;
+  height: 180px;
   overflow: auto;
-  /* border: 1px solid rgb(205, 17, 212); */
 }
 
 

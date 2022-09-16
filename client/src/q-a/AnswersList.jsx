@@ -38,8 +38,6 @@ class AnswersList extends React.Component {
     //step1-3: concat
     answersList = sellerList.concat(nonSellerList);
 
-    // console.log('answersList', answersList);
-
     //step2: then rendering
     if (answersList.length > 2) {
       return (
