@@ -15,11 +15,12 @@ class App extends React.Component {
 
     this.state = {
       product_id: window.location.pathname.slice(1) || '71701',
-      // product_id: '71701',
       productData: {},
       outfits: JSON.parse(localStorage.getItem("outfits"))
     }
     this.addToOutfit = this.addToOutfit.bind(this);
+    this.deleteOutfit = this.deleteOutfit.bind(this);
+    this.updateProductID = this.updateProductID.bind(this);
   }
 
   //How to append product ID onto url?
@@ -48,7 +49,8 @@ class App extends React.Component {
       })
     } else {
       this.state.outfits.forEach(outfit => {
-        if (JSON.stringify(outfit) === JSON.stringify(this.state.productData)) {
+        console.log(outfit.id);
+        if (outfit.id === this.state.productData.id) {
           repeat = true;
         }
       });
@@ -58,6 +60,23 @@ class App extends React.Component {
         });
       }
     }
+  }
+
+  deleteOutfit(id) {
+    const index = this.state.outfits.map(outfit => outfit.id).indexOf(id);
+    const deleted = this.state.outfits;
+    deleted.splice(index, 1);
+    this.setState({outfits: deleted}, () => {
+      localStorage.setItem("outfits", JSON.stringify(this.state.outfits));
+    })
+  }
+
+  updateProductID(id) {
+    this.setState({
+      product_id: id
+    }, () => {
+      this.getProductData();
+    })
   }
 
   render () {
@@ -75,8 +94,11 @@ class App extends React.Component {
         <RelatedWithInteractions product_id={this.state.product_id}
                                  productData={this.state.productData}
                                  outfits={this.state.outfits}
-                                 addOutfit={this.addToOutfit}/>
-        <QandAWithInteractions product_id={this.state.product_id}/>
+                                 addOutfit={this.addToOutfit}
+                                 deleteOutfit={this.deleteOutfit}
+                                 productClick={this.updateProductID}/>
+        <QandAWithInteractions product_id={this.state.product_id}
+                               productData={this.state.productData}/>
         {/*<Ratings /> */}
       </div>
     )

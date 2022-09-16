@@ -23,10 +23,12 @@ class CompareCard extends React.Component {
     }
     this.showModal = this.showModal.bind(this);
     this.plusSlides = this.plusSlides.bind(this);
+    this.productClick = this.productClick.bind(this);
   }
 
   componentDidUpdate(prevProps) {
-    if (this.props.related.length !== prevProps.related.length) {
+    console.log(prevProps.related + " vs " + this.props.related);
+    if ((this.props.related.length !== prevProps.related.length) || JSON.stringify(this.props.relatedIds) !== JSON.stringify(prevProps.relatedIds)) {
       this.setState({
         products: this.props.related,
         fourProds: this.props.related.slice(this.state.first, this.state.last)
@@ -86,6 +88,10 @@ class CompareCard extends React.Component {
     }
   }
 
+  productClick(id) {
+    this.props.productClick(id);
+  }
+
   render () {
     if (this.state.products) {
       console.log("first four", this.state.fourProds);
@@ -104,8 +110,8 @@ class CompareCard extends React.Component {
             }
           })
           return (
-            <div className="items" key={id}>
-              <img className="thumbnail" alt={"image of " + item.data.name} src={url || item.data['styles'][0]['photos'][0]['url']}/>
+            <div className="items" key={id} onClick={() => this.productClick(item.data.id)}>
+              <img className="related-thumbnail" alt={"image of " + item.data.name} src={url || item.data['styles'][0]['photos'][0]['url']}/>
               <input type="image" src={starButton} className="star-button" onClick={() => this.showModal(item.data)} alt="comparison"/>
               <Modal product={this.props.current} compare={this.state.clickedProduct} clicked={this.state.showModal} exit={this.showModal}/>
               <p>{item.data.category}</p>
