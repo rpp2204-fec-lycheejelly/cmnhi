@@ -2,6 +2,11 @@
   font-family: Arial, Helvetica, sans-serif;
 }
 
+/* #app {
+  height: 100%;
+  width: 100%;
+} */
+
 .title {
   text-align: center;
 }
@@ -161,6 +166,9 @@
   margin-left: auto;
   margin-right: auto;
 }
+
+
+
 /* PRODUCT OVERVIEW STYLES */
 
 /* product-overview container */
@@ -317,6 +325,7 @@
 
 .image-expanded-view {
   height: 100%;
+  overflow: hidden;
 }
 
 .image-default-view {
@@ -329,10 +338,18 @@
   object-fit: contain;
 }
 
+
 .main-img.expanded {
   width: 100%;
   height: 100%;
   object-fit: contain;
+}
+
+.main-img.expanded.zoom {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  transform: scale(2.5);
 }
 
 .main-img.expanded:hover {
@@ -425,6 +442,11 @@
 }
 
 /* zoom modal */
+
+.test-modal h1 {
+  position: absolute;
+}
+
 .zoom-modal {
   position: absolute;
   border: 2px solid white;
@@ -433,7 +455,7 @@
   width: 300px;
 }
 
-.zoom-modal img {
+.zoom-modal-img {
   transform: scale(2.5);
 }
 
@@ -461,16 +483,18 @@
 .add-to-cart {
   margin-right: 10px;
   margin-left: 15px;
-  background-color: white;
+  background-color: rgb(255, 55, 55);
+  color: white;
   padding: 15px 10px 15px 10px;
   border: 1px solid rgb(79, 79, 79);
-  width: 135px;
+  width: 294px;
   border-radius: 4%;
   font-size: 15.5px;
 }
 
 .add-to-cart:hover {
   cursor: pointer;
+  background-color: rgb(242, 94, 94);
 }
 
 .size-guard {
@@ -479,7 +503,7 @@
   margin-top: 0px;
   top: 5px;
   left: 16px;
-  color: red;
+  color: rgb(255, 0, 0);
 }
 
 .add-to-outfit {
@@ -495,29 +519,74 @@
 
 .add-to-outfit:hover {
   cursor: pointer;
+  background-color: rgb(218, 218, 218);
 }
 
 
 
 
 
-/************ Questions and Answers ************/
+
+
+
+
+
+
+
+
+/************ Q & A STYLES************/
 
 /*** QandA ***/
+
+.QA-answerBody {
+  margin-left: .3em;
+  font-size: 20px;
+  font-family: sans-serif;
+}
+
+.QA-answerPhotos {
+  margin-left: .3em;
+}
+
+.QA-questionInfo-Combination {
+  margin-left: .3em;
+  font-family: sans-serif;
+  font-size: 15px;
+}
+
+.QA-eachAnswer {
+  margin-bottom: .7em;
+  font-family: sans-serif;
+}
 
 #QA-column {
   display: inline-block;
 }
 
-/*** SearchBar ***/
-.searchInput {
-  width: 200px;
-}
 /*** QandAList ***/
+.QA-Q {
+  display: flex;
+  width: 100%;
+  border: none;
+}
 
+.QA-A {
+  display: flex;
+  width: 100%;
+  font-size: 20px;
+  border: none;
+}
+
+.QA-A-letterA {
+  font-weight: bold;
+}
 
 .QA-questionInfo {
-  margin-right: 20px;
+  margin-right: 8px;
+}
+
+.QA-helpfulness {
+  margin-right: 8px;
 }
 
 .QA-yes {
@@ -536,6 +605,7 @@
 
 .QA-4in1 {
   float: right;
+  font-size: 16px;
 }
 
 .QA-img {
@@ -550,8 +620,13 @@
   color:blueviolet
 }
 
-
-
+.QA-question {
+  font-size: 20px;
+  display:flex;
+  flex-grow: 1;
+  word-break: break-all;
+  font-weight: bold;
+}
 
 
 
@@ -566,15 +641,6 @@
   margin-left: auto;
   z-index:2;
 }
-
-/* .QA-modalBackground {
-  width: 100vw;
-  height: 100vh;
-  background-color: rgb(50, 132, 164);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-} */
 
 .QA-modalContainer {
   width: 600px;
@@ -607,7 +673,6 @@
 
 .QA-modalContainer .QA-modalBody {
   flex: 50%;
-  /* display: flex; */
   justify-content: center;
   align-items: center;
   font-size: 0.8rem;
@@ -659,4 +724,76 @@
 }
 
 
+.QA-searchBar {
+  display: flex;
+  margin-top: 1em;
+  margin-left: 0px;
+  margin-bottom: 3em;
+}
 
+.QA-title {
+  font-family: sans-serif;
+  width: 100%;
+  margin-left: 0px;
+  font-size: 18px;
+}
+
+.QA-searchField {
+  display: inline-flex;
+  width: 105em;
+  height: 3em;
+  outline: black;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+
+.QA-QandAElement {
+  margin-bottom: 20px
+}
+
+#QA-QandAList-overflowTest {
+  /* background: #ffffff; */
+  color: rgb(0, 0, 0);
+  padding: 15px;
+  width: 87em;
+  height: 500px;
+  overflow: auto;
+  border: 1px solid #ccc;
+}
+
+#QA-answerList-overflowTest {
+  color: rgb(0, 0, 0);
+  padding: 10px;
+  width: 60em;
+  height: 230px;
+  overflow: auto;
+  /* border: 1px solid rgb(205, 17, 212); */
+}
+
+
+.QA-container {
+  /* margin: 20 auto;
+  width: 100% */
+  /* margin: auto; */
+  margin-left: 20;
+  width: 100em;
+  /* border: 3px solid #73AD21;
+  padding: 10px; */
+}
+
+.QA-Modal2-thumbnail {
+  margin: 2
+}
+
+.openModal1 {
+  height: 100px;
+  /* width: 100px */
+}
+
+.loadQuestionsButton {
+  height: 100px;
+  /* width: 100px; */
+  margin-right: 20px
+}

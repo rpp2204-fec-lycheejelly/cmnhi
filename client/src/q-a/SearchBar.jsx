@@ -1,15 +1,34 @@
 import React from 'react';
-// import '../assets/styles.css';
 
-function SearchBar({placeholder, data}) {
-  return (
-    <div className='search'>
-      <div className='searchInput'>
-        <input type='text' placeholder={placeholder}/>
-        <span className='searchIcon'></span>
+class SearchBar extends React.Component {
+  constructor(props) {
+    super(props);
+    this.search = this.search.bind(this);
+  }
+
+
+  search(e) {
+    e.preventDefault();
+    this.props.searchQuestions(e.target.value);
+  }
+
+
+  render() {
+    return (
+      <div>
+        <div className='QA-searchBar'>
+          <form>
+            <input
+              type='text'
+              className='QA-searchField'
+              placeholder='HAVE A QUESTION? SEARCH FOR ANSWERS...                                                                                                                                                                                                                                                                                               🔍'
+              onChange={(e) => this.search(e)}
+            />
+          </form>
+        </div>
       </div>
-    </div>
-  )
+    )
+  }
 }
 
 export default SearchBar;
