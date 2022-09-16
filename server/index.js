@@ -14,6 +14,11 @@ app.use(express.json());
 
 let port = process.env.PORT;
 
+//Interactions
+app.post('/interactions', (req, res) => {
+  overview.addInteraction(req, res);
+})
+
 //Product Overview Routes
 
 app.get('/products/:product_id', (req, res) => {

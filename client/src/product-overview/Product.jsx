@@ -5,7 +5,7 @@ import ImageGallery from './ImageGallery.jsx';
 import StyleSelect from './StyleSelect.jsx';
 import AddCart from './AddCart.jsx';
 import ProductDesc from './ProductDesc.jsx';
-
+import WithInteractions from '../WithInteractions.jsx';
 
 class Product extends React.Component {
   constructor(props) {
@@ -25,15 +25,26 @@ class Product extends React.Component {
     }
   }
 
-  componentDidUpdate(prevProps, prevState) {
-    if(JSON.stringify(this.props.productData) !== JSON.stringify(prevProps.productData)) {
+  componentDidMount() {
+    if (Object.keys(this.props.productData).length) {
       this.setState({
         product: this.props.productData,
         styles: this.props.productData.styles,
         currentStyle: this.props.productData.styles[0]
       })
     }
+  }
 
+  componentDidUpdate(prevProps, prevState) {
+    // if(JSON.stringify(this.state.productData) !== JSON.stringify(this.props.productData)) {
+    //   this.setState({
+    //     product: this.props.productData,
+    //     styles: this.props.productData.styles,
+    //     currentStyle: this.props.productData.styles[0]
+    //   })
+    // }
+
+    console.log('inside updated')
     if(this.state.mainIdx < 0) {
         let newCarousel = [...this.state.carousel];
         newCarousel.pop();
@@ -106,8 +117,6 @@ class Product extends React.Component {
     }
   }
 
-
-
   scrollRight() {
     this.setState({
       mainIdx: this.state.mainIdx + 1,
@@ -145,45 +154,45 @@ class Product extends React.Component {
   }
 
   render() {
-    return <>
-           <div className='product-overview'>
-             <ImageGallery photos={this.state.currentStyle.photos || []}
-                           view={this.state.view}
-                           frontIdx={this.state.frontIdx}
-                           backIdx={this.state.backIdx}
-                           mainIdx={this.state.mainIdx}
-                           matcher={this.state.matcher}
-                           carousel={this.state.carousel}
-                           changeView={this.changeView.bind(this)}
-                           changeImage={this.changeImage.bind(this)}
-                           scrollDown={this.scrollDown.bind(this)}
-                           scrollUp={this.scrollUp.bind(this)}
-                           scrollLeft={this.scrollLeft.bind(this)}
-                           scrollRight={this.scrollRight.bind(this)}
-                           spliceCarousel={this.spliceCarousel.bind(this)}
-                           />
-            {this.state.view === 'default' &&
-              <div className='product-information'>
-                  <ProductInfo product={this.state.product}
-                                reviews={this.state.product.ratings}
-                                style={this.state.currentStyle}/>
-                  <StyleSelect styles={this.state.styles}
-                                currentStyle={this.state.currentStyle}
-                                changeStyle={this.changeStyle.bind(this)}/>
-                  <AddCart className='add-cart' skus={this.state.currentStyle.skus || {}}
-                                                sku={this.state.sku}
-                                                addOutfit={this.props.addOutfit}
-                                                updateSku={this.updateSku.bind(this)}
-                                                add={this.addToBag.bind(this)}/>
-              </div>
-            }
+    return <div onClick={(e) => {this.props.postInteraction(e, 'Product Overview')}}>
+            <div className='product-overview'>
+              <ImageGallery photos={this.state.currentStyle.photos || []}
+                            view={this.state.view}
+                            frontIdx={this.state.frontIdx}
+                            backIdx={this.state.backIdx}
+                            mainIdx={this.state.mainIdx}
+                            matcher={this.state.matcher}
+                            carousel={this.state.carousel}
+                            changeView={this.changeView.bind(this)}
+                            changeImage={this.changeImage.bind(this)}
+                            scrollDown={this.scrollDown.bind(this)}
+                            scrollUp={this.scrollUp.bind(this)}
+                            scrollLeft={this.scrollLeft.bind(this)}
+                            scrollRight={this.scrollRight.bind(this)}
+                            spliceCarousel={this.spliceCarousel.bind(this)}
+                            />
+              {this.state.view === 'default' &&
+                <div className='product-information'>
+                    <ProductInfo product={this.state.product}
+                                  reviews={this.state.product.ratings}
+                                  style={this.state.currentStyle}/>
+                    <StyleSelect styles={this.state.styles}
+                                  currentStyle={this.state.currentStyle}
+                                  changeStyle={this.changeStyle.bind(this)}/>
+                    <AddCart className='add-cart' skus={this.state.currentStyle.skus || {}}
+                                                  sku={this.state.sku}
+                                                  addOutfit={this.props.addOutfit}
+                                                  updateSku={this.updateSku.bind(this)}
+                                                  add={this.addToBag.bind(this)}/>
+                </div>
+              }
+            </div>
+            <ProductDesc slogan={this.state.product.slogan}
+                        description={this.state.product.description}
+                        features={this.state.product.features}/>
           </div>
-          <ProductDesc slogan={this.state.product.slogan}
-                       description={this.state.product.description}
-                       features={this.state.product.features}/>
-          </>
   }
 }
 
-export default Product
+export default Product;
 

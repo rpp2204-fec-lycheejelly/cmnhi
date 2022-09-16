@@ -1,6 +1,7 @@
 require('dotenv').config();
 const axios = require('axios');
-const auth_header = { headers: { Authorization: process.env.API_KEY } };
+const auth_header = { headers: { Authorization: process.env.API_KEY,
+                                'Content-Type': 'application/json' } };
 
 module.exports.getProduct = (req, res) => {
   return axios.get(`${process.env.API_URL}/products/${req.params.product_id}`, auth_header)
@@ -40,5 +41,16 @@ module.exports.addToCart = (req, res) => {
     })
     .catch(error => {
       console.log(error.message)
+    })
+}
+
+module.exports.addInteraction = (req, res) => {
+  return axios.post(`${process.env.API_URL}/interactions`, req.body, auth_header)
+    .then(result => {
+      console.log('Successful POST to interactions', req.body)
+      res.end();
+    })
+    .catch(error => {
+      console.log('Error POST to interactions', error.message)
     })
 }

@@ -46,7 +46,7 @@ class QandA extends React.Component {
 
   render() {
     return (
-      <div>
+      <div onClick={(e) => {this.props.postInteraction(e, 'Questions and Answers')}}>
         <SearchBar searchQuestions={this.searchQuestions} />
         <QandAList qaList={this.state.qaList} getQAList={this.getQAList} searchTerm={this.state.searchTerm}/>
         <button className="openModal1" onClick={() => this.openModalFunc()}>Add a question +</button>
