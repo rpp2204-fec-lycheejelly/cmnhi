@@ -19,6 +19,7 @@ class App extends React.Component {
       outfits: JSON.parse(localStorage.getItem("outfits"))
     }
     this.addToOutfit = this.addToOutfit.bind(this);
+    this.deleteOutfit = this.deleteOutfit.bind(this);
   }
 
   //How to append product ID onto url?
@@ -57,6 +58,10 @@ class App extends React.Component {
         });
       }
     }
+  }
+
+  deleteOutfit(id) {
+
   }
 
   render () {

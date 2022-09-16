@@ -1,12 +1,13 @@
 import React from 'react';
 import plusSign from '../assets/plus.png';
+import deleteButt from '../assets/delete.png';
 import Stars from '../product-overview/Stars.jsx';
 
 class YourOutfit extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      plusButton: false,
+      plusButton: true,
       leftClick: false,
       rightClick: true,
       fourProds: [],
@@ -15,6 +16,7 @@ class YourOutfit extends React.Component {
     }
     this.addOutfit = this.addOutfit.bind(this);
     this.updateButton = this.updateButton.bind(this);
+    this.deleteOutfit = this.deleteOutfit.bind(this);
   }
 
   componentDidUpdate(prevProps) {
@@ -45,11 +47,17 @@ class YourOutfit extends React.Component {
       this.props.addOutfit();
     })
   }
+
+  deleteOutfit(id) {
+    console.log(id);
+  }
+
   render () {
     if (!this.props.outfits) {
         return (
           <div className="related-outfit">
             <div className="items">
+              <p>Add to Outfit</p>
               <input type="image" src={plusSign} className="plusSign" onClick={this.addOutfit} alt="add to outfit"/>
             </div>
           </div>
@@ -72,6 +80,7 @@ class YourOutfit extends React.Component {
             return (
               <div className="items" key={'yo' + id}>
                 <img className="thumbnail" alt={"image of " + outfit.name} src={url || outfit['styles'][0]['photos'][0]['url']}/>
+                <input type="image" src={deleteButt} className="delete-button" alt="comparison" onClick={() => this.deleteOutfit(outfit.id)}/>
                 <p>{outfit.category}</p>
                 <p><strong>{outfit.name}</strong></p>
                 <p><em>{outfit.slogan}</em></p>
@@ -82,7 +91,7 @@ class YourOutfit extends React.Component {
               </div>
             )
           })}
-          {this.state.plusButton === true ? <div className="items"> <input type="image" src={plusSign} className="plusSign" onClick={this.addOutfit} alt="add to outfit"/> </div> : <></>}
+          {this.state.plusButton === true ? <div className="items"><p id="add">Add to Outfit</p><input type="image" src={plusSign} className="plusSign" onClick={this.addOutfit} alt="add to outfit"/> </div> : <></>}
         </div>
       )
     }
