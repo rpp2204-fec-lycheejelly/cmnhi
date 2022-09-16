@@ -13,8 +13,8 @@ class App extends React.Component {
     super(props);
 
     this.state = {
-      // product_id: window.location.pathname.slice(1) || '71701'
-      product_id: '71701',
+      product_id: window.location.pathname.slice(1) || '71701',
+      // product_id: '71701',
       productData: {},
       outfits: JSON.parse(localStorage.getItem("outfits"))
     }
@@ -71,7 +71,8 @@ class App extends React.Component {
                  productData={this.state.productData}
                  outfits={this.state.outfits}
                  addOutfit={this.addToOutfit}/>
-        <QandA product_id={this.state.product_id}/>
+        <QandA   product_id={this.state.product_id}
+                 productData={this.state.productData}/>
         {/*<Ratings /> */}
       </div>
     )
