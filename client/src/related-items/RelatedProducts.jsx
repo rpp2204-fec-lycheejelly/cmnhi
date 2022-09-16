@@ -12,7 +12,7 @@ class RelatedProducts extends React.Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
-    if (this.props.products.length !== prevProps.products.length) {
+    if (JSON.stringify(prevProps.products) !== JSON.stringify(this.props.products)) {
       let ids = this.props.products;
       let details = [];
       let promises = [];
@@ -22,7 +22,6 @@ class RelatedProducts extends React.Component {
       }
 
       axios.all(promises).then(axios.spread((...responses) => {
-        console.log(responses);
         this.setState({
           productsList: responses
         })
@@ -31,16 +30,21 @@ class RelatedProducts extends React.Component {
         // react on errors.
         console.log(errors);
       })
-      }
+    }
   }
 
   render () {
     return (
       <>
         <p>Related Products</p>
-        <CompareCard related={this.state.productsList} current={this.props.current}/>
+        <CompareCard related={this.state.productsList} current={this.props.current} productClick={this.props.productClick}
+                     relatedIds={this.props.products}/>
         <p>Your Outfit</p>
-        <YourOutfit outfits={this.props.outfits} addOutfit={this.props.addOutfit} current={this.props.current}/>
+        <YourOutfit outfits={this.props.outfits}
+                    addOutfit={this.props.addOutfit}
+                    current={this.props.current}
+                    deleteOutfit={this.props.deleteOutfit}
+                    productClick={this.props.productClick}/>
       </>
     )
   }
