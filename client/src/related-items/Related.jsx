@@ -11,28 +11,32 @@ class Related extends React.Component {
       outfit: [],
       current: {}
     })
+    this.getRelated = this.getRelated.bind(this);
   }
 
   componentDidMount() {
-    let one = '/products/' + this.props.product_id;
-    let two = '/products/' + this.props.product_id + '/related';
+    this.getRelated();
+  }
 
-    const requestOne = axios.get(one);
-    const requestTwo = axios.get(two);
-
-
-    axios.all([requestOne, requestTwo]).then(axios.spread((...responses) => {
-      const responseOne = responses[0].data;
-      const responseTwo = responses[1].data;
+  getRelated() {
+    axios.get('/products/' + this.props.product_id + '/related')
+      .then((responses) => {
+      console.log("related", responses);
       this.setState({
-        relatedProducts: responseTwo,
-        current: responseOne
+        relatedProducts: responses.data,
+        current: this.props.productData
       })
       // use/access the results
-    })).catch(errors => {
+    }).catch(errors => {
       // react on errors.
       console.log(errors);
     })
+  }
+
+  componentDidUpdate(prevProps) {
+    if (prevProps.product_id !== this.props.product_id) {
+      this.getRelated();
+    }
   }
 
   render() {
@@ -42,7 +46,9 @@ class Related extends React.Component {
          products={this.state.relatedProducts}
          current={this.state.current}
          outfits={this.props.outfits}
-         addOutfit={this.props.addOutfit}/>
+         addOutfit={this.props.addOutfit}
+         deleteOutfit={this.props.deleteOutfit}
+         productClick={this.props.productClick}/>
       </div>
     )
   }

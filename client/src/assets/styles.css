@@ -33,6 +33,10 @@
   text-align: center;
 }
 
+.related-outfit > .items {
+  width: 22.5%;
+}
+
 .prev, .next {
   width: auto;
   margin-top: auto;
@@ -60,7 +64,7 @@
   background-color: rgba(0,0,0,0.5);
 }
 
-.items > .thumbnail {
+.items > .related-thumbnail {
   width: 100%;
   height: 55%;
 }
