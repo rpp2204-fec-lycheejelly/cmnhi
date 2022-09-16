@@ -44,7 +44,6 @@ class Product extends React.Component {
     //   })
     // }
 
-    console.log('inside updated')
     if(this.state.mainIdx < 0) {
         let newCarousel = [...this.state.carousel];
         newCarousel.pop();

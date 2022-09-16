@@ -145,10 +145,6 @@ app.get('/products/:product_id/related', (req, res) => {
     })
 })
 
-app.get('/*', (req, res) => {
-
-});
-
 app.listen(port, function() {
   console.log(`listening on port ${port}`);
 });
