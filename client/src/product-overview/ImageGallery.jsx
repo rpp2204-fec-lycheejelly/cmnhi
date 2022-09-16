@@ -2,7 +2,6 @@ import React from 'react';
 import DefaultView from './DefaultView.jsx';
 import ExpandedView from './ExpandedView.jsx';
 import Carousel from './Carousel.jsx';
-import ZoomModal from './ZoomModal.jsx';
 
 class ImageGallery extends React.Component {
   constructor(props) {
@@ -71,11 +70,6 @@ class ImageGallery extends React.Component {
 
   render() {
     return <div className={this.props.view === 'expanded' ? 'expanded-view' : 'image-gallery'}>
-            {/* {this.state.zoomModal && <ZoomModal xCord={this.state.x}
-                                                yCord={this.state.y}
-                                                matcher={this.props.matcher}
-                                                photos={this.props.photos || []}
-                                                index={this.props.mainIdx}/>} */}
             {!this.state.zoom && <Carousel carousel={this.props.carousel}
                                                 length = {this.props.photos.length}
                                                 changeImage={this.changeImage.bind(this)}

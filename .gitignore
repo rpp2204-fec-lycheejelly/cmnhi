@@ -107,5 +107,9 @@ bundle.js
 
 .vscode
 
+
 *.pem
+
+*.cer
+
 *.sh
