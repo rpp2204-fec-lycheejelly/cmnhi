@@ -3,6 +3,38 @@ const axios = require('axios');
 const auth_header = { headers: { Authorization: process.env.API_KEY,
                                 'Content-Type': 'application/json' } };
 
+module.exports.getAllProductData = (req, res) => {
+  let productData = {};
+
+  let productReq = axios.get(`${process.env.API_URL}/products/${req.params.product_id}`, auth_header);
+  let reviewsReq = axios.get(`${process.env.API_URL}/reviews/meta?product_id=${req.params.product_id}`, auth_header);
+  let stylesReq = axios.get(`${process.env.API_URL}/products/${req.params.product_id}/styles`, auth_header);
+  let relatedReq = axios.get(`${process.env.API_URL}/products/${req.params.product_id}/related`, auth_header);
+
+  axios.all([productReq, reviewsReq, stylesReq, relatedReq])
+    .then(axios.spread((...response) => {
+      console.log('Product', response[0].data);
+      console.log('Reviews', response[1].data.ratings);
+      console.log('Styles', response[2].data.results);
+      console.log('Related IDs', response[3].data);
+
+      productData = {...response[0].data};
+
+      if (response[1].data.ratings === undefined) {
+        productData = {...productData, 'ratings': {'1': '0'}};
+      } else {
+        productData = {...productData, 'ratings': {...response[1].data.ratings}}
+      }
+
+      productData.styles=response[2].data.results;
+
+      res.json(productData);
+    }))
+    .catch(error => {
+      console.log('Error', error.message)
+    })
+}
+
 module.exports.getProduct = (req, res) => {
   return axios.get(`${process.env.API_URL}/products/${req.params.product_id}`, auth_header)
     .then(product => {

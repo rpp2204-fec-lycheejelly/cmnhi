@@ -36,7 +36,7 @@ class Product extends React.Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
-    // if(JSON.stringify(this.state.productData) !== JSON.stringify(this.props.productData)) {
+    // if(JSON.stringify(this.props.productData) !== JSON.stringify(prevProps.productData)) {
     //   this.setState({
     //     product: this.props.productData,
     //     styles: this.props.productData.styles,

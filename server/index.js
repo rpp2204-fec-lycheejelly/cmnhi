@@ -24,28 +24,35 @@ app.post('/interactions', (req, res) => {
 app.get('/products/:product_id', (req, res) => {
   let productData = {};
 
-  overview.getProduct(req, res)
-    .then(product => {
-      productData = {...product};
-    })
-    .then(() => {
-      return overview.getReviewData(req, res)
-    })
-    .then(reviews => {
-      let ratings;
-      if (reviews === undefined) {
-        ratings = {'1': '0'};
-      } else {
-        // console.log('review ratings', )
-        ratings = reviews.ratings;
-      }
-      productData = {...productData, 'ratings': {...ratings}}
-      return overview.getStyles(req, res);
-    })
-    .then(styleData => {
-      productData.styles = styleData;
-      res.json(productData);
-    })
+  overview.getAllProductData(req, res);
+
+
+
+  // overview.getProduct(req, res)
+  //   .then(product => {
+  //     productData = {...product};
+  //   })
+  //   .then(() => {
+  //     return overview.getReviewData(req, res)
+  //   })
+  //   .then(reviews => {
+  //     let ratings;
+  //     if (reviews === undefined) {
+  //       ratings = {'1': '0'};
+  //     } else {
+  //       // console.log('review ratings', )
+  //       ratings = reviews.ratings;
+  //     }
+  //     productData = {...productData, 'ratings': {...ratings}}
+  //     return overview.getStyles(req, res);
+  //   })
+  //   .then(styleData => {
+  //     productData.styles = styleData;
+  //     res.json(productData);
+  //   })
+  //   .catch(error => {
+  //     console.log('Error', error.message)
+  //   })
 })
 
 app.post('/cart', (req, res) => {
