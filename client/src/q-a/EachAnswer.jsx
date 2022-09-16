@@ -64,18 +64,18 @@ class EachAnswer extends React.Component {
     // console.log('answerId', this.props.answerId);
     var answer = this.props.eachAnswer;
     return (
-      <div>
-        <div>{answer['body']}</div>
-        <div>
+      <div className='QA-eachAnswer'>
+        <div className='QA-answerBody'>{answer['body']}</div>
+        <div className='QA-answerPhotos'>
         {answer['photos'].map((photo, index) => {
           return <img className='QA-img' key={index} src={photo} alt='' />})}
         </div>
-        <div>
+        <div className='QA-questionInfo-Combination'>
           <span>
             <span className='QA-questionInfo'>by {answer['answerer_name'].toLowerCase() === 'seller' ? <b>Seller</b> : answer['answerer_name']} |</span>
             <span className='QA-questionInfo'>{Moment(answer['date']).format('MMM DD, YYYY')} |</span>
             <span className='QA-questionInfo'>Helpful?</span>
-            <span className='QA-yes' onClick={() => this.answerHelpfulness()}>yes</span>
+            <span className='QA-yes' onClick={() => this.answerHelpfulness()}>Yes</span>
             <span className='QA-helpfulness'>({this.state.helpfulness}) |</span>
             <span className='QA-A-report' onClick={this.answerReport}>{this.state.reported ? 'Reported' : 'Report'}</span>
           </span>
