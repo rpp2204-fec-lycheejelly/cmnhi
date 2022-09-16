@@ -27,6 +27,7 @@ class QandAList extends React.Component {
     var loadQuestionsButton = null;
     // console.log('this.props.qaList', this.props.qaList);
     // console.log('this.props.searchTerm', this.props.searchTerm);
+
     var qaList = this.props.qaList.filter(val => {
       if (this.props.searchTerm === '') {
         return val;
