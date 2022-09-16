@@ -84,10 +84,7 @@ class Modal1 extends React.Component {
     const isValid = this.validate();
     // console.log('isValid', isValid);
     if (isValid) {
-      // console.log('this.state', this.state);
 
-      //HTTP POST Request:
-      // axios.post(`/qa/questions/${this.props.product_id}`, {
       axios.post('/qa/questions', {
         body: this.state.yourQuestion,
         name: this.state.yourNickName,
