@@ -4,12 +4,12 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "start": "npm run client-dev & npm run server-dev",
     "qa-test": "jest qa.test.js",
     "overview-test": "jest overview.test.js",
     "client-dev": "npx webpack --watch",
     "server-dev": "npx nodemon --watch server server/index.js",
-    "build": "npx webpack",
-    "start": "node server/index.js"
+    "build": "npx webpack"
   },
   "repository": {
     "type": "git",
