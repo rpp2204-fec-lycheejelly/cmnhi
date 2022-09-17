@@ -7,8 +7,8 @@ class EachAnswer extends React.Component {
     super(props);
     this.state = {
       helpfulness: this.props.eachAnswer.helpfulness,
-      voted: false,
-      reported: false
+      voted: null,
+      reported: false,
     }
     this.plusOne = this.plusOne.bind(this);
     this.answerHelpfulness = this.answerHelpfulness.bind(this);
@@ -21,6 +21,10 @@ class EachAnswer extends React.Component {
       helpfulness: this.state.helpfulness + 1,
       voted: true
     })
+  }
+
+  handleClick() {
+    this.setState({voted: true});
   }
 
   answerHelpfulness() {
@@ -71,7 +75,7 @@ class EachAnswer extends React.Component {
             <span className='QA-questionInfo'>by {answer['answerer_name'].toLowerCase() === 'seller' ? <b>Seller</b> : answer['answerer_name']} |</span>
             <span className='QA-questionInfo'>{Moment(answer['date']).format('MMM DD, YYYY')} |</span>
             <span className='QA-questionInfo'>Helpful?</span>
-            <span className='QA-yes' onClick={() => this.answerHelpfulness()}>Yes</span>
+            <span className='QA-yes' disabled={this.state.voted === true} onClick={() => this.answerHelpfulness()}>Yes</span>
             <span className='QA-helpfulness'>({this.state.helpfulness}) |</span>
             <span className='QA-A-report' onClick={this.answerReport}>{this.state.reported ? 'Reported' : 'Report'}</span>
           </span>

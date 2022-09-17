@@ -60,6 +60,7 @@ app.get('/qa/questions/:product_id', (req, res) => {
     res.send(result);
   })
   .catch(err => {
+    console.log('Q and A error', err);
     res.send(err);
   })
 })

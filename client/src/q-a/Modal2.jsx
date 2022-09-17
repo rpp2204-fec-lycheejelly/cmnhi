@@ -121,7 +121,7 @@ class Modal2 extends React.Component {
   render() {
     return (
       <form onSubmit={this.submitInfo}>
-        <div className='QA-modal-1' style={{zIndex: '1000'}}>
+        <div className='QA-modal-2'>
           <div className='QA-modalContainer'>
             <div className='QA-titleCloseBtn'>
               <button onClick={() => this.props.closeModal()}> X </button>

@@ -610,8 +610,10 @@
 
 .QA-loadMoreAns {
   font-weight: bolder;
-  font-size: 15px;
-  color:rgb(0, 0, 0)
+  font-size: 16px;
+  color: rgb(0 0 0);
+  /* display: flex; */
+  margin-left: 3.6px;
 }
 
 .QA-question {
@@ -624,23 +626,31 @@
 
 
 
-/*** Modal1 ***/
+/*** Modals ***/
 .QA-modal-1 {
-  position:absolute;
-  top:150%;
-  left: 10%;
-  width:20em;
-  height:20em;
-  margin-top: auto;
-  margin-left: auto;
-  z-index:2;
+  width: 20em;
+  height: 20em;
+  z-index: 2;
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: center;
+}
+
+.QA-modal-2 {
+  position: absolute;
+  width: 20em;
+  height: 20em;
+  /* z-index: 3; */
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
 }
 
 .QA-modalContainer {
   width: 600px;
   height: 600px;
   border-radius: 12px;
-  background-color: rgb(203, 184, 205);
+  background-color:white;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   display: flex;
   flex-direction: column;
@@ -659,13 +669,13 @@
   cursor: pointer;
 }
 
-.QA-modalContainer .QA-modalTitle {
+.QA-modalTitle {
   display: inline-block;
   text-align: center;
   margin-top: 0px;
 }
 
-.QA-modalContainer .QA-modalBody {
+.QA-modalBody {
   flex: 50%;
   justify-content: center;
   align-items: center;
@@ -698,14 +708,14 @@
 }
 
 
-.QA-modalContainer .QA-modalFooter {
+.QA-modalFooter {
   flex: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.QA-modalContainer .QA-modalFooter .QA-modal1-submit {
+.QA-modal1-submit {
   width: 150px;
   height: 20px;
   margin: 10px;
@@ -760,13 +770,13 @@
   border: 1px solid #ccc;
 }
 
-#QA-answerList-overflowTest {
+/* #QA-answerList-overflowTest {
   color: rgb(0, 0, 0);
   padding: 10px;
   width: 36em;
   height: 180px;
   overflow: auto;
-}
+} */
 
 
 .QA-container {

@@ -95,12 +95,12 @@ class App extends React.Component {
                                  productData={this.state.productData}
                                  outfits={this.state.outfits}
                                  addOutfit={this.addToOutfit}/>
-        <RelatedWithInteractions product_id={this.state.product_id}
+        {/* <RelatedWithInteractions product_id={this.state.product_id}
                                  productData={this.state.productData}
                                  outfits={this.state.outfits}
                                  addOutfit={this.addToOutfit}
                                  deleteOutfit={this.deleteOutfit}
-                                 productClick={this.updateProductID}/>
+                                 productClick={this.updateProductID}/> */}
         <QandAWithInteractions product_id={this.state.product_id}
                                productData={this.state.productData}/>
         {/*<Ratings /> */}
