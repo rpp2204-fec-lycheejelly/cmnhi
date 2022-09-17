@@ -105,14 +105,14 @@ class CompareCard extends React.Component {
             }
           })
           return (
-            <div className="items" key={id} onClick={() => this.productClick(item.data.id)}>
+            <div className="items" key={id}>
               <img className="related-thumbnail" alt={"image of " + item.data.name} src={url || item.data['styles'][0]['photos'][0]['url']}/>
               <input type="image" src={starButton} className="star-button" onClick={() => this.showModal(item.data)} alt="comparison"/>
               <Modal product={this.props.current} compare={this.state.clickedProduct} clicked={this.state.showModal} exit={this.showModal}/>
-              <p>{item.data.category}</p>
-              <p><strong>{item.data.name}</strong></p>
-              <p><em>{item.data.slogan}</em></p>
-              <p>${price || item.data['default_price']}</p>
+              <p onClick={() => this.productClick(item.data.id)}>{item.data.category}</p>
+              <p onClick={() => this.productClick(item.data.id)}><strong>{item.data.name}</strong></p>
+              <p onClick={() => this.productClick(item.data.id)}><em>{item.data.slogan}</em></p>
+              <p onClick={() => this.productClick(item.data.id)}>${price || item.data['default_price']}</p>
               <div className="star-cards">
               <Stars reviews={item.data.ratings}/>
               </div>

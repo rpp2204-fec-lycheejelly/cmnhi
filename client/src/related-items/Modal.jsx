@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import exitButton from '../assets/exit-button.png'
+import Features from './Features.jsx';
 
 export default class Modal extends React.Component {
   constructor(props) {
@@ -51,11 +52,10 @@ export default class Modal extends React.Component {
         <div id="modal">
           <p id="comparing">Comparing</p>
           <div id="productCompare">
-            <h3 id="productOne">{this.state.product1.name}</h3>
+            <h3 id="productOne">{this.state.product1.name} </h3>
             <h3 id="productTwo">{this.state.product2.name}</h3>
             <div className="break"></div>
-            <div className="features">
-              {this.state.product1.features.map((feature, id) => {
+              {/* {this.state.product1.features.map((feature, id) => {
                 return (
                   <p key={id}><b>&#10003;</b> {feature.value + ' ' + feature.feature}</p>
                 )
@@ -64,8 +64,9 @@ export default class Modal extends React.Component {
                 return (
                   <p key={id}>{feature2.value + ' ' + feature2.feature} <b>&#10003;</b></p>
                 )
-              })}
-            </div>
+              })} */}
+              <Features features1={this.state.product1.features}
+                        features2={this.state.product2.features}/>
           </div>
           <input type="image" src={exitButton} name="exitButton" id="exit-button" onClick={this.showModal}/>
         </div>

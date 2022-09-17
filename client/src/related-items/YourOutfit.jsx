@@ -157,13 +157,13 @@ class YourOutfit extends React.Component {
               }
             })
             return (
-              <div className="items" key={'yo' + id} onClick={() => this.productClick(outfit.id)}>
+              <div className="items" key={'yo' + id} >
                 <img className="related-thumbnail" alt={"image of " + outfit.name} src={url || outfit['styles'][0]['photos'][0]['url']}/>
                 <input type="image" src={deleteButt} className="delete-button" alt="comparison" onClick={() => this.deleteOutfit(outfit.id)}/>
-                <p>{outfit.category}</p>
-                <p><strong>{outfit.name}</strong></p>
-                <p><em>{outfit.slogan}</em></p>
-                <p>${price || outfit['default_price']}</p>
+                <p onClick={() => this.productClick(outfit.id)}>{outfit.category}</p>
+                <p onClick={() => this.productClick(outfit.id)}><strong>{outfit.name}</strong></p>
+                <p onClick={() => this.productClick(outfit.id)}><em>{outfit.slogan}</em></p>
+                <p onClick={() => this.productClick(outfit.id)}>${price || outfit['default_price']}</p>
                 <div className="star-cards">
                 <Stars reviews={outfit.ratings}/>
                 </div>
