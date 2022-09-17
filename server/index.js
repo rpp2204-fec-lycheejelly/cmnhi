@@ -24,27 +24,9 @@ app.post('/interactions', (req, res) => {
 app.get('/products/:product_id', (req, res) => {
   let productData = {};
 
-  overview.getProduct(req, res)
-    .then(product => {
-      productData = {...product};
-    })
-    .then(() => {
-      return overview.getReviewData(req, res)
-    })
-    .then(reviews => {
-      let ratings;
-      if (reviews === undefined) {
-        ratings = {'1': '0'};
-      } else {
-        // console.log('review ratings', )
-        ratings = reviews.ratings;
-      }
-      productData = {...productData, 'ratings': {...ratings}}
-      return overview.getStyles(req, res);
-    })
-    .then(styleData => {
-      productData.styles = styleData;
-      res.json(productData);
+  overview.getAllProductData(req, res)
+    .then(result => {
+      res.json(result);
     })
 })
 
@@ -60,17 +42,14 @@ app.get('/qa/questions/:product_id', (req, res) => {
     res.send(result);
   })
   .catch(err => {
+    console.log('Q and A error', err);
     res.send(err);
   })
 })
 
-// app.post('/qa/questions/:product_id', (req, res) => {
 app.post('/qa/questions', (req, res) => {
-  // var requestBody = req.body;
-  // console.log('connection is from the client', requestBody);
   return addQuestion(req, res)
   .then(result => {
-    // console.log('app.post result', result);
     res.status(201).send('post question success');
   })
   .catch(error => {
@@ -80,8 +59,6 @@ app.post('/qa/questions', (req, res) => {
 
 
 app.post(`/qa/questions/:question_id/answers`, (req, res) => {
-  // var requestBody = req.body;
-  // console.log('connection is from the client', requestBody); // works
 
   return addAnswer(req, res)
   .then(result => {
@@ -150,10 +127,6 @@ app.get('/products/:product_id/related', (req, res) => {
       console.log(err);
     })
 })
-
-app.get('/*', (req, res) => {
-
-});
 
 app.listen(port, function() {
   console.log(`listening on port ${port}`);

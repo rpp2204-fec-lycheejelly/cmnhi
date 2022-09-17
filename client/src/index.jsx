@@ -24,9 +24,13 @@ class App extends React.Component {
     this.updateProductID = this.updateProductID.bind(this);
   }
 
-  //How to append product ID onto url?
   componentDidMount() {
     this.getProductData();
+    window.history.replaceState(null, null, `${window.location.origin}/${this.state.product_id}`)
+  }
+
+  componentDidUpdate() {
+    window.history.replaceState(null, null, `${window.location.origin}/${this.state.product_id}`)
   }
 
   getProductData() {

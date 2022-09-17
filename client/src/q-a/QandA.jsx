@@ -45,17 +45,16 @@ class QandA extends React.Component {
 
 
   render() {
-    // console.log('THIS.PROPS.PRODUCTDATA', this.props.productData);
     return (
-      <div className='QA-container'>
-        <p className='QA-title'>QUESTIONS & ANSWERS</p>
+      <div onClick={(e) => {this.props.postInteraction(e, 'QandA')}} className='QA-container'>
         <SearchBar searchQuestions={this.searchQuestions} />
         <QandAList qaList={this.state.qaList} getQAList={this.getQAList} searchTerm={this.state.searchTerm} openModalFunc={this.openModalFunc} productData={this.props.productData}/>
-        {/* <button className="openModal1" onClick={() => this.openModalFunc()}>Add a question +</button> */}
         {this.state.openModal && <Modal1 closeModal={this.openModalFunc} product_id={this.props.product_id} getQAList={this.getQAList} productData={this.props.productData}/>}
       </div>
     )
   }
+
+
 }
 
 export default QandA;
