@@ -18,11 +18,28 @@ class YourOutfit extends React.Component {
     this.updateButton = this.updateButton.bind(this);
     this.deleteOutfit = this.deleteOutfit.bind(this);
     this.updateArrows = this.updateArrows.bind(this);
+    this.productClick = this.productClick.bind(this);
   }
 
   componentDidMount() {
-    this.updateArrows(0);
+    //if current outfit is not in outfits then set plusButton to true
+    if (!this.props.outfitIDs) {
+      this.setState({
+        plusButton: true
+      }, () => {
+        this.updateArrows(0);
+      });
+    } else if (this.props.outfitIDs.indexOf(Number(this.props.product_id)) === -1) {
+      this.setState({
+        plusButton: true
+      }, () => {
+        this.updateArrows(0);
+      })
+    } else {
+      this.updateArrows(0);
+    }
   }
+
   componentDidUpdate(prevProps) {
     this.updateButton(prevProps);
   }
@@ -73,7 +90,6 @@ class YourOutfit extends React.Component {
 
   updateButton(prevProps) {
     var exists = false;
-    //add an if statement for null
     if (!prevProps) {
       prevProps.outfits.forEach(outfit => {
         if (JSON.stringify(outfit) === JSON.stringify(this.props.current)) {
@@ -109,6 +125,10 @@ class YourOutfit extends React.Component {
     }
   }
 
+  productClick(id) {
+    this.props.productClick(id);
+  }
+
   render () {
     if (!this.props.outfits || this.props.outfits.length === 0) {
         return (
@@ -137,13 +157,13 @@ class YourOutfit extends React.Component {
               }
             })
             return (
-              <div className="items" key={'yo' + id}>
+              <div className="items" key={'yo' + id} >
                 <img className="related-thumbnail" alt={"image of " + outfit.name} src={url || outfit['styles'][0]['photos'][0]['url']}/>
                 <input type="image" src={deleteButt} className="delete-button" alt="comparison" onClick={() => this.deleteOutfit(outfit.id)}/>
-                <p>{outfit.category}</p>
-                <p><strong>{outfit.name}</strong></p>
-                <p><em>{outfit.slogan}</em></p>
-                <p>${price || outfit['default_price']}</p>
+                <p onClick={() => this.productClick(outfit.id)}>{outfit.category}</p>
+                <p onClick={() => this.productClick(outfit.id)}><strong>{outfit.name}</strong></p>
+                <p onClick={() => this.productClick(outfit.id)}><em>{outfit.slogan}</em></p>
+                <p onClick={() => this.productClick(outfit.id)}>${price || outfit['default_price']}</p>
                 <div className="star-cards">
                 <Stars reviews={outfit.ratings}/>
                 </div>

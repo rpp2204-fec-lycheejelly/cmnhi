@@ -16,7 +16,8 @@ class App extends React.Component {
     this.state = {
       product_id: window.location.pathname.slice(1) || '71701',
       productData: {},
-      outfits: JSON.parse(localStorage.getItem("outfits"))
+      outfits: JSON.parse(localStorage.getItem("outfits")),
+      outfitIDs: JSON.parse(localStorage.getItem("ids"))
     }
     this.addToOutfit = this.addToOutfit.bind(this);
     this.deleteOutfit = this.deleteOutfit.bind(this);
@@ -47,20 +48,28 @@ class App extends React.Component {
 
   addToOutfit() {
     var repeat = false;
-    if (!this.state.outfits) {
-      this.setState({outfits: [this.state.productData]}, () => {
+    var id = this.state.product_id;
+    if (this.state.outfits.length === 0 || this.state.outfits === null) {
+      this.setState({
+        outfits: [this.state.productData],
+        outfitIDs: [Number(this.state.product_id)]
+      }, () => {
         localStorage.setItem("outfits", JSON.stringify(this.state.outfits));
+        localStorage.setItem("ids", JSON.stringify(this.state.outfitIDs));
       })
     } else {
       this.state.outfits.forEach(outfit => {
-        console.log(outfit.id);
         if (outfit.id === this.state.productData.id) {
           repeat = true;
         }
       });
       if (!repeat) {
-        this.setState({outfits: [...this.state.outfits, this.state.productData] }, () => {
+        this.setState({
+          outfits: [...this.state.outfits, this.state.productData],
+          outfitIDs: [...this.state.outfitIDs, Number(this.state.product_id)]
+        }, () => {
           localStorage.setItem("outfits", JSON.stringify(this.state.outfits));
+          localStorage.setItem("ids", JSON.stringify(this.state.outfitIDs))
         });
       }
     }
@@ -69,10 +78,23 @@ class App extends React.Component {
   deleteOutfit(id) {
     const index = this.state.outfits.map(outfit => outfit.id).indexOf(id);
     const deleted = this.state.outfits;
+    const deleteID = this.state.outfitIDs;
     deleted.splice(index, 1);
-    this.setState({outfits: deleted}, () => {
+    deleteID.splice(index, 1);
+    this.setState({
+      outfits: deleted,
+      outfitIDs: deleteID
+    }, () => {
       localStorage.setItem("outfits", JSON.stringify(this.state.outfits));
+      localStorage.setItem("ids", JSON.stringify(this.state.outfitIDs));
     })
+    // let allOutfits = this.state.outfits;
+    // allOutfits.delete(id);
+    // this.setState({
+    //   outfits: allOutfits
+    // }, () => {
+    //   localStorage.setItem("outfits", JSON.stringify(this.state.outfits));
+    // })
   }
 
   updateProductID(id) {
@@ -100,7 +122,8 @@ class App extends React.Component {
                                  outfits={this.state.outfits}
                                  addOutfit={this.addToOutfit}
                                  deleteOutfit={this.deleteOutfit}
-                                 productClick={this.updateProductID}/>
+                                 productClick={this.updateProductID}
+                                 outfitIDs={this.state.outfitIDs}/>
         <QandAWithInteractions product_id={this.state.product_id}
                                productData={this.state.productData}/>
         {/*<Ratings /> */}

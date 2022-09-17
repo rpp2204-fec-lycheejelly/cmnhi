@@ -6,8 +6,6 @@ import Modal from './Modal.jsx';
 import Stars from '../product-overview/Stars.jsx';
 import calculateAverage from '../product-overview/lib/calculateAvg.js';
 
-
-
 class CompareCard extends React.Component {
   constructor(props) {
     super(props);
@@ -27,7 +25,6 @@ class CompareCard extends React.Component {
   }
 
   componentDidUpdate(prevProps) {
-    console.log(prevProps.related + " vs " + this.props.related);
     if ((this.props.related.length !== prevProps.related.length) || JSON.stringify(this.props.relatedIds) !== JSON.stringify(prevProps.relatedIds)) {
       this.setState({
         products: this.props.related,
@@ -50,7 +47,6 @@ class CompareCard extends React.Component {
   }
 
   plusSlides(n) {
-    console.log('Click');
     var newFirst = this.state.first + n;
     var newLast = this.state.last + n;
     if ((n > 0) && newLast < this.state.products.length) {
@@ -94,7 +90,6 @@ class CompareCard extends React.Component {
 
   render () {
     if (this.state.products) {
-      console.log("first four", this.state.fourProds);
       return (
         <div className="related-carousel" id="related">
           {this.state.leftClick === true ? <a className="prev" onClick={()=> this.plusSlides(-1)}>&#x00AB;</a> : <a className="prev" style={{visibility:'hidden'}}>&#x00AB;</a>}
@@ -110,14 +105,14 @@ class CompareCard extends React.Component {
             }
           })
           return (
-            <div className="items" key={id} onClick={() => this.productClick(item.data.id)}>
+            <div className="items" key={id}>
               <img className="related-thumbnail" alt={"image of " + item.data.name} src={url || item.data['styles'][0]['photos'][0]['url']}/>
               <input type="image" src={starButton} className="star-button" onClick={() => this.showModal(item.data)} alt="comparison"/>
               <Modal product={this.props.current} compare={this.state.clickedProduct} clicked={this.state.showModal} exit={this.showModal}/>
-              <p>{item.data.category}</p>
-              <p><strong>{item.data.name}</strong></p>
-              <p><em>{item.data.slogan}</em></p>
-              <p>${price || item.data['default_price']}</p>
+              <p onClick={() => this.productClick(item.data.id)}>{item.data.category}</p>
+              <p onClick={() => this.productClick(item.data.id)}><strong>{item.data.name}</strong></p>
+              <p onClick={() => this.productClick(item.data.id)}><em>{item.data.slogan}</em></p>
+              <p onClick={() => this.productClick(item.data.id)}>${price || item.data['default_price']}</p>
               <div className="star-cards">
               <Stars reviews={item.data.ratings}/>
               </div>
