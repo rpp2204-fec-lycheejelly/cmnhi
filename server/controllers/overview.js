@@ -3,20 +3,18 @@ const axios = require('axios');
 const auth_header = { headers: { Authorization: process.env.API_KEY,
                                 'Content-Type': 'application/json' } };
 
-module.exports.getAllProductData = (req, res) => {
-  let productData = {};
-
+module.exports.getAllProductData = async (req, res) => {
   let productReq = axios.get(`${process.env.API_URL}/products/${req.params.product_id}`, auth_header);
   let reviewsReq = axios.get(`${process.env.API_URL}/reviews/meta?product_id=${req.params.product_id}`, auth_header);
   let stylesReq = axios.get(`${process.env.API_URL}/products/${req.params.product_id}/styles`, auth_header);
-  let relatedReq = axios.get(`${process.env.API_URL}/products/${req.params.product_id}/related`, auth_header);
 
-  axios.all([productReq, reviewsReq, stylesReq, relatedReq])
+  return axios.all([productReq, reviewsReq, stylesReq])
     .then(axios.spread((...response) => {
-      console.log('Product', response[0].data);
-      console.log('Reviews', response[1].data.ratings);
-      console.log('Styles', response[2].data.results);
-      console.log('Related IDs', response[3].data);
+      // console.log('Product', response[0].data);
+      // console.log('Reviews', response[1].data.ratings);
+      // console.log('Styles', response[2].data.results);
+      // console.log('Related IDs', response[3].data);
+      let productData = {};
 
       productData = {...response[0].data};
 
@@ -28,11 +26,8 @@ module.exports.getAllProductData = (req, res) => {
 
       productData.styles=response[2].data.results;
 
-      res.json(productData);
+      return productData;
     }))
-    .catch(error => {
-      console.log('Error', error.message)
-    })
 }
 
 module.exports.getProduct = (req, res) => {
@@ -79,7 +74,7 @@ module.exports.addToCart = (req, res) => {
 module.exports.addInteraction = (req, res) => {
   return axios.post(`${process.env.API_URL}/interactions`, req.body, auth_header)
     .then(result => {
-      console.log('Successful POST to interactions', req.body)
+      console.log('Successful POST to interactions')
       res.end();
     })
     .catch(error => {
