@@ -7,14 +7,15 @@ class RelatedProducts extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      productsList: []
+      productsList: [],
+      allProducts: []
     }
   }
 
   componentDidUpdate(prevProps, prevState) {
+    //if array of related ids changes
     if (JSON.stringify(prevProps.products) !== JSON.stringify(this.props.products)) {
       let ids = this.props.products;
-      let details = [];
       let promises = [];
       for (var i = 0; i < ids.length; i++) {
         var request = axios.get('/products/' + ids[i]);
@@ -23,12 +24,10 @@ class RelatedProducts extends React.Component {
 
       axios.all(promises).then(axios.spread((...responses) => {
         this.setState({
-          productsList: responses
+          productsList: responses,
         })
-        // use/access the results
       })).catch(errors => {
-        // react on errors.
-        console.log(errors);
+        console.log("related component", errors);
       })
     }
   }
@@ -36,15 +35,19 @@ class RelatedProducts extends React.Component {
   render () {
     return (
       <>
-        <p>Related Products</p>
-        <CompareCard related={this.state.productsList} current={this.props.current} productClick={this.props.productClick}
+        <p>RELATED PRODUCTS</p>
+        <CompareCard related={this.state.productsList}
+                     current={this.props.current}
+                     productClick={this.props.productClick}
                      relatedIds={this.props.products}/>
-        <p>Your Outfit</p>
+        <p>YOUR OUTFIT</p>
         <YourOutfit outfits={this.props.outfits}
                     addOutfit={this.props.addOutfit}
                     current={this.props.current}
                     deleteOutfit={this.props.deleteOutfit}
-                    productClick={this.props.productClick}/>
+                    productClick={this.props.productClick}
+                    outfitIDs={this.props.outfitIDs}
+                    product_id={this.props.product_id}/>
       </>
     )
   }

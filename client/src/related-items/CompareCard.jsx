@@ -6,8 +6,6 @@ import Modal from './Modal.jsx';
 import Stars from '../product-overview/Stars.jsx';
 import calculateAverage from '../product-overview/lib/calculateAvg.js';
 
-
-
 class CompareCard extends React.Component {
   constructor(props) {
     super(props);
@@ -27,7 +25,6 @@ class CompareCard extends React.Component {
   }
 
   componentDidUpdate(prevProps) {
-    console.log(prevProps.related + " vs " + this.props.related);
     if ((this.props.related.length !== prevProps.related.length) || JSON.stringify(this.props.relatedIds) !== JSON.stringify(prevProps.relatedIds)) {
       this.setState({
         products: this.props.related,
@@ -50,7 +47,6 @@ class CompareCard extends React.Component {
   }
 
   plusSlides(n) {
-    console.log('Click');
     var newFirst = this.state.first + n;
     var newLast = this.state.last + n;
     if ((n > 0) && newLast < this.state.products.length) {
@@ -94,7 +90,6 @@ class CompareCard extends React.Component {
 
   render () {
     if (this.state.products) {
-      console.log("first four", this.state.fourProds);
       return (
         <div className="related-carousel" id="related">
           {this.state.leftClick === true ? <a className="prev" onClick={()=> this.plusSlides(-1)}>&#x00AB;</a> : <a className="prev" style={{visibility:'hidden'}}>&#x00AB;</a>}

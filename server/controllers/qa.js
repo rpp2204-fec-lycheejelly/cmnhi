@@ -6,7 +6,7 @@ const auth_header = {
 
 let getQAList = (req, res) => {
   // return axios.get(`${process.env.API_URL}/qa/questions?product_id=${req.params.product_id}`, {headers: {Authorization: process.env.API_KEY}})
-  return axios.get(`${process.env.API_URL}/qa/questions?product_id=${req.params.product_id}&count=200`, auth_header)
+  return axios.get(`${process.env.API_URL}/qa/questions?product_id=${req.params.product_id}&count=20`, auth_header)
   .then(result => {
     // console.log('API-result.data', result.data);
     return result.data;
