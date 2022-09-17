@@ -1,4 +1,4 @@
-# cmnhi
+# comnhi
 <br>Make a branch for your feature
 <br>Implement feature changes
 <br>Git add .; git commit; git push origin [branch-name]
