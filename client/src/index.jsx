@@ -50,7 +50,15 @@ class App extends React.Component {
     e.preventDefault();
     var repeat = false;
     var id = this.state.product_id;
-    if (this.state.outfits.length === 0 || this.state.outfits === null) {
+    if (this.state.outfits === null) {
+      this.setState({
+        outfits: [this.state.productData],
+        outfitIDs: [Number(this.state.product_id)]
+      }, () => {
+        localStorage.setItem("outfits", JSON.stringify(this.state.outfits));
+        localStorage.setItem("ids", JSON.stringify(this.state.outfitIDs));
+      })
+    } else if (this.state.outfits.length === 0 || this.state.outfits === null) {
       this.setState({
         outfits: [this.state.productData],
         outfitIDs: [Number(this.state.product_id)]
