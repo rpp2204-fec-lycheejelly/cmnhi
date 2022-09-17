@@ -533,8 +533,10 @@
 /*** QandA ***/
 
 .QA-answerBody {
+  margin-top: .2em;
   margin-left: .3em;
-  font-size: 20px;
+  margin-bottom: .5em;
+  font-size: 17px;
   font-family: sans-serif;
 }
 
@@ -624,34 +626,64 @@
   font-weight: bold;
 }
 
+.QA-report {
+  text-decoration: underline;
+}
+
+.QA-A-report {
+  text-decoration: underline;
+}
+
+.qa-input {
+  font-size: 1.3em;
+  display: flex;
+  /* margin-top: 1em; */
+}
+
 
 
 /*** Modals ***/
 .QA-modal-1 {
-  width: 20em;
-  height: 20em;
+  width: 0em;
+  height: 0em;
   z-index: 2;
   display: flex;
-  flex-direction: column-reverse;
   align-items: center;
+  flex-direction: column-reverse;
+  flex-wrap: wrap;
+  align-content: center;
 }
 
 .QA-modal-2 {
   position: absolute;
-  width: 20em;
-  height: 20em;
-  /* z-index: 3; */
-  display: flex;
+  width: 0em;
+  height: 0em;
+  z-index: 2;
+  display: inline-flex;
   flex-direction: row-reverse;
+  justify-content: flex-start;
   align-items: center;
+  align-content: space-around;
+  flex-wrap: nowrap;
 }
 
-.QA-modalContainer {
-  width: 600px;
-  height: 600px;
+.QA-modalContainer-2 {
+  width: 1000px;
+  height: 700px;
   border-radius: 12px;
-  background-color:white;
-  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  background-color: white;
+  box-shadow: rgb(0 0 0 / 35%) 0px 5px 15px;
+  display: flex;
+  flex-direction: column;
+  padding: 25px;
+}
+
+.QA-modalContainer-1 {
+  width: 500px;
+  height: 1000px;
+  border-radius: 12px;
+  background-color: white;
+  box-shadow: rgb(0 0 0 / 35%) 0px 5px 15px;
   display: flex;
   flex-direction: column;
   padding: 25px;
@@ -689,6 +721,7 @@
   width: 500px;
   height: 200px;
   resize: none;
+  display: flex;
 }
 
 .QA-60-nickname {
@@ -697,22 +730,25 @@
   width: 200px;
   height: 20px;
   resize: none;
+  display: -webkit-box;
+  justify-content: center;
 }
 
 .QA-60-email {
-  margin: 1px;
-  padding: 1px;
+  margin-top: -1px;
+
   width: 250px;
   height: 20px;
   resize: none;
+  display: -webkit-box;
+  justify-content: center;
 }
 
 
 .QA-modalFooter {
-  flex: 100%;
   display: flex;
-  justify-content: center;
   align-items: center;
+  flex-direction: column;
 }
 
 .QA-modal1-submit {
@@ -789,7 +825,7 @@
 }
 
 .QA-Modal2-thumbnail {
-  margin: 2
+  margin: 2px
 }
 
 .openModal1 {
@@ -805,4 +841,16 @@
 
 .QA-two-buttons{
   margin-top: 20px;
+}
+
+.qa-note {
+  font-size: 1em;
+  display: flex;
+  margin-top: -1em;
+  font-weight: bold;
+}
+
+.choose-file {
+  font-size: medium;
+  display: flex;
 }

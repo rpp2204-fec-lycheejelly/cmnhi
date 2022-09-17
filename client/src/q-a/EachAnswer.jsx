@@ -43,7 +43,7 @@ const EachAnswer = (props) => {
   }
 
   const answerReport = () => {
-    if (!this.state.reported) {
+    if (!reported) {
       return axios.put(`/qa/answers/:answer_id/report`, {
         answer_id: props.answerId
       })
@@ -74,7 +74,7 @@ const EachAnswer = (props) => {
             <span className='QA-questionInfo'>Helpful?</span>
             <span className='QA-yes' onClick={() => answerHelpfulness()}>Yes</span>
             <span className='QA-helpfulness'>({helpfulness}) |</span>
-            <span className='QA-A-report' onClick={answerReport}>{reported ? 'Reported' : 'Report'}</span>
+            <span className='QA-A-report' onClick={() => answerReport()}>{reported ? 'Reported' : 'Report'}</span>
           </span>
         </div>
       </div>

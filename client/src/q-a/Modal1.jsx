@@ -91,7 +91,7 @@ class Modal1 extends React.Component {
     return (
       <form onSubmit={this.submitInfo}>
         <div className='QA-modal-1'>
-          <div className='QA-modalContainer'>
+          <div className='QA-modalContainer-1'>
             <div className='QA-titleCloseBtn'>
               <button onClick={() => this.props.closeModal()}> X </button>
             </div>
@@ -103,20 +103,20 @@ class Modal1 extends React.Component {
               <label>
                 <div style={{fontSize: 20, color: 'red'}}>{this.state.errorMsgQuestion}</div>
                 <div>
-                  <span>Your Question:</span><br />
+                  <span className='qa-input'>Your Question<sup>*</sup>:</span>
                   <span><textarea className='QA-1000' maxLength='1000' name='yourQuestion' type='text' value={this.state.yourQuestion} onChange={this.handleChange}></textarea></span><br />
                 </div>
                 <div style={{fontSize: 20, color: 'red'}}>{this.state.errorMsgNickName}</div>
                 <div>
-                  <span>Your Nickname:</span><br />
+                  <span className='qa-input'>Your Nickname<sup>*</sup>:</span>
                   <span><textarea className='QA-60-nickname' maxLength='60' name='yourNickName' type='text' placeholder='Example: jackson11!' value={this.state.yourNickName} onChange={this.handleChange}/></span><br />
-                  <span>For privacy reasons, do not use your full name or email address</span><br />
+                  <span className='qa-note'>For privacy reasons, do not use your full name or email address</span><br />
                 </div>
                 <div style={{fontSize: 20, color: 'red'}}>{this.state.errorMsgEmail}</div>
                 <div>
-                  <span>Your Email:</span><br />
+                  <span className='qa-input'>Your Email<sup>*</sup>:</span>
                   <span><textarea className='QA-60-email' maxLength='60' name='yourEmail' type='text' placeholder='Why did you like the product or not?' value={this.state.yourEmail} onChange={this.handleChange}/></span><br />
-                  <span>For authentication reasons, you will not be emailed</span><br />
+                  <span className='qa-note'>For authentication reasons, you will not be emailed</span><br />
                 </div>
               </label>
             </div>

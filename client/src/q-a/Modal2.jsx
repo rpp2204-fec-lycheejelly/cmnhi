@@ -122,7 +122,7 @@ class Modal2 extends React.Component {
     return (
       <form onSubmit={this.submitInfo}>
         <div className='QA-modal-2'>
-          <div className='QA-modalContainer'>
+          <div className='QA-modalContainer-2'>
             <div className='QA-titleCloseBtn'>
               <button onClick={() => this.props.closeModal()}> X </button>
             </div>
@@ -134,25 +134,25 @@ class Modal2 extends React.Component {
               <label>
                 <div style={{fontSize: 20, color: 'red'}}>{this.state.errorMsgAnswer}</div>
                 <div>
-                  <span>Your Answer:</span><br />
+                  <label className='qa-input'>Your Answer<sup>*</sup>:</label>
                   <span><textarea className='QA-1000' maxLength='1000' name='yourAnswer' type='text' value={this.state.yourAnswer} onChange={this.handleChange}></textarea></span><br />
                 </div>
                 <div style={{fontSize: 20, color: 'red'}}>{this.state.errorMsgNickName}</div>
                 <div>
-                  <span>Your Nickname:</span><br />
+                  <span className='qa-input'>Your Nickname<sup>*</sup>:</span>
                   <span><textarea className='QA-60-nickname' maxLength='60' name='yourNickName' type='text' placeholder='Example: jack543!' value={this.state.yourNickName} onChange={this.handleChange}/></span><br />
-                  <span>For privacy reasons, do not use your full name or email address</span><br />
+                  <span className='qa-note'>For privacy reasons, do not use your full name or email address</span><br />
                 </div>
                 <div style={{fontSize: 20, color: 'red'}}>{this.state.errorMsgEmail}</div>
                 <div>
-                  <span>Your Email:</span><br />
+                  <span className='qa-input'>Your Email<sup>*</sup>:</span>
                   <span><textarea className='QA-60-email' maxLength='60' name='yourEmail' type='text' placeholder='Example: jack@email.com' value={this.state.yourEmail} onChange={this.handleChange}/></span><br />
-                  <span>For authentication reasons, you will not be emailed</span><br />
+                  <span className='qa-note'>For authentication reasons, you will not be emailed</span><br />
                 </div>
                 <div style={{fontSize: 20, color: 'red'}}>{this.state.errorMsgPhoto}</div>
                 <div>
-                  <input type='file' name='file' placeholder='Upload an image' onChange={this.uploadImage} disabled={this.state.images.length >= 5}/><br />
-                  {this.state.loading && this.state.images.map(imageUrl => <img className='QA-Modal2-thumbnail' key={imageUrl} src={imageUrl} style={{width: '30px'}}/>)}
+                  <input className='choose-file' type='file' name='file' placeholder='Upload an image' onChange={this.uploadImage} disabled={this.state.images.length >= 5}/><br />
+                  {this.state.loading && this.state.images.map(imageUrl => <img className='QA-Modal2-thumbnail' key={imageUrl} src={imageUrl} style={{width: '60px', height: '60px'}}/>)}
                 </div>
 
               </label>
