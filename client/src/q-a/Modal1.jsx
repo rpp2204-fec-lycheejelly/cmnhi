@@ -115,7 +115,7 @@ class Modal1 extends React.Component {
                 <div style={{fontSize: 20, color: 'red'}}>{this.state.errorMsgEmail}</div>
                 <div>
                   <span className='qa-input'>Your Email<sup>*</sup>:</span>
-                  <span><textarea className='QA-60-email' maxLength='60' name='yourEmail' type='text' placeholder='Why did you like the product or not?' value={this.state.yourEmail} onChange={this.handleChange}/></span><br />
+                  <span><textarea className='QA-60-email' maxLength='60' name='yourEmail' type='text' placeholder='Example: jack543!?' value={this.state.yourEmail} onChange={this.handleChange}/></span><br />
                   <span className='qa-note'>For authentication reasons, you will not be emailed</span><br />
                 </div>
               </label>

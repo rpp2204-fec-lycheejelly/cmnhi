@@ -139,6 +139,10 @@ class Modal2 extends React.Component {
                 </div>
                 <div style={{fontSize: 20, color: 'red'}}>{this.state.errorMsgNickName}</div>
                 <div>
+                  <input className='choose-file' type='file' name='file' placeholder='Upload an image' onChange={this.uploadImage} disabled={this.state.images.length >= 5}/><br />
+                  {this.state.loading && this.state.images.map(imageUrl => <img className='QA-Modal2-thumbnail' key={imageUrl} src={imageUrl} style={{width: '60px', height: '60px'}}/>)}
+                </div>
+                <div>
                   <span className='qa-input'>Your Nickname<sup>*</sup>:</span>
                   <span><textarea className='QA-60-nickname' maxLength='60' name='yourNickName' type='text' placeholder='Example: jack543!' value={this.state.yourNickName} onChange={this.handleChange}/></span><br />
                   <span className='qa-note'>For privacy reasons, do not use your full name or email address</span><br />
@@ -150,10 +154,10 @@ class Modal2 extends React.Component {
                   <span className='qa-note'>For authentication reasons, you will not be emailed</span><br />
                 </div>
                 <div style={{fontSize: 20, color: 'red'}}>{this.state.errorMsgPhoto}</div>
-                <div>
+                {/* <div>
                   <input className='choose-file' type='file' name='file' placeholder='Upload an image' onChange={this.uploadImage} disabled={this.state.images.length >= 5}/><br />
                   {this.state.loading && this.state.images.map(imageUrl => <img className='QA-Modal2-thumbnail' key={imageUrl} src={imageUrl} style={{width: '60px', height: '60px'}}/>)}
-                </div>
+                </div> */}
 
               </label>
             </div>

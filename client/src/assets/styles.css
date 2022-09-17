@@ -538,6 +538,7 @@
   margin-bottom: .5em;
   font-size: 17px;
   font-family: sans-serif;
+  font-weight: bold
 }
 
 .QA-answerPhotos {
@@ -613,7 +614,7 @@
 .QA-loadMoreAns {
   font-weight: bolder;
   font-size: 16px;
-  color: rgb(0 0 0);
+  color: rgb(55 62 255);
   /* display: flex; */
   margin-left: 3.6px;
 }
@@ -623,7 +624,7 @@
   display:flex;
   flex-grow: 1;
   word-break: break-all;
-  font-weight: bold;
+  font-weight: bolder;
 }
 
 .QA-report {
@@ -669,7 +670,7 @@
 
 .QA-modalContainer-2 {
   width: 1000px;
-  height: 700px;
+  height: 800px;
   border-radius: 12px;
   background-color: white;
   box-shadow: rgb(0 0 0 / 35%) 0px 5px 15px;
