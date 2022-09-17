@@ -47,7 +47,12 @@ class YourOutfit extends React.Component {
   updateArrows(n) {
     var newFirst = this.state.first + n;
     var newLast = this.state.last + n;
-    if (this.props.outfits.length <= 4) {
+    if (!this.props.outfits) {
+      this.setState({
+        first: newFirst,
+        last: newLast
+      })
+    } else if (this.props.outfits.length <= 4) {
       this.setState({
         first: newFirst,
         last: newLast,
