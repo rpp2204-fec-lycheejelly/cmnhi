@@ -42,7 +42,8 @@ class App extends React.Component {
     })
   }
 
-  addToOutfit() {
+  addToOutfit(e) {
+    e.preventDefault();
     var repeat = false;
     var id = this.state.product_id;
     if (this.state.outfits.length === 0 || this.state.outfits === null) {
@@ -71,7 +72,8 @@ class App extends React.Component {
     }
   }
 
-  deleteOutfit(id) {
+  deleteOutfit(e, id) {
+    e.preventDefault();
     const index = this.state.outfits.map(outfit => outfit.id).indexOf(id);
     const deleted = this.state.outfits;
     const deleteID = this.state.outfitIDs;

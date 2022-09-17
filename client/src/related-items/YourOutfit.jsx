@@ -110,16 +110,18 @@ class YourOutfit extends React.Component {
     }
   }
 
-  addOutfit() {
+  addOutfit(e) {
+    e.preventDefault();
     this.setState({
       plusButton: false
     }, () => {
-      this.props.addOutfit();
+      this.props.addOutfit(e);
     })
   }
 
-  deleteOutfit(id) {
-    this.props.deleteOutfit(id);
+  deleteOutfit(e, id) {
+    e.preventDefault();
+    this.props.deleteOutfit(e, id);
     if (id === this.props.current.id) {
       this.setState({plusButton: true});
     }
@@ -159,7 +161,7 @@ class YourOutfit extends React.Component {
             return (
               <div className="items" key={'yo' + id} >
                 <img className="related-thumbnail" alt={"image of " + outfit.name} src={url || outfit['styles'][0]['photos'][0]['url']}/>
-                <input type="image" src={deleteButt} className="delete-button" alt="comparison" onClick={() => this.deleteOutfit(outfit.id)}/>
+                <input type="image" src={deleteButt} className="delete-button" alt="comparison" onClick={(e) => this.deleteOutfit(e, outfit.id)}/>
                 <p onClick={() => this.productClick(outfit.id)}>{outfit.category}</p>
                 <p onClick={() => this.productClick(outfit.id)}><strong>{outfit.name}</strong></p>
                 <p onClick={() => this.productClick(outfit.id)}><em>{outfit.slogan}</em></p>
@@ -170,7 +172,7 @@ class YourOutfit extends React.Component {
               </div>
             )
           })}
-          {this.state.plusButton === true ? <div className="items"><p id="add">Add to Outfit</p><input type="image" src={plusSign} className="plusSign" onClick={this.addOutfit} alt="add to outfit"/> </div> : <></>}
+          {this.state.plusButton === true ? <div className="items"><p id="add">Add to Outfit</p><input type="image" src={plusSign} className="plusSign" onClick={(e) => this.addOutfit(e)} alt="add to outfit"/> </div> : <></>}
           {this.state.rightClick === true ? <a className="next" onClick={() => this.updateArrows(1)}>&#x00BB;</a> : <a className="next" style={{visibility:'hidden'}}>&#x00BB;</a>}
         </div>
       )
