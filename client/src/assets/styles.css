@@ -528,24 +528,17 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
 /************ Q & A STYLES************/
 
 /*** QandA ***/
 
 .QA-answerBody {
+  margin-top: .2em;
   margin-left: .3em;
-  font-size: 20px;
+  margin-bottom: .5em;
+  font-size: 17px;
   font-family: sans-serif;
+  font-weight: bold
 }
 
 .QA-answerPhotos {
@@ -620,8 +613,10 @@
 
 .QA-loadMoreAns {
   font-weight: bolder;
-  font-size: 30px;
-  color:blueviolet
+  font-size: 16px;
+  color: rgb(55 62 255);
+  /* display: flex; */
+  margin-left: 3.6px;
 }
 
 .QA-question {
@@ -629,29 +624,67 @@
   display:flex;
   flex-grow: 1;
   word-break: break-all;
-  font-weight: bold;
+  font-weight: bolder;
+}
+
+.QA-report {
+  text-decoration: underline;
+}
+
+.QA-A-report {
+  text-decoration: underline;
+}
+
+.qa-input {
+  font-size: 1.3em;
+  display: flex;
+  /* margin-top: 1em; */
 }
 
 
 
-/*** Modal1 ***/
+/*** Modals ***/
 .QA-modal-1 {
-  position:absolute;
-  top:150%;
-  left: 10%;
-  width:20em;
-  height:20em;
-  margin-top: auto;
-  margin-left: auto;
-  z-index:2;
+  width: 0em;
+  height: 0em;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  flex-direction: column-reverse;
+  flex-wrap: wrap;
+  align-content: center;
 }
 
-.QA-modalContainer {
-  width: 600px;
-  height: 600px;
+.QA-modal-2 {
+  position: absolute;
+  width: 0em;
+  height: 0em;
+  z-index: 2;
+  display: inline-flex;
+  flex-direction: row-reverse;
+  justify-content: flex-start;
+  align-items: center;
+  align-content: space-around;
+  flex-wrap: nowrap;
+}
+
+.QA-modalContainer-2 {
+  width: 1000px;
+  height: 800px;
   border-radius: 12px;
-  background-color: rgb(203, 184, 205);
-  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  background-color: white;
+  box-shadow: rgb(0 0 0 / 35%) 0px 5px 15px;
+  display: flex;
+  flex-direction: column;
+  padding: 25px;
+}
+
+.QA-modalContainer-1 {
+  width: 500px;
+  height: 1000px;
+  border-radius: 12px;
+  background-color: white;
+  box-shadow: rgb(0 0 0 / 35%) 0px 5px 15px;
   display: flex;
   flex-direction: column;
   padding: 25px;
@@ -669,13 +702,13 @@
   cursor: pointer;
 }
 
-.QA-modalContainer .QA-modalTitle {
+.QA-modalTitle {
   display: inline-block;
   text-align: center;
   margin-top: 0px;
 }
 
-.QA-modalContainer .QA-modalBody {
+.QA-modalBody {
   flex: 50%;
   justify-content: center;
   align-items: center;
@@ -689,6 +722,7 @@
   width: 500px;
   height: 200px;
   resize: none;
+  display: flex;
 }
 
 .QA-60-nickname {
@@ -697,25 +731,28 @@
   width: 200px;
   height: 20px;
   resize: none;
+  display: -webkit-box;
+  justify-content: center;
 }
 
 .QA-60-email {
-  margin: 1px;
-  padding: 1px;
+  margin-top: -1px;
+
   width: 250px;
   height: 20px;
   resize: none;
-}
-
-
-.QA-modalContainer .QA-modalFooter {
-  flex: 100%;
-  display: flex;
+  display: -webkit-box;
   justify-content: center;
-  align-items: center;
 }
 
-.QA-modalContainer .QA-modalFooter .QA-modal1-submit {
+
+.QA-modalFooter {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.QA-modal1-submit {
   width: 150px;
   height: 20px;
   margin: 10px;
@@ -737,9 +774,13 @@
 
 .QA-title {
   font-family: sans-serif;
-  width: 100%;
-  margin-left: 0px;
-  font-size: 18px;
+  /* width: 100%; */
+  /* margin-left: 0px; */
+  font-size: 22px;
+  display: flex;
+  margin-bottom: 0.2em;
+  font-weight: bold;
+
 }
 
 .QA-searchField {
@@ -758,7 +799,6 @@
 }
 
 #QA-QandAList-overflowTest {
-  /* background: #ffffff; */
   color: rgb(0, 0, 0);
   padding: 15px;
   width: 87em;
@@ -767,28 +807,26 @@
   border: 1px solid #ccc;
 }
 
-#QA-answerList-overflowTest {
+/* #QA-answerList-overflowTest {
   color: rgb(0, 0, 0);
   padding: 10px;
-  width: 60em;
-  height: 230px;
+  width: 36em;
+  height: 180px;
   overflow: auto;
-  /* border: 1px solid rgb(205, 17, 212); */
-}
+} */
 
 
 .QA-container {
-  /* margin: 20 auto;
-  width: 100% */
   /* margin: auto; */
   margin-left: 20;
-  width: 100em;
-  /* border: 3px solid #73AD21;
-  padding: 10px; */
+  /* width: 100em; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .QA-Modal2-thumbnail {
-  margin: 2
+  margin: 2px
 }
 
 .openModal1 {
@@ -800,4 +838,20 @@
   height: 100px;
   /* width: 100px; */
   margin-right: 20px
+}
+
+.QA-two-buttons{
+  margin-top: 20px;
+}
+
+.qa-note {
+  font-size: 1em;
+  display: flex;
+  margin-top: -1em;
+  font-weight: bold;
+}
+
+.choose-file {
+  font-size: medium;
+  display: flex;
 }
