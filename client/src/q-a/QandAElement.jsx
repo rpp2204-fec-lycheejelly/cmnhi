@@ -1,3 +1,103 @@
+import React, {useState, useEffect} from 'react';
+import AnswersList from './AnswersList.jsx';
+import Modal2 from './Modal2.jsx';
+import axios from 'axios';
+
+
+const QandAElement = (props) => {
+  const [helpfulness, setHelpfulness] = useState(props.qa.question_helpfulness);
+  const [openModal, setOpenModal] = useState(false);
+  const [voted, setVoted] = useState(false);
+  const [reported, setReported] = useState(false);
+
+  useEffect(() => {
+    const data_voted = window.localStorage.getItem(`MY_QUESTION_VOTE ${props.questionId}`);
+    // console.log('data_voted', data_voted);
+    setVoted(JSON.parse(data_voted));
+  }, []);
+
+  useEffect(() => {
+    // console.log('voted', voted);
+    window.localStorage.setItem(`MY_QUESTION_VOTE ${props.questionId}`, JSON.stringify(voted));
+  }, [voted]);
+
+  const plusOne = () => {
+    setHelpfulness(helpfulness + 1);
+    setVoted(true);
+  }
+
+  const questionHelpfulness = () => {
+    if (!voted) {
+      axios.put('/qa/questions/:question_id/helpful', {
+        question_id: props.questionId
+      })
+      .then((res) => {
+        console.log('response for question helpfulness', res)
+        plusOne();
+      })
+      .catch(err => {
+        console.log(err);
+      })
+    }
+  }
+
+
+  const report = () => {
+    setReported(!reported);
+  }
+
+  const questionReport = () => {
+    if (!reported) {
+      return axios.put(`/qa/questions/:question_id/report`, {
+        question_id: props.questionId
+      })
+      .then(res => {
+        report();
+      })
+      .catch(err => {
+        console.log('error for questionReport', err);
+      })
+    }
+  }
+
+  const qa = props.qa; // one question and the corresponding answer list
+
+  const openModalFunc = () => {
+    setOpenModal(!openModal);
+  }
+
+  return (
+    <div className='QA-QandAElement'>
+        {/* one question */}
+        <div className='QA-Q' data-testid={qa.question_id}>
+          <span className='QA-question'>Q: {qa.question_body}</span>
+          <span className='QA-4in1'>
+            <span className='QA-helpful-text'>Helpful?</span>
+            <span className='QA-yes' onClick={() => questionHelpfulness()}>Yes</span>
+            <span className='QA-helpfulness'>({helpfulness}) |</span>
+            <span className='QA-report' onClick={() => questionReport()}> {reported ? 'Reported' : 'Report'} |</span>
+            <span className='QA-addAnswer' onClick={() => openModalFunc()}>Add Answer</span>
+          </span>
+            {openModal && <Modal2 closeModal={openModalFunc} questionBody={qa.question_body} questionId={qa.question_id} getQAList={props.getQAList} productData={props.productData}/>}
+        </div>
+        {/* corresponding answer list */}
+        <div className='QA-A'>
+          <span className='QA-A-letterA'>A:</span>
+          <AnswersList answersList={Object.values(qa.answers)}/>
+        </div>
+      </div>
+  )
+}
+
+
+export default QandAElement;
+
+
+
+
+
+
+
 // import React from 'react';
 // import AnswersList from './AnswersList.jsx';
 // import Modal2 from './Modal2.jsx';
@@ -97,90 +197,3 @@
 // }
 
 // export default QandAElement;
-
-
-
-
-
-import React, {useState, useEffect} from 'react';
-import AnswersList from './AnswersList.jsx';
-import Modal2 from './Modal2.jsx';
-import axios from 'axios';
-
-
-const QandAElement = (props) => {
-  const [helpfulness, setHelpfulness] = useState(props.qa.question_helpfulness);
-  const [openModal, setOpenModal] = useState(false);
-  const [voted, setVoted] = useState(false);
-  const [reported, setReported] = useState(false);
-
-  const plusOne = () => {
-    setHelpfulness(helpfulness + 1);
-    setVoted(true);
-  }
-
-  const questionHelpfulness = () => {
-    if (!voted) {
-      axios.put('/qa/questions/:question_id/helpful', {
-        question_id: props.questionId
-      })
-      .then((res) => {
-        console.log('response for question helpfulness', res)
-        plusOne();
-      })
-      .catch(err => {
-        console.log(err);
-      })
-    }
-  }
-
-
-  const report = () => {
-    setReported(!reported);
-  }
-
-  const questionReport = () => {
-    if (!reported) {
-      return axios.put(`/qa/questions/:question_id/report`, {
-        question_id: props.questionId
-      })
-      .then(res => {
-        report();
-      })
-      .catch(err => {
-        console.log('error for questionReport', err);
-      })
-    }
-  }
-
-  const qa = props.qa; // one question and the corresponding answer list
-
-  const openModalFunc = () => {
-    setOpenModal(!openModal);
-  }
-
-  return (
-    <div className='QA-QandAElement'>
-        {/* one question */}
-        <div className='QA-Q' data-testid={qa.question_id}>
-          <span className='QA-question'>Q: {qa.question_body}</span>
-          <span className='QA-4in1'>
-            <span className='QA-helpful-text'>Helpful?</span>
-            <span className='QA-yes' onClick={() => questionHelpfulness()}>Yes</span>
-            <span className='QA-helpfulness'>({helpfulness}) |</span>
-            <span className='QA-report' onClick={() => questionReport()}> {reported ? 'Reported' : 'Report'} |</span>
-            <span className='QA-addAnswer' onClick={() => openModalFunc()}>Add Answer</span>
-          </span>
-            {openModal && <Modal2 closeModal={openModalFunc} questionBody={qa.question_body} questionId={qa.question_id} getQAList={props.getQAList} productData={props.productData}/>}
-        </div>
-        {/* corresponding answer list */}
-        <div className='QA-A'>
-          <span className='QA-A-letterA'>A:</span>
-          <AnswersList answersList={Object.values(qa.answers)}/>
-        </div>
-      </div>
-  )
-}
-
-
-export default QandAElement;
