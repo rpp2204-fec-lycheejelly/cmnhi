@@ -1,13 +1,10 @@
 import React from 'react';
 import axios from 'axios';
-// import {Image} from 'cloudinary-react'
-
 
 const initialState = {
   yourAnswer: '',
   yourNickName: '',
   yourEmail: '',
-  // errorMsg: '',
   images: [],
   loading: false,
   errorMsgEmail: '',
@@ -78,21 +75,6 @@ class Modal2 extends React.Component {
     return true;
   }
 
-  // validate = () => {
-  //   let errorMsg = '';
-  //   // will handle the post of photos later as I have to do some research:
-  //   if (!this.state.yourEmail.includes('@') || !this.state.yourEmail || !this.state.yourAnswer || !this.state.yourNickName || this.state.images.length === 0) {
-  //     errorMsg = 'You must enter the following:';
-  //   }
-
-  //   if (errorMsg) {
-  //     this.setState({errorMsg});
-  //     return false;
-  //   }
-
-  //   return true;
-  // }
-
 
   uploadImage = (e) => {
     const files = e.target.files;
@@ -103,34 +85,13 @@ class Modal2 extends React.Component {
 
     axios.post("https://api.cloudinary.com/v1_1/dc3r923zh/image/upload", data)
     .then(res => {
-      // console.log('res of uploading img', res);
-      // console.log('secure_url', res.data.secure_url);
-      // this.setState({image: res.data.secure_url, loading: false});
       this.setState({images: this.state.images.concat(res.data.secure_url)});
-      // console.log('images', this.state.images);
     })
     .catch(err => {
       console.log('err of uploading img', err);
     })
 
   }
-
-
-  // uploadImage = () => {
-  //   // console.log(files);
-  //   const formData = new FormData();
-  //   formData.append("file", this.state.imageSelected);
-  //   formData.append('upload_preset', 'f6koofaj');
-  //   this.setState({loading: true});
-
-  //   axios.post("https://api.cloudinary.com/v1_1/dc3r923zh/image/upload", formData)
-  //   .then(res => {
-  //     console.log('res of uploading img', res);
-  //   })
-  //   .catch(err => {
-  //     console.log('err of uploading img', err);
-  //   })
-  // }
 
 
   submitInfo = (e) => {
@@ -160,8 +121,8 @@ class Modal2 extends React.Component {
   render() {
     return (
       <form onSubmit={this.submitInfo}>
-        <div className='QA-modal-1' style={{zIndex: '1000'}}>
-          <div className='QA-modalContainer'>
+        <div className='QA-modal-2'>
+          <div className='QA-modalContainer-2'>
             <div className='QA-titleCloseBtn'>
               <button onClick={() => this.props.closeModal()}> X </button>
             </div>
@@ -173,34 +134,30 @@ class Modal2 extends React.Component {
               <label>
                 <div style={{fontSize: 20, color: 'red'}}>{this.state.errorMsgAnswer}</div>
                 <div>
-                  <span>Your Answer:</span><br />
+                  <label className='qa-input'>Your Answer<sup>*</sup>:</label>
                   <span><textarea className='QA-1000' maxLength='1000' name='yourAnswer' type='text' value={this.state.yourAnswer} onChange={this.handleChange}></textarea></span><br />
                 </div>
                 <div style={{fontSize: 20, color: 'red'}}>{this.state.errorMsgNickName}</div>
                 <div>
-                  <span>Your Nickname:</span><br />
+                  <input className='choose-file' type='file' name='file' placeholder='Upload an image' onChange={this.uploadImage} disabled={this.state.images.length >= 5}/><br />
+                  {this.state.loading && this.state.images.map(imageUrl => <img className='QA-Modal2-thumbnail' key={imageUrl} src={imageUrl} style={{width: '60px', height: '60px'}}/>)}
+                </div>
+                <div>
+                  <span className='qa-input'>Your Nickname<sup>*</sup>:</span>
                   <span><textarea className='QA-60-nickname' maxLength='60' name='yourNickName' type='text' placeholder='Example: jack543!' value={this.state.yourNickName} onChange={this.handleChange}/></span><br />
-                  <span>For privacy reasons, do not use your full name or email address</span><br />
+                  <span className='qa-note'>For privacy reasons, do not use your full name or email address</span><br />
                 </div>
                 <div style={{fontSize: 20, color: 'red'}}>{this.state.errorMsgEmail}</div>
                 <div>
-                  <span>Your Email:</span><br />
+                  <span className='qa-input'>Your Email<sup>*</sup>:</span>
                   <span><textarea className='QA-60-email' maxLength='60' name='yourEmail' type='text' placeholder='Example: jack@email.com' value={this.state.yourEmail} onChange={this.handleChange}/></span><br />
-                  <span>For authentication reasons, you will not be emailed</span><br />
+                  <span className='qa-note'>For authentication reasons, you will not be emailed</span><br />
                 </div>
-
-{/* UPLOAD PHOTO: */}
                 <div style={{fontSize: 20, color: 'red'}}>{this.state.errorMsgPhoto}</div>
-                <div>
-                <input type='file' name='file' placeholder='Upload an image' onChange={this.uploadImage} disabled={this.state.images.length >= 5}/><br />
-                {this.state.loading && this.state.images.map(imageUrl => <img className='QA-Modal2-thumbnail' key={imageUrl} src={imageUrl} style={{width: '30px'}}/>)}
-                {/* {this.state.loading && this.state.images.length <= 5 ? this.state.images.map(imageUrl => <img key={imageUrl} src={imageUrl} style={{width: '30px'}}/>) : undefined} */}
-                  {/* <input type='file' name='file' placeholder='Upload an image' onChange={(event) => {this.setState({imageSelected: event.target.files[0]})}}/> */}
-                  {/* <button onClick={this.uploadImage}> Upload Image </button>
-                  <Image cloudName='dc3r923zh' publicId='https://res.cloudinary.com/dc3r923zh/image/upload/v1662935331/f6koofaj/whtwoz4cn8t3ncif2cks.png'/> */}
-                </div>
-{/* UPLOAD PHOTO: */}
-
+                {/* <div>
+                  <input className='choose-file' type='file' name='file' placeholder='Upload an image' onChange={this.uploadImage} disabled={this.state.images.length >= 5}/><br />
+                  {this.state.loading && this.state.images.map(imageUrl => <img className='QA-Modal2-thumbnail' key={imageUrl} src={imageUrl} style={{width: '60px', height: '60px'}}/>)}
+                </div> */}
 
               </label>
             </div>

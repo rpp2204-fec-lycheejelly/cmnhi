@@ -38,8 +38,6 @@ class AnswersList extends React.Component {
     //step1-3: concat
     answersList = sellerList.concat(nonSellerList);
 
-    // console.log('answersList', answersList);
-
     //step2: then rendering
     if (answersList.length > 2) {
       return (
@@ -50,7 +48,7 @@ class AnswersList extends React.Component {
           answersList.slice(2).map(eachAnswer => {return <EachAnswer key={eachAnswer['id']} answerId={eachAnswer['id']} eachAnswer={eachAnswer}/>}) :
           null
           }
-          <div className='QA-loadMoreAns' onClick={() => this.loadMoreAnswers()}>{this.state.loadMoreAns ? 'Collapse answers' : 'See more answers'}</div>
+          <div className='QA-loadMoreAns' onClick={() => this.loadMoreAnswers()}>{this.state.loadMoreAns ? 'COLLAPSE ANSWERS' : 'SEE MORE ANSWERS'}</div>
         </div>
       )
     } else {

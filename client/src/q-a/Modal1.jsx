@@ -5,7 +5,6 @@ const initialState = {
   yourQuestion: '',
   yourNickName: '',
   yourEmail: '',
-  // errorMsg: '',
   errorMsgEmail: '',
   errorMsgNickName: '',
   errorMsgQuestion: ''
@@ -65,29 +64,10 @@ class Modal1 extends React.Component {
   }
 
 
-  // validate = () => {
-  //   let errorMsg = '';
-  //   if (!this.state.yourEmail.includes('@') || !this.state.yourEmail || !this.state.yourQuestion || !this.state.yourNickName) {
-  //     errorMsg = 'You must enter the following:';
-  //   }
-
-  //   if (errorMsg) {
-  //     this.setState({errorMsg});
-  //     return false;
-  //   }
-
-  //   return true;
-  // }
-
   submitInfo = (e) => {
     e.preventDefault();
     const isValid = this.validate();
-    // console.log('isValid', isValid);
     if (isValid) {
-      // console.log('this.state', this.state);
-
-      //HTTP POST Request:
-      // axios.post(`/qa/questions/${this.props.product_id}`, {
       axios.post('/qa/questions', {
         body: this.state.yourQuestion,
         name: this.state.yourNickName,
@@ -108,12 +88,10 @@ class Modal1 extends React.Component {
   }
 
   render() {
-    // console.log('What is this.state: ', this.state);
-    // console.log('this.state.yourQuestion', this.state.yourQuestion);
     return (
       <form onSubmit={this.submitInfo}>
-        <div className='QA-modal-1' style={{zIndex: '1000'}}>
-          <div className='QA-modalContainer'>
+        <div className='QA-modal-1'>
+          <div className='QA-modalContainer-1'>
             <div className='QA-titleCloseBtn'>
               <button onClick={() => this.props.closeModal()}> X </button>
             </div>
@@ -125,20 +103,20 @@ class Modal1 extends React.Component {
               <label>
                 <div style={{fontSize: 20, color: 'red'}}>{this.state.errorMsgQuestion}</div>
                 <div>
-                  <span>Your Question:</span><br />
+                  <span className='qa-input'>Your Question<sup>*</sup>:</span>
                   <span><textarea className='QA-1000' maxLength='1000' name='yourQuestion' type='text' value={this.state.yourQuestion} onChange={this.handleChange}></textarea></span><br />
                 </div>
                 <div style={{fontSize: 20, color: 'red'}}>{this.state.errorMsgNickName}</div>
                 <div>
-                  <span>Your Nickname:</span><br />
+                  <span className='qa-input'>Your Nickname<sup>*</sup>:</span>
                   <span><textarea className='QA-60-nickname' maxLength='60' name='yourNickName' type='text' placeholder='Example: jackson11!' value={this.state.yourNickName} onChange={this.handleChange}/></span><br />
-                  <span>For privacy reasons, do not use your full name or email address</span><br />
+                  <span className='qa-note'>For privacy reasons, do not use your full name or email address</span><br />
                 </div>
                 <div style={{fontSize: 20, color: 'red'}}>{this.state.errorMsgEmail}</div>
                 <div>
-                  <span>Your Email:</span><br />
-                  <span><textarea className='QA-60-email' maxLength='60' name='yourEmail' type='text' placeholder='Why did you like the product or not?' value={this.state.yourEmail} onChange={this.handleChange}/></span><br />
-                  <span>For authentication reasons, you will not be emailed</span><br />
+                  <span className='qa-input'>Your Email<sup>*</sup>:</span>
+                  <span><textarea className='QA-60-email' maxLength='60' name='yourEmail' type='text' placeholder='Example: jack543!?' value={this.state.yourEmail} onChange={this.handleChange}/></span><br />
+                  <span className='qa-note'>For authentication reasons, you will not be emailed</span><br />
                 </div>
               </label>
             </div>

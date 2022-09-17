@@ -25,8 +25,6 @@ class QandAList extends React.Component {
   render() {
 
     var loadQuestionsButton = null;
-    // console.log('this.props.qaList', this.props.qaList);
-    // console.log('this.props.searchTerm', this.props.searchTerm);
     var qaList = this.props.qaList.filter(val => {
       if (this.props.searchTerm === '') {
         return val;
@@ -34,17 +32,21 @@ class QandAList extends React.Component {
         return val;
       }
     })
-    // console.log('FILTERED', qaList);
+
     if (this.state.loadMoreQues) {
       loadQuestionsButton = <button className='loadQuestionsButton' onClick={this.loadMoreQuestions}>MORE ANSWERED QUESTIONS</button>
     }
 
     if (qaList.length > 2) {
       return (
-        <div id='QA-QandAList-overflowTest'>
-          {qaList.slice(0, this.state.count).map(qa => {return <QandAElement key={qa.question_id} qa={qa} questionId={qa.question_id} getQAList={this.props.getQAList} productData={this.props.productData}/>})}
-          {loadQuestionsButton}
-          <button className="openModal1" onClick={() => this.props.openModalFunc()}>ADD A QUESTION +</button>
+        <div>
+          <div id='QA-QandAList-overflowTest'>
+            {qaList.slice(0, this.state.count).map(qa => {return <QandAElement key={qa.question_id} qa={qa} questionId={qa.question_id} getQAList={this.props.getQAList} productData={this.props.productData}/>})}
+          </div>
+          <div className='QA-two-buttons'>
+            {loadQuestionsButton}
+            <button className="openModal1" onClick={() => this.props.openModalFunc()}>ADD A QUESTION +</button>
+          </div>
         </div>
       )
     } else {
