@@ -22,7 +22,7 @@ let ExpandedView = ({carousel, photos, index, matcher, x, y, scrollRight, scroll
               : <img className="main-img expanded"
                      src={photos[index].url}
                      onClick={activateZoom}
-                     style={zoom ? {transform: `scale(2.5)`, transformOrigin: `${x}px ${y}px`} : {}}>
+                     style={zoom ? {transform: `scale(2.5)`, transformOrigin: `${x}px ${y - 150}px`} : {}}>
                     </img>}
 
             {zoom
