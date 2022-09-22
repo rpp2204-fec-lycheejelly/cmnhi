@@ -2,6 +2,17 @@
 This project was done by a group of 3 people in a month's time with an end goal of creating a functioning single-page ecommerce app.
 
 ### Product Overview
+![Oveview](https://user-images.githubusercontent.com/98191976/191631834-0ce6ac51-95a3-4409-9663-1d7c6db9995a.jpeg)
+![Expanded](https://user-images.githubusercontent.com/98191976/191631858-b644d694-55d3-4409-ac32-c76a9bc13605.jpeg)
+
+### Related Products
+![Related](https://user-images.githubusercontent.com/98191976/191631975-c73e5a52-472e-4f98-9129-22efb95b3be7.jpeg)
+![Outfit](https://user-images.githubusercontent.com/98191976/191631983-c43844af-9a03-49b4-80e4-798afb349f4c.jpeg)
+
+### Questions and Answers
+![QnA](https://user-images.githubusercontent.com/98191976/191632041-69347716-195d-402c-8b44-07c4b3c2f09a.jpeg)
+![Question](https://user-images.githubusercontent.com/98191976/191632058-5064c26e-a00d-4689-8f08-849ae100e550.jpeg)
+![Answer](https://user-images.githubusercontent.com/98191976/191632063-7b2060fb-0496-4053-a291-d1c4acf7cff4.jpeg)
 
 
 ## Tools Used
