@@ -27,10 +27,10 @@ This project was done by a group of 3 people in a month's time with an end goal 
 * Deployment:
   * AWS EC2 Instance
  
-We used React.JS for the front-end development utilizing stateful components, functional components, and React hooks. We also used Express.JS to start up a development server and connect our routes to the provided API. This was used this in conjunction with Nodemon, which allowed our server to automatically re-run upon saving. We used WebPack to bundle our code to make it more modular and organized, and for testing our server routes, we used Postman for verifying GET, PUT, and POST requests. Lastly, we deployed our app using an AWS EC2 instance.
+We used React.JS for the front-end development utilizing stateful components, functional components, and React hooks. We also used Express.JS to start up a development server and connect our routes to the provided API. This was used this in conjunction with Nodemon, which allowed our server to automatically re-run upon saving. We used WebPack for bundling our code to make it more modular and organized, and for testing our server routes, we used Postman for verifying GET, PUT, and POST requests. Lastly, we deployed our app using an AWS EC2 instance.
 
 ## Challenges Faced
-The main bulk of the challenges we faced comes from the multitude of requests to the API from our server. This resulted in status code 429 errors when navigating products too quickly. In the future, we could use a database to properly cache previously accessed data to cut down on total API calls. Another idea would be to refactor the method in which we are implementing our API calls to allow for better orchestration and more efficient requests. With more time, we also would have also liked to implement a compression tool to significantly increase our app's loading time and performance.
+The main bulk of the challenges we faced came from the multitude of requests to the API from our server. This resulted in status code 429 errors when navigating products too quickly. In the future, we could use a database to properly cache previously accessed data to cut down on total API calls. Another idea would be to refactor the method in which we are implementing our API calls to allow for better orchestration and more efficient requests. With more time, we also would have also liked to implement a compression tool to significantly increase our app's loading time and performance.
 
 ## Set Up
 To run the project...
