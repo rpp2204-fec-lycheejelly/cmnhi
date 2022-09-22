@@ -11,9 +11,8 @@ This project was done by a group of 3 people in a month's time with an end goal 
 
 ### Questions and Answers
 ![QnA](https://user-images.githubusercontent.com/98191976/191632041-69347716-195d-402c-8b44-07c4b3c2f09a.jpeg)
-![Question](https://user-images.githubusercontent.com/98191976/191632058-5064c26e-a00d-4689-8f08-849ae100e550.jpeg)
-![Answer](https://user-images.githubusercontent.com/98191976/191632063-7b2060fb-0496-4053-a291-d1c4acf7cff4.jpeg)
-
+<img width="430" alt="Question" src="https://user-images.githubusercontent.com/98191976/191632182-7bb8312f-16ff-4883-97bc-96b72ed1b574.png">
+<img width="433" alt="Answer" src="https://user-images.githubusercontent.com/98191976/191632193-ca5938d4-4ede-4e8c-bbf4-5b208528f163.png">
 
 ## Tools Used
 * Front-End:
