@@ -7,10 +7,14 @@ const {getQAList, addQuestion, addAnswer,
        putQuestionHelpful, putAnswerHelpful,
        putAnswerReported, putQuestionReported}= require('./controllers/qa.js');
 const getRelated = require('./controllers/related.js');
+const expressStaticGzip = require('express-static-gzip');
 let app = express();
 
+app.use('/', expressStaticGzip(__dirname + '/../client/dist'));
 app.use(express.static(__dirname + '/../client/dist'));
 app.use(express.json());
+
+
 
 let port = process.env.PORT;
 
